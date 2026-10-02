@@ -1,0 +1,327 @@
+/* ==========================================================================
+   Site styles
+   Every colour, radius, shadow and text style comes from tokens.css (habibi).
+   habibi has no spacing variables, so spacing values below are the exact
+   pixel values from the Figma components, kept as named custom properties.
+   ========================================================================== */
+
+:root {
+  /* Layout — from the "github-site" Figma page */
+  --sidebar-width: 232px;
+  --bar-height: 52px;              /* mobile top bar; mobile = below 768px */
+
+  /* Spacing used by the components (Figma auto-layout values) */
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+
+  --motion-duration: 200ms;
+  --motion-ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--uncolorful-grey-background);
+  color: var(--uncolorful-grey-primary);
+  font-family: var(--font-family);
+  font-size: var(--body-c-size);
+  line-height: var(--body-c-line-height);
+  font-weight: var(--font-weight-regular);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--boring-blue-50);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  inset-block-start: var(--space-8);
+  inset-inline-start: var(--space-8);
+  z-index: 100;
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-m);
+  background: var(--uncolorful-grey-surface);
+  color: var(--boring-blue-50);
+  box-shadow: var(--shadow-default-l);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   App layout
+   -------------------------------------------------------------------------- */
+.app {
+  display: flex;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.content {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  padding: var(--space-24);
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar  (Figma: github-sidebar · Device=Desktop)
+   -------------------------------------------------------------------------- */
+.sidebar {
+  position: sticky;
+  inset-block-start: 0;
+  flex: 0 0 var(--sidebar-width);
+  width: var(--sidebar-width);
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding-block: var(--space-8) var(--space-16);
+  overflow-y: auto;
+  background: var(--uncolorful-grey-surface);
+  box-shadow: var(--shadow-default-s);
+  z-index: 10;
+}
+
+.sidebar__brand {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-8);
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-m);
+}
+
+.sidebar__logo {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  color: var(--uncolorful-grey-extra);
+}
+
+.sidebar__logo svg {
+  width: 32px;
+  height: 32px;
+}
+
+.sidebar__name {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.sidebar__title {
+  color: var(--uncolorful-grey-primary);
+  white-space: nowrap;
+}
+
+.sidebar__role {
+  margin-block-start: calc(var(--space-4) * -1);
+  padding-inline-start: var(--space-2);
+  color: var(--uncolorful-grey-tertiary);
+  white-space: nowrap;
+}
+
+.sidebar__nav {
+  flex: 1 1 auto;
+  padding: var(--space-8);
+}
+
+/* --------------------------------------------------------------------------
+   Menu item  (Figma: Menu · Active × Hover × RTL)
+   -------------------------------------------------------------------------- */
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-m);
+  color: var(--uncolorful-grey-primary);
+  transition: background-color var(--motion-duration) var(--motion-ease);
+}
+
+.menu-item__icon {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 20px;
+}
+
+.menu-item__icon svg {
+  width: 20px;
+  height: 20px;
+  max-width: none;
+}
+
+.menu-item:hover {
+  background: var(--boring-blue-90);
+}
+
+.menu-item[aria-current="page"] {
+  background: var(--boring-blue-90);
+  color: var(--boring-blue-50);
+}
+
+.menu-item[aria-current="page"]:hover {
+  background: var(--boring-blue-80);
+}
+
+.menu-item:focus-visible {
+  outline-offset: -2px;
+}
+
+/* --------------------------------------------------------------------------
+   Empty state  (Figma: empty-state · type=empty)
+   -------------------------------------------------------------------------- */
+.empty-state {
+  flex: 1 1 auto;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-16);
+  text-align: center;
+}
+
+.empty-state__image {
+  width: 128px;
+  height: 128px;
+  border-radius: var(--radius-l);
+  object-fit: cover;
+}
+
+.empty-state__text {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding-inline: var(--space-24);
+}
+
+.empty-state__title {
+  margin: 0;
+  color: var(--uncolorful-grey-secondary);
+}
+
+.empty-state__body {
+  margin: 0;
+  color: var(--uncolorful-grey-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Mobile  (Figma: github-sidebar · Device=Mobile)
+   The bar hides while scrolling down and returns on scroll up (site.js).
+   -------------------------------------------------------------------------- */
+@media (max-width: 767.98px) {
+  .app {
+    display: block;
+  }
+
+  .sidebar {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    width: auto;
+    height: var(--bar-height);
+    padding: 0;
+    gap: 0;
+    overflow: visible;
+    transition: transform var(--motion-duration) var(--motion-ease),
+      box-shadow var(--motion-duration) var(--motion-ease);
+  }
+
+  .sidebar.is-hidden {
+    transform: translateY(-100%);
+    box-shadow: none;
+  }
+
+  .sidebar__brand {
+    align-items: center;
+  }
+
+  /* The mobile design is intentionally minimal: brand only. */
+  .sidebar__nav {
+    display: none;
+  }
+
+  .content {
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-block-start: calc(var(--bar-height) + var(--space-24));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .menu-item {
+    transition: none;
+  }
+}

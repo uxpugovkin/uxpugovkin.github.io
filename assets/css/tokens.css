@@ -1,0 +1,375 @@
+/* ==========================================================================
+   habibi tokens
+   Generated from the habibi-library Figma file (variables + styles).
+   Do not edit values by hand — update them in Figma and regenerate.
+
+   Colour themes (Figma collection "colour"):
+     light · dark · olive · olive-night
+   Day / night pair used by this site: olive (day) + olive-night (night).
+   The theme follows the visitor's system setting. To force one, set
+   data-theme="olive" | "olive-night" | "light" | "dark" on <html>.
+   ========================================================================== */
+
+:root {
+  /* fonts — Figma modes: SF Pro · Segoe UI · Roboto · IBM Plex Sans (default).
+     The web stack picks each platform's native face in that order. */
+  --font-family: "SF Pro Text", "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "IBM Plex Sans", system-ui, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-bold: 500; /* habibi "Bold" styles use the Medium weight */
+
+  /* radius */
+  --radius-xs: 3px;
+  --radius-s: 4px;
+  --radius-m: 6px;
+  --radius-l: 10px;
+  --radius-full: 9999px;
+
+  /* typography — Body A…E (size / line-height / letter-spacing) */
+  --body-a-size: 20px;
+  --body-a-line-height: 28px;
+  --body-a-letter-spacing: 0em;
+  --body-b-size: 16px;
+  --body-b-line-height: 24px;
+  --body-b-letter-spacing: 0em;
+  --body-c-size: 14px;
+  --body-c-line-height: 20px;
+  --body-c-letter-spacing: 0em;
+  --body-d-size: 12px;
+  --body-d-line-height: 16px;
+  --body-d-letter-spacing: 0em;
+  --body-e-size: 10px;
+  --body-e-line-height: 12px;
+  --body-e-letter-spacing: 0.04em;
+
+  /* effects */
+  --shadow-default-s: 0 4px 12px 0 rgb(0 0 0 / 0.04), 0 0.5px 5px 0 rgb(0 0 0 / 0.04);
+  --shadow-default-l: 0 40px 56px 0 rgb(0 0 0 / 0.04), 0 16px 20px 0 rgb(0 0 0 / 0.06);
+  --shadow-accent-l: 0 10px 8px 0 rgb(0 77 230 / 0.08), 0 2px 8px 0 rgb(0 77 230 / 0.24);
+}
+
+/* Day (default): olive */
+:root,
+:root[data-theme="olive"] {
+  color-scheme: light;
+  --accent-1: #ff4d8d;
+  --accent-2: #ff7a3d;
+  --accent-3: #ffb800;
+  --accent-4: #cfe000;
+  --accent-5: #7fd93a;
+  --accent-6: #22cbb0;
+  --accent-7: #2563c9;
+  --accent-8: #6d5ce8;
+  --accent-9: #b44ae0;
+  --boring-blue-40: #424d00;
+  --boring-blue-50: #556200;
+  --boring-blue-60: #6a7a00;
+  --boring-blue-70: #92a60d;
+  --boring-blue-80: #b3c72f;
+  --boring-blue-90: #e3e7ca;
+  --opacity-01: #00000003;
+  --opacity-16: #00000029;
+  --opacity-72: #000000b8;
+  --pure-0: #ffffff;
+  --pure-100: #000000;
+  --shitpile-orange-40: #a57607;
+  --shitpile-orange-50: #c38b08;
+  --shitpile-orange-60: #dd9d09;
+  --shitpile-orange-70: #f6b41b;
+  --shitpile-orange-80: #f9d37a;
+  --shitpile-orange-90: #fdf1d4;
+  --traffic-light-red-40: #af1649;
+  --traffic-light-red-50: #da1b5b;
+  --traffic-light-red-60: #eb5e8d;
+  --traffic-light-red-70: #f18dae;
+  --traffic-light-red-80: #f7bbcf;
+  --traffic-light-red-90: #fce8ef;
+  --uncolorful-grey-background: #f7f6fa;
+  --uncolorful-grey-border: #e8e6ef;
+  --uncolorful-grey-disabled: #cbc7d6;
+  --uncolorful-grey-extra: #16131f;
+  --uncolorful-grey-primary: #322e42;
+  --uncolorful-grey-secondary: #5f5a72;
+  --uncolorful-grey-surface: #ffffff;
+  --uncolorful-grey-tertiary: #918ca3;
+  --uncreative-green-40: #661ba7;
+  --uncreative-green-50: #8223d5;
+  --uncreative-green-60: #9a49e1;
+  --uncreative-green-70: #bc85eb;
+  --uncreative-green-80: #d2aef2;
+  --uncreative-green-90: #eddffa;
+}
+
+/* Night: olive-night — follows the system setting unless a theme is forced */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --accent-1: #ff5b96;
+    --accent-2: #ffb18e;
+    --accent-3: #ffd055;
+    --accent-4: #c5d500;
+    --accent-5: #66eb00;
+    --accent-6: #00cdac;
+    --accent-7: #307fff;
+    --accent-8: #9384ff;
+    --accent-9: #d572ff;
+    --boring-blue-40: #a7ee00;
+    --boring-blue-50: #8ac500;
+    --boring-blue-60: #699600;
+    --boring-blue-70: #3f5a00;
+    --boring-blue-80: #2e3e08;
+    --boring-blue-90: #212d06;
+    --opacity-01: #ffffff03;
+    --opacity-16: #ffffff29;
+    --opacity-72: #ffffffb8;
+    --pure-0: #ffffff;
+    --pure-100: #000000;
+    --shitpile-orange-40: #ffcf90;
+    --shitpile-orange-50: #ff9811;
+    --shitpile-orange-60: #c77100;
+    --shitpile-orange-70: #774300;
+    --shitpile-orange-80: #4f310a;
+    --shitpile-orange-90: #3a2407;
+    --traffic-light-red-40: #ffc9d7;
+    --traffic-light-red-50: #ff8daa;
+    --traffic-light-red-60: #ff265c;
+    --traffic-light-red-70: #a20028;
+    --traffic-light-red-80: #6f0e26;
+    --traffic-light-red-90: #520a1c;
+    --uncolorful-grey-background: #0a080f;
+    --uncolorful-grey-border: #322d46;
+    --uncolorful-grey-disabled: #59516f;
+    --uncolorful-grey-extra: #e6e3ee;
+    --uncolorful-grey-primary: #d8d6e2;
+    --uncolorful-grey-secondary: #bdbac8;
+    --uncolorful-grey-surface: #191721;
+    --uncolorful-grey-tertiary: #8b859e;
+    --uncreative-green-40: #e9d3ff;
+    --uncreative-green-50: #d1a4ff;
+    --uncreative-green-60: #b468ff;
+    --uncreative-green-70: #7200e3;
+    --uncreative-green-80: #531294;
+    --uncreative-green-90: #3e0e6e;
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --accent-1: #e44444;
+  --accent-2: #e4af44;
+  --accent-3: #afe444;
+  --accent-4: #44e444;
+  --accent-5: #44e4af;
+  --accent-6: #44afe4;
+  --accent-7: #4444e4;
+  --accent-8: #af44e4;
+  --accent-9: #e444af;
+  --boring-blue-40: #0b3fa7;
+  --boring-blue-50: #0e50d7;
+  --boring-blue-60: #286af1;
+  --boring-blue-70: #6f9bf6;
+  --boring-blue-80: #9fbdf9;
+  --boring-blue-90: #d8e5fd;
+  --opacity-01: #00000003;
+  --opacity-16: #00000029;
+  --opacity-72: #000000b8;
+  --pure-0: #ffffff;
+  --pure-100: #000000;
+  --shitpile-orange-40: #d7550e;
+  --shitpile-orange-50: #f16e28;
+  --shitpile-orange-60: #f48f58;
+  --shitpile-orange-70: #f7af88;
+  --shitpile-orange-80: #facfb7;
+  --shitpile-orange-90: #fdefe7;
+  --traffic-light-red-40: #ae1e30;
+  --traffic-light-red-50: #d9263c;
+  --traffic-light-red-60: #e46776;
+  --traffic-light-red-70: #ec929d;
+  --traffic-light-red-80: #f3bec4;
+  --traffic-light-red-90: #fbe9eb;
+  --uncolorful-grey-background: #f8f6f3;
+  --uncolorful-grey-border: #ece9e5;
+  --uncolorful-grey-disabled: #cdc9c3;
+  --uncolorful-grey-extra: #12100e;
+  --uncolorful-grey-primary: #353230;
+  --uncolorful-grey-secondary: #67625d;
+  --uncolorful-grey-surface: #fffefc;
+  --uncolorful-grey-tertiary: #9b958d;
+  --uncreative-green-40: #0d7234;
+  --uncreative-green-50: #13a049;
+  --uncreative-green-60: #17ce5e;
+  --uncreative-green-70: #76efa4;
+  --uncreative-green-80: #a4f4c2;
+  --uncreative-green-90: #d2f9e1;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --accent-1: #e27878;
+  --accent-2: #e2bf78;
+  --accent-3: #bfe278;
+  --accent-4: #78e278;
+  --accent-5: #78e2bf;
+  --accent-6: #78bfe2;
+  --accent-7: #7878e2;
+  --accent-8: #bf78e2;
+  --accent-9: #e278bf;
+  --boring-blue-40: #c6dafe;
+  --boring-blue-50: #91b4f5;
+  --boring-blue-60: #5d88d9;
+  --boring-blue-70: #345188;
+  --boring-blue-80: #24385f;
+  --boring-blue-90: #1b2943;
+  --opacity-01: #ffffff03;
+  --opacity-16: #ffffff29;
+  --opacity-72: #ffffffb8;
+  --pure-0: #ffffff;
+  --pure-100: #000000;
+  --shitpile-orange-40: #f9cebc;
+  --shitpile-orange-50: #ea9f7d;
+  --shitpile-orange-60: #ca6d41;
+  --shitpile-orange-70: #7e3e20;
+  --shitpile-orange-80: #582b16;
+  --shitpile-orange-90: #3f2113;
+  --traffic-light-red-40: #fcccc9;
+  --traffic-light-red-50: #ee9997;
+  --traffic-light-red-60: #cd6665;
+  --traffic-light-red-70: #80393a;
+  --traffic-light-red-80: #5a2828;
+  --traffic-light-red-90: #401e1e;
+  --uncolorful-grey-background: #0a0908;
+  --uncolorful-grey-border: #33302c;
+  --uncolorful-grey-disabled: #5a554f;
+  --uncolorful-grey-extra: #e7e4df;
+  --uncolorful-grey-primary: #dbd7d1;
+  --uncolorful-grey-secondary: #c0bbb4;
+  --uncolorful-grey-surface: #1a1815;
+  --uncolorful-grey-tertiary: #8d8880;
+  --uncreative-green-40: #c1e4c6;
+  --uncreative-green-50: #84c690;
+  --uncreative-green-60: #469f5c;
+  --uncreative-green-70: #226133;
+  --uncreative-green-80: #184423;
+  --uncreative-green-90: #15311b;
+}
+
+:root[data-theme="olive-night"] {
+  color-scheme: dark;
+  --accent-1: #ff5b96;
+  --accent-2: #ffb18e;
+  --accent-3: #ffd055;
+  --accent-4: #c5d500;
+  --accent-5: #66eb00;
+  --accent-6: #00cdac;
+  --accent-7: #307fff;
+  --accent-8: #9384ff;
+  --accent-9: #d572ff;
+  --boring-blue-40: #a7ee00;
+  --boring-blue-50: #8ac500;
+  --boring-blue-60: #699600;
+  --boring-blue-70: #3f5a00;
+  --boring-blue-80: #2e3e08;
+  --boring-blue-90: #212d06;
+  --opacity-01: #ffffff03;
+  --opacity-16: #ffffff29;
+  --opacity-72: #ffffffb8;
+  --pure-0: #ffffff;
+  --pure-100: #000000;
+  --shitpile-orange-40: #ffcf90;
+  --shitpile-orange-50: #ff9811;
+  --shitpile-orange-60: #c77100;
+  --shitpile-orange-70: #774300;
+  --shitpile-orange-80: #4f310a;
+  --shitpile-orange-90: #3a2407;
+  --traffic-light-red-40: #ffc9d7;
+  --traffic-light-red-50: #ff8daa;
+  --traffic-light-red-60: #ff265c;
+  --traffic-light-red-70: #a20028;
+  --traffic-light-red-80: #6f0e26;
+  --traffic-light-red-90: #520a1c;
+  --uncolorful-grey-background: #0a080f;
+  --uncolorful-grey-border: #322d46;
+  --uncolorful-grey-disabled: #59516f;
+  --uncolorful-grey-extra: #e6e3ee;
+  --uncolorful-grey-primary: #d8d6e2;
+  --uncolorful-grey-secondary: #bdbac8;
+  --uncolorful-grey-surface: #191721;
+  --uncolorful-grey-tertiary: #8b859e;
+  --uncreative-green-40: #e9d3ff;
+  --uncreative-green-50: #d1a4ff;
+  --uncreative-green-60: #b468ff;
+  --uncreative-green-70: #7200e3;
+  --uncreative-green-80: #531294;
+  --uncreative-green-90: #3e0e6e;
+}
+
+/* Text styles — one class per habibi text style */
+.body-a-regular {
+  font-family: var(--font-family);
+  font-size: var(--body-a-size);
+  line-height: var(--body-a-line-height);
+  letter-spacing: var(--body-a-letter-spacing);
+  font-weight: var(--font-weight-regular);
+}
+.body-a-bold {
+  font-family: var(--font-family);
+  font-size: var(--body-a-size);
+  line-height: var(--body-a-line-height);
+  letter-spacing: var(--body-a-letter-spacing);
+  font-weight: var(--font-weight-bold);
+}
+.body-b-regular {
+  font-family: var(--font-family);
+  font-size: var(--body-b-size);
+  line-height: var(--body-b-line-height);
+  letter-spacing: var(--body-b-letter-spacing);
+  font-weight: var(--font-weight-regular);
+}
+.body-b-bold {
+  font-family: var(--font-family);
+  font-size: var(--body-b-size);
+  line-height: var(--body-b-line-height);
+  letter-spacing: var(--body-b-letter-spacing);
+  font-weight: var(--font-weight-bold);
+}
+.body-c-regular {
+  font-family: var(--font-family);
+  font-size: var(--body-c-size);
+  line-height: var(--body-c-line-height);
+  letter-spacing: var(--body-c-letter-spacing);
+  font-weight: var(--font-weight-regular);
+}
+.body-c-bold {
+  font-family: var(--font-family);
+  font-size: var(--body-c-size);
+  line-height: var(--body-c-line-height);
+  letter-spacing: var(--body-c-letter-spacing);
+  font-weight: var(--font-weight-bold);
+}
+.body-d-regular {
+  font-family: var(--font-family);
+  font-size: var(--body-d-size);
+  line-height: var(--body-d-line-height);
+  letter-spacing: var(--body-d-letter-spacing);
+  font-weight: var(--font-weight-regular);
+}
+.body-d-bold {
+  font-family: var(--font-family);
+  font-size: var(--body-d-size);
+  line-height: var(--body-d-line-height);
+  letter-spacing: var(--body-d-letter-spacing);
+  font-weight: var(--font-weight-bold);
+}
+.body-e-regular {
+  font-family: var(--font-family);
+  font-size: var(--body-e-size);
+  line-height: var(--body-e-line-height);
+  letter-spacing: var(--body-e-letter-spacing);
+  font-weight: var(--font-weight-regular);
+}
+.body-e-bold {
+  font-family: var(--font-family);
+  font-size: var(--body-e-size);
+  line-height: var(--body-e-line-height);
+  letter-spacing: var(--body-e-letter-spacing);
+  font-weight: var(--font-weight-bold);
+}
