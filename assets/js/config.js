@@ -1,7 +1,7 @@
 /* ==========================================================================
    Site content — edit this file to change the name, role and menu.
    Add a case study: add one line to `menu` and create the matching page
-   (copy any case-study-N/index.html and change its data-page and title).
+   (copy any case study folder, e.g. t-bank/, and change its data-page and title).
    ========================================================================== */
 window.SITE = {
   name: "Konstantin P",
@@ -9,12 +9,12 @@ window.SITE = {
 
   // id    — must match <body data-page="..."> on that page
   // href  — path from the site root ("" is the home page)
-  // icon  — any key from ICONS in site.js
+  // icon  — any key from ICONS in site.js ("doc", "folder")
   menu: [
-    { id: "case-study-1", title: "Case Study #1", href: "", icon: "folder" },
-    { id: "case-study-2", title: "Case Study #2", href: "case-study-2/", icon: "folder" },
-    { id: "case-study-3", title: "Case Study #3", href: "case-study-3/", icon: "folder" },
-    { id: "case-study-4", title: "Case Study #4", href: "case-study-4/", icon: "folder" },
-    { id: "case-study-5", title: "Case Study #5", href: "case-study-5/", icon: "folder" }
+    { id: "storefront", title: "Storefront", href: "", icon: "doc" },
+    { id: "sbertech", title: "SberTech", href: "sbertech/", icon: "doc" },
+    { id: "ma-direct", title: "MA.direct", href: "ma-direct/", icon: "doc" },
+    { id: "raiffeisen-bank", title: "Raiffeisen Bank", href: "raiffeisen-bank/", icon: "doc" },
+    { id: "t-bank", title: "T-bank", href: "t-bank/", icon: "doc" }
   ]
 };

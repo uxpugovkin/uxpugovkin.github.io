@@ -14,8 +14,9 @@ After a minute the site is live at `https://your-username.github.io`.
 ## What's where
 
 ```
-index.html               Case Study #1 (home)
-case-study-2/ … 5/       one folder per case study
+index.html               Storefront (home)
+sbertech/, ma-direct/,   one folder per case study
+raiffeisen-bank/, t-bank/
 404.html                 "page not found"
 assets/css/tokens.css    habibi tokens: colours (4 themes), radius, type, shadows, fonts
 assets/css/site.css      layout and components; uses tokens only
@@ -26,10 +27,10 @@ assets/img/              logo favicon, empty-state image
 
 ## Add a case study
 
-1. Copy `case-study-5/` to `case-study-6/`.
-2. In `case-study-6/index.html`, change `data-page="case-study-5"` to `case-study-6` and update the `<title>`.
+1. Copy the `t-bank/` folder and rename the copy, e.g. `new-project/`.
+2. In `new-project/index.html`, change `data-page="t-bank"` to `new-project` and update the `<title>`.
 3. Add one line to `assets/js/config.js`:
-   `{ id: "case-study-6", title: "Case Study #6", href: "case-study-6/", icon: "folder" }`
+   `{ id: "new-project", title: "New Project", href: "new-project/", icon: "doc" }`
 
 The menu on every page updates automatically.
 
