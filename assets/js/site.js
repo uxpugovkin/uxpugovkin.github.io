@@ -2,7 +2,7 @@
    Site behaviour
    1. Renders the sidebar / mobile bar from config.js (one source for every page)
    2. Hides the mobile bar on scroll down, shows it again on scroll up
-   3. Shows the habibi skeleton (and loader) on images until they load
+   3. Shows the habibi skeleton (and loader) on images and videos until they load
    ========================================================================== */
 (function () {
   "use strict";
@@ -80,7 +80,11 @@
   }
 
   /* ---- 3. Image loaders: skeleton until each image has loaded ----------- */
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   function watchImage(box) {
+    var frame = box.querySelector("iframe[data-src]");
+    if (frame) return watchVideo(box, frame);
     var img = box.querySelector("img");
     if (!img || (img.complete && img.naturalWidth > 0)) return; // already there
     box.setAttribute("data-loading", "");
@@ -92,6 +96,21 @@
     }
     img.addEventListener("load", function () { done(false); }, { once: true });
     img.addEventListener("error", function () { done(true); }, { once: true });
+  }
+
+  // Video embeds start loading from data-src so the loader shows until the
+  // player is ready; reduced-motion visitors get it without autoplay
+  function watchVideo(box, frame) {
+    var src = frame.getAttribute("data-src");
+    if (reduceMotion) src = src.replace("autoplay=1", "autoplay=0");
+    box.setAttribute("data-loading", "");
+    box.setAttribute("aria-busy", "true");
+    frame.addEventListener("load", function () {
+      box.removeAttribute("data-loading");
+      box.removeAttribute("aria-busy");
+    }, { once: true });
+    frame.removeAttribute("data-src");
+    frame.src = src;
   }
 
   function initImageLoaders() {

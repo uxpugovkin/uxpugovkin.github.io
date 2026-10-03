@@ -430,6 +430,21 @@ a {
   display: block;
 }
 
+/* Video slot: Vimeo player at the video's own 16:9, up to 1140px wide */
+.media__video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.media__video iframe {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 /* icons/arrow-down, 32px, accent-1 */
 .media__arrow {
   flex: none;
@@ -455,7 +470,8 @@ a {
   border-radius: var(--radius-l);
 }
 
-.image-loader img {
+.image-loader img,
+.image-loader iframe {
   transition: opacity var(--motion-duration) var(--motion-ease);
 }
 
@@ -464,7 +480,8 @@ a {
   animation: skeleton-pulse 2.8s ease-in-out infinite;
 }
 
-.image-loader[data-loading] img {
+.image-loader[data-loading] img,
+.image-loader[data-loading] iframe {
   opacity: 0;
 }
 

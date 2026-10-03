@@ -30,6 +30,13 @@
         </ul>
       </header>
 
+      <figure class="media">
+        <div class="image-loader image-loader--spinner media__video">
+          <iframe data-src="https://player.vimeo.com/video/1231912882?autoplay=1&amp;muted=1&amp;loop=1&amp;autopause=0&amp;playsinline=1&amp;dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Showreel video, plays muted on a loop" allow="autoplay; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <noscript><iframe src="https://player.vimeo.com/video/1231912882?autoplay=1&amp;muted=1&amp;loop=1&amp;autopause=0&amp;playsinline=1&amp;dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Showreel video, plays muted on a loop" allow="autoplay; fullscreen; picture-in-picture"></iframe></noscript>
+        </div>
+      </figure>
+
       <section class="paragraph case-section" aria-labelledby="outcomes">
         <h2 class="case-section__title header-h3" id="outcomes">Outcomes</h2>
         <p class="case-section__body body-c-regular">Sberbank moved closer to <strong>full software sovereignty</strong> by replacing legacy SAP modules from the <strong>ground up with ABAC</strong>, an in-house tool to manage access for every Sber employee (200k+)</p>
@@ -44,15 +51,36 @@
         <p class="case-section__body body-c-regular">Used the <strong>PURE score</strong> to set measurable goals on a low-maturity product</p>
       </section>
 
-      <section class="paragraph case-section" aria-labelledby="task">
-        <h2 class="case-section__title header-h3" id="task">Task</h2>
-        <p class="case-section__body body-c-regular">...</p>
-      </section>
-
       <section class="paragraph case-section" aria-labelledby="processes">
         <h2 class="case-section__title header-h3" id="processes">Processes</h2>
         <p class="case-section__body body-c-regular">...</p>
       </section>
+
+      <section class="paragraph case-section" aria-labelledby="making-broken-records-visible">
+        <h2 class="case-section__title header-h3" id="making-broken-records-visible">Making broken records visible</h2>
+        <p class="case-section__body body-c-regular">JTBD 1: When attributes fail to sync and I only find out because someone reports lost access, I want to see empty attributes and stale sync times right in the user list, so I catch broken records before they turn into tickets</p>
+        <p class="case-section__body body-c-regular">Features added: an admin can spot issues easily, because the stale sync time is shown as ‘72h ago’ rather than a plain timestamp, and missing attributes are flagged as well.</p>
+      </section>
+
+      <figure class="media">
+        <a class="media__link" href="../assets/img/sbertech/users-before-2160.webp">
+          <span class="image-loader image-loader--spinner">
+            <img class="media__image" src="../assets/img/sbertech/users-before-1140.webp" srcset="../assets/img/sbertech/users-before-1140.webp 1140w, ../assets/img/sbertech/users-before-2160.webp 2160w"
+                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
+                 width="2160" height="876" alt="Before: the ABAC Users list for res-domain-144 — a plain table of login, name, surname, patronymic, ID and last sync time, with nothing showing which records are broken." loading="lazy" decoding="async">
+          </span>
+          <span class="visually-hidden">(opens full size)</span>
+        </a>
+        <svg class="media__arrow" width="32" height="32" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" focusable="false"><path d="M16.0017 26.3166L24.8267 17.4916C23.9154 16.5804 22.4381 16.5804 21.5268 17.4916L17.335 21.6835L17.335 6L14.6683 6L14.6683 21.6833L10.4766 17.4916C9.56535 16.5804 8.08797 16.5804 7.17674 17.4916L16.0017 26.3166Z"/></svg>
+        <a class="media__link" href="../assets/img/sbertech/users-after-2160.webp">
+          <span class="image-loader image-loader--spinner">
+            <img class="media__image" src="../assets/img/sbertech/users-after-1140.webp" srcset="../assets/img/sbertech/users-after-1140.webp 1140w, ../assets/img/sbertech/users-after-2160.webp 2160w"
+                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
+                 width="2160" height="1308" alt="After: the redesigned Users list with Status, Domain attributes, Base attributes and Last sync columns, a “Warnings only” toggle and Import and Export buttons. Broken records stand out: missing attributes are flagged in red as “Empty”, and a stale sync shows as “72h ago”." loading="lazy" decoding="async">
+          </span>
+          <span class="visually-hidden">(opens full size)</span>
+        </a>
+      </figure>
 
       <section class="paragraph case-section" aria-labelledby="spotting-the-attribute-that-broke">
         <h2 class="case-section__title header-h3" id="spotting-the-attribute-that-broke">Spotting the attribute that broke</h2>
@@ -74,6 +102,22 @@
             <img class="media__image" src="../assets/img/sbertech/attr-diff-2-1140.webp" srcset="../assets/img/sbertech/attr-diff-2-1140.webp 1140w, ../assets/img/sbertech/attr-diff-2-2160.webp 2160w"
                  sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
                  width="2160" height="1308" alt="The same panel comparing two users, A: walker85@acme.corp and B: constantinopolski.b.e@acme.corp. Changed values are highlighted, including status, department, grade, risk score, MFA status, tags and notes. The prod-deploy role exists only for A, while the security-reviewer role, a passkey and a reviewedBy entry exist only for B." loading="lazy" decoding="async">
+          </span>
+          <span class="visually-hidden">(opens full size)</span>
+        </a>
+      </figure>
+
+      <section class="paragraph case-section" aria-labelledby="building-a-playground-with-a-sandbox">
+        <h2 class="case-section__title header-h3" id="building-a-playground-with-a-sandbox">Building a playground with a sandbox</h2>
+        <p class="case-section__body body-c-regular">JTBD 4: When I write a policy that decides who gets access, I want to test it against different users and conditions before it goes live, so I catch mistakes early</p>
+      </section>
+
+      <figure class="media">
+        <a class="media__link" href="../assets/img/sbertech/policy-playground-2160.webp">
+          <span class="image-loader image-loader--spinner">
+            <img class="media__image" src="../assets/img/sbertech/policy-playground-1140.webp" srcset="../assets/img/sbertech/policy-playground-1140.webp 1140w, ../assets/img/sbertech/policy-playground-2160.webp 2160w"
+                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
+                 width="2160" height="1308" alt="The policy playground in Platform V Flow Designer, in a dark theme: a file tree with policy.rego open, a code editor showing a sample ABAC policy, an Auth context panel with a test user’s attributes, and a Result panel showing the decision, allow: true, after pressing Run." loading="lazy" decoding="async">
           </span>
           <span class="visually-hidden">(opens full size)</span>
         </a>
@@ -108,6 +152,17 @@
       <div class="paragraph">
         <p class="case-section__body body-c-regular">Option A was attractive because it seemed easy to enable every possible table component feature. Option B won the tradeoff, because it compares the current snapshot with a chosen one in a single click, without the cumbersome table UI and its four-plus user clicks.</p>
       </div>
+
+      <figure class="media">
+        <a class="media__link" href="../assets/img/sbertech/snapshots-comparison-2160.webp">
+          <span class="image-loader image-loader--spinner">
+            <img class="media__image" src="../assets/img/sbertech/snapshots-comparison-1140.webp" srcset="../assets/img/sbertech/snapshots-comparison-1140.webp 1140w, ../assets/img/sbertech/snapshots-comparison-2160.webp 2160w"
+                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
+                 width="2160" height="1308" alt="Snapshots comparison for walker85@acme.corp: the current snapshot (A) against an earlier one (B), opened from the History page. The Difference tab highlights changed values — status, compliance zones, spend limit, risk score and sync status — and marks added lines, such as passkey and reviewedBy, separately from removed ones, such as the ATTR_MISSING sync errors." loading="lazy" decoding="async">
+          </span>
+          <span class="visually-hidden">(opens full size)</span>
+        </a>
+      </figure>
 
       <!-- Add more sections above; numbers update automatically -->
     </main>
