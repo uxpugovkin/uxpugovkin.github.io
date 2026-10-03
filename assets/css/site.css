@@ -471,6 +471,84 @@ a {
 }
 
 /* --------------------------------------------------------------------------
+   Cards  (Figma: three-card block — green / blue / red)
+   Two columns in Figma's 582 : 550 split, up to 1140px wide. The left card
+   stretches to the height of the two stacked cards on the right. Below
+   700px of block width the cards stack into one column.
+   -------------------------------------------------------------------------- */
+.cards {
+  width: 100%;
+  max-width: 1140px;
+  container-type: inline-size;
+}
+
+.cards__grid {
+  display: grid;
+  grid-template-columns: 582fr 550fr;
+  gap: var(--space-8);
+}
+
+.cards__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.cards__col--main > .card {
+  flex: 1 1 auto;
+}
+
+@container (max-width: 699.98px) {
+  .cards__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@supports not (container-type: inline-size) {
+  @media (max-width: 1023.98px) {
+    .cards__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.card {
+  --card-fill: var(--uncreative-green-90);
+  --card-text: var(--uncreative-green-40);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding: var(--space-24) var(--space-16) var(--space-28);
+  border-radius: var(--radius-m);
+  background-color: var(--card-fill);
+  color: var(--card-text);
+}
+
+.card--blue {
+  --card-fill: var(--boring-blue-90);
+  --card-text: var(--boring-blue-40);
+}
+
+.card--red {
+  --card-fill: var(--traffic-light-red-90);
+  --card-text: var(--traffic-light-red-40);
+}
+
+.card > * {
+  margin: 0;
+}
+
+.card__list {
+  padding-inline-start: 21px;
+  list-style: disc;
+}
+
+.card__list strong {
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
    Image loader  (habibi: skeleton + loader)
    Every image sits in .image-loader. While it loads (data-loading, set by
    site.js) the box shows the habibi skeleton pulse; large images

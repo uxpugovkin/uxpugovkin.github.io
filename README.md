@@ -53,6 +53,12 @@ Wrap every image in `<span class="image-loader">` (add `image-loader--spinner` f
 While it loads, it shows the habibi skeleton pulse (and loader), sized to the image so nothing jumps.
 Always write an `alt` that says what the image shows.
 
+## Cards
+
+The three-card block (green / blue / red) is a `<section class="cards">`. It sits side by side
+up to 1140px wide and stacks into one column when the block is narrower than 700px.
+Card colours come from habibi tokens: `card` (green), `card--blue`, `card--red`.
+
 ## Day & night
 
 The site follows the visitor's system setting: **olive** by day and **olive-night** by night, the two habibi colour modes used in Figma.
