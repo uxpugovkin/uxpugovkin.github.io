@@ -41,6 +41,14 @@ Each section is a `<section class="case-section">` with an `h2` title and a text
 The numbers (01, 02, …) are added automatically in order and are hidden on mobile, so you can add,
 remove or reorder sections without renumbering anything.
 
+## Images
+
+Wide images go in a `<figure class="media">` block. It fills the content area up to **1140px**
+(text stays at 728px), keeps each image's proportions and shrinks on smaller screens.
+Export each image at 2160px wide and add a 1140px copy, both as `.webp`:
+`assets/img/<page>/<name>-2160.webp` and `<name>-1140.webp`. Retina screens get the large file,
+others the small one, and clicking an image opens it full size.
+
 ## Day & night
 
 The site follows the visitor's system setting: **olive** by day and **olive-night** by night, the two habibi colour modes used in Figma.

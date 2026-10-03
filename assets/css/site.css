@@ -386,6 +386,41 @@ a {
 }
 
 /* --------------------------------------------------------------------------
+   Image block  (Figma: image-frame)
+   Wider than text: fills the content area up to 1140px, centred; images keep
+   their aspect ratio and scale down with the window. Items 12px apart.
+   -------------------------------------------------------------------------- */
+.media {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.media__link {
+  display: block;
+  width: 100%;
+  cursor: zoom-in;
+}
+
+.media__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* icons/arrow-down, 32px, accent-1 */
+.media__arrow {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  color: var(--accent-1);
+}
+
+/* --------------------------------------------------------------------------
    Tag  (Figma: tag · colour × size)
    Default colour is "In progress"; add a modifier for the others:
    .tag--neutral · .tag--success · .tag--warning · .tag--error · .tag--s
