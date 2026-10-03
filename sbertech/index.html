@@ -79,6 +79,36 @@
         </a>
       </figure>
 
+      <section class="paragraph case-section" aria-labelledby="it-worked-yesterday-an-investigation">
+        <h2 class="case-section__title header-h3" id="it-worked-yesterday-an-investigation">“It worked yesterday” — an investigation</h2>
+        <p class="case-section__body body-c-regular">JTBD Story 5: When a user loses access they had yesterday, I want to compare their attributes before and after in the ABAC UI, so I can see which one dropped without asking a developer to pull the data</p>
+        <p class="case-section__body body-c-regular">Option A — the user searches, filters, and pins two history snapshots using the bulk-operation table controls, then clicks the compare button. Option B — the user finds the snapshot with no issues and compares it with the current state in one click.</p>
+      </section>
+
+      <figure class="media">
+        <a class="media__link" href="../assets/img/sbertech/history-option-a-2160.webp">
+          <span class="image-loader image-loader--spinner">
+            <img class="media__image" src="../assets/img/sbertech/history-option-a-1140.webp" srcset="../assets/img/sbertech/history-option-a-1140.webp 1140w, ../assets/img/sbertech/history-option-a-2160.webp 2160w"
+                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
+                 width="2160" height="876" alt="Option A in Platform V ABAC: the History page for walker85@acme.corp in res-domain-144 with Comparison mode switched on. Two snapshots are ticked in the table of updates, creations and deletions, and a bar at the bottom reads “2 selected” with Export and Compare buttons." loading="lazy" decoding="async">
+          </span>
+          <span class="visually-hidden">(opens full size)</span>
+        </a>
+        <svg class="media__arrow" width="32" height="32" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" focusable="false"><path d="M16.0017 26.3166L24.8267 17.4916C23.9154 16.5804 22.4381 16.5804 21.5268 17.4916L17.335 21.6835L17.335 6L14.6683 6L14.6683 21.6833L10.4766 17.4916C9.56535 16.5804 8.08797 16.5804 7.17674 17.4916L16.0017 26.3166Z"/></svg>
+        <a class="media__link" href="../assets/img/sbertech/history-option-b-2160.webp">
+          <span class="image-loader image-loader--spinner">
+            <img class="media__image" src="../assets/img/sbertech/history-option-b-1140.webp" srcset="../assets/img/sbertech/history-option-b-1140.webp 1140w, ../assets/img/sbertech/history-option-b-2160.webp 2160w"
+                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
+                 width="2160" height="1308" alt="Option B: the same History page without checkboxes. The latest snapshot is marked “Current”, and hovering a row’s compare icon shows the tooltip “Compare with the current”, so any snapshot can be compared with the current state in one click." loading="lazy" decoding="async">
+          </span>
+          <span class="visually-hidden">(opens full size)</span>
+        </a>
+      </figure>
+
+      <div class="paragraph">
+        <p class="case-section__body body-c-regular">Option A was attractive because it seemed easy to enable every possible table component feature. Option B won the tradeoff, because it compares the current snapshot with a chosen one in a single click, without the cumbersome table UI and its four-plus user clicks.</p>
+      </div>
+
       <!-- Add more sections above; numbers update automatically -->
     </main>
   </div>
