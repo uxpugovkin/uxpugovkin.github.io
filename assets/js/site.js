@@ -2,6 +2,7 @@
    Site behaviour
    1. Renders the sidebar / mobile bar from config.js (one source for every page)
    2. Hides the mobile bar on scroll down, shows it again on scroll up
+   3. Shows the habibi skeleton (and loader) on images until they load
    ========================================================================== */
 (function () {
   "use strict";
@@ -76,6 +77,31 @@
       '<nav class="sidebar__nav" aria-label="Case studies">' +
       '<ul class="menu">' + items + "</ul>" +
       "</nav>";
+  }
+
+  /* ---- 3. Image loaders: skeleton until each image has loaded ----------- */
+  function watchImage(box) {
+    var img = box.querySelector("img");
+    if (!img || (img.complete && img.naturalWidth > 0)) return; // already there
+    box.setAttribute("data-loading", "");
+    box.setAttribute("aria-busy", "true");
+    function done(failed) {
+      box.removeAttribute("data-loading");
+      box.removeAttribute("aria-busy");
+      if (failed) box.setAttribute("data-failed", "");
+    }
+    img.addEventListener("load", function () { done(false); }, { once: true });
+    img.addEventListener("error", function () { done(true); }, { once: true });
+  }
+
+  function initImageLoaders() {
+    Array.prototype.forEach.call(document.querySelectorAll(".image-loader"), watchImage);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initImageLoaders);
+  } else {
+    initImageLoaders();
   }
 
   /* ---- 2. Mobile bar: hide on scroll down, show on scroll up ------------ */

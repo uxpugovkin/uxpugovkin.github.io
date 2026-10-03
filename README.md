@@ -49,6 +49,10 @@ Export each image at 2160px wide and add a 1140px copy, both as `.webp`:
 `assets/img/<page>/<name>-2160.webp` and `<name>-1140.webp`. Retina screens get the large file,
 others the small one, and clicking an image opens it full size.
 
+Wrap every image in `<span class="image-loader">` (add `image-loader--spinner` for large ones).
+While it loads, it shows the habibi skeleton pulse (and loader), sized to the image so nothing jumps.
+Always write an `alt` that says what the image shows.
+
 ## Day & night
 
 The site follows the visitor's system setting: **olive** by day and **olive-night** by night, the two habibi colour modes used in Figma.

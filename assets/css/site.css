@@ -421,6 +421,76 @@ a {
 }
 
 /* --------------------------------------------------------------------------
+   Image loader  (habibi: skeleton + loader)
+   Every image sits in .image-loader. While it loads (data-loading, set by
+   site.js) the box shows the habibi skeleton pulse; large images
+   (.image-loader--spinner) also show the habibi loader in the centre.
+   The box keeps the image's size from its width/height, so nothing jumps.
+
+   skeleton: uncolorful-grey/border <-> uncolorful-grey/disabled,
+             0.6s pause, 0.8s ease-in-out change, looping (2.8s cycle)
+   loader:   24px, boring-blue/50, one turn per 0.4s, linear
+   -------------------------------------------------------------------------- */
+.image-loader {
+  position: relative;
+  display: block;
+  border-radius: var(--radius-l);
+}
+
+.image-loader img {
+  transition: opacity var(--motion-duration) var(--motion-ease);
+}
+
+.image-loader[data-loading] {
+  background-color: var(--uncolorful-grey-border);
+  animation: skeleton-pulse 2.8s ease-in-out infinite;
+}
+
+.image-loader[data-loading] img {
+  opacity: 0;
+}
+
+.image-loader--spinner[data-loading]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 24px;
+  height: 24px;
+  margin: auto;
+  background-color: var(--boring-blue-50);
+  -webkit-mask: var(--loader-shape) center / 24px 24px no-repeat;
+  mask: var(--loader-shape) center / 24px 24px no-repeat;
+  animation: loader-spin 0.4s linear infinite;
+}
+
+/* Image failed to load: keep a calm static placeholder, alt text is read out */
+.image-loader[data-failed] {
+  background-color: var(--uncolorful-grey-border);
+}
+
+:root {
+  /* habibi icons/loader shape, used as a mask so its colour comes from a token */
+  --loader-shape: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 4C12 3.44772 11.5506 2.99417 11.0016 3.05475C6.50088 3.55147 3 7.3669 3 12C3 16.9706 7.02944 21 12 21C16.6331 21 20.4485 17.4991 20.9452 12.9984C21.0058 12.4494 20.5523 12 20 12C19.4477 12 19.0075 12.4503 18.9295 12.997C18.4456 16.3908 15.5275 19 12 19C8.13401 19 5 15.866 5 12C5 8.4725 7.60923 5.55442 11.003 5.07046C11.5497 4.9925 12 4.55228 12 4Z'/%3E%3C/svg%3E");
+}
+
+@keyframes skeleton-pulse {
+  0%, 21.43% { background-color: var(--uncolorful-grey-border); }
+  50%, 71.43% { background-color: var(--uncolorful-grey-disabled); }
+  100% { background-color: var(--uncolorful-grey-border); }
+}
+
+@keyframes loader-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image-loader[data-loading],
+  .image-loader--spinner[data-loading]::after {
+    animation: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
    Tag  (Figma: tag · colour × size)
    Default colour is "In progress"; add a modifier for the others:
    .tag--neutral · .tag--success · .tag--warning · .tag--error · .tag--s
