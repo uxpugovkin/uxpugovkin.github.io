@@ -280,13 +280,25 @@ a {
 /* --------------------------------------------------------------------------
    Case study header  (Figma: Pages · title / role • period / tags)
    -------------------------------------------------------------------------- */
-.case-header {
+/* Paragraph block (Figma: "paragraph" auto-layout) — the header and every
+   section are one of these: vertical, 8px between items, 8px top/bottom.
+   Blocks sit 28px apart (.content gap). */
+.paragraph {
   width: 100%;
   max-width: 728px;
   display: flex;
   flex-direction: column;
   gap: var(--space-8);
   padding-block: var(--space-8);
+}
+
+/* Every item inside a block owns no outer spacing; the 8px gap does it all */
+.paragraph > * {
+  margin: 0;
+}
+
+.case-header__sep {
+  color: var(--uncolorful-grey-tertiary);
 }
 
 .case-header__title {
@@ -319,12 +331,6 @@ a {
 
 .case-section {
   position: relative;
-  width: 100%;
-  max-width: 728px;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-8);
-  padding-block: var(--space-8);
   counter-increment: case-section;
 }
 
