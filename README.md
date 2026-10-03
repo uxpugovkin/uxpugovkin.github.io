@@ -23,6 +23,7 @@ assets/css/site.css      layout and components; uses tokens only
 assets/js/config.js      name, role, menu: edit this to change the menu
 assets/js/site.js        renders the sidebar and runs the mobile bar scroll behaviour
 assets/img/              logo favicon, empty-state image
+assets/fonts/            IBM Plex Mono for habibi Code styles (OFL licence)
 ```
 
 ## Add a case study
@@ -33,6 +34,12 @@ assets/img/              logo favicon, empty-state image
    `{ id: "new-project", title: "New Project", href: "new-project/", icon: "doc" }`
 
 The menu on every page updates automatically.
+
+## Case study sections
+
+Each section is a `<section class="case-section">` with an `h2` title and a text paragraph.
+The numbers (01, 02, …) are added automatically in order and are hidden on mobile, so you can add,
+remove or reorder sections without renumbering anything.
 
 ## Day & night
 

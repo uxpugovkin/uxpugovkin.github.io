@@ -308,6 +308,59 @@ a {
 }
 
 /* --------------------------------------------------------------------------
+   Case study section  (Figma: paragraph · title / text / Number)
+   Numbers (01, 02, …) are generated automatically in order, so sections can
+   be added, removed or reordered without renumbering. Hidden on mobile.
+   -------------------------------------------------------------------------- */
+.content {
+  counter-reset: case-section;
+}
+
+.case-section {
+  position: relative;
+  width: 100%;
+  max-width: 728px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding-block: var(--space-8);
+  counter-increment: case-section;
+}
+
+.case-section__title {
+  margin: 0;
+  color: var(--uncolorful-grey-secondary);
+}
+
+.case-section__body {
+  margin: 0;
+  color: var(--uncolorful-grey-primary);
+}
+
+/* "Number" layer: Code/S, uncolorful-grey/disabled, hanging 12px left of the
+   section, vertically centred on the 28px title line */
+.case-section::before {
+  content: counter(case-section, decimal-leading-zero);
+  position: absolute;
+  inset-block-start: calc(var(--space-8) + var(--space-4));
+  inset-inline-end: calc(100% + var(--space-12));
+  color: var(--uncolorful-grey-disabled);
+  font-family: var(--font-family-code);
+  font-size: var(--code-s-size);
+  line-height: var(--code-s-line-height);
+  letter-spacing: var(--code-s-letter-spacing);
+  font-weight: var(--font-weight-regular);
+  text-align: end;
+}
+
+/* Narrow desktop: keep room for the hanging numbers next to the sidebar */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .content {
+    padding-inline-start: calc(var(--space-24) + var(--space-16));
+  }
+}
+
+/* --------------------------------------------------------------------------
    Tag  (Figma: tag · colour × size)
    Default colour is "In progress"; add a modifier for the others:
    .tag--neutral · .tag--success · .tag--warning · .tag--error · .tag--s
@@ -406,6 +459,11 @@ a {
     min-height: 100vh;
     min-height: 100dvh;
     padding-block-start: calc(var(--bar-height) + var(--space-24));
+  }
+
+  /* Figma: the "Number" layer is hidden on mobile */
+  .case-section::before {
+    content: none;
   }
 }
 

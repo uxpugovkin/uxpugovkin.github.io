@@ -10,10 +10,20 @@
    data-theme="olive" | "olive-night" | "light" | "dark" on <html>.
    ========================================================================== */
 
+/* Code/* styles use IBM Plex Mono — hosted with the site (OFL licence in assets/fonts) */
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2");
+}
+
 :root {
   /* fonts — Figma modes: SF Pro · Segoe UI · Roboto · IBM Plex Sans (default).
      The web stack picks each platform's native face in that order. */
   --font-family: "SF Pro Text", "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "IBM Plex Sans", system-ui, sans-serif;
+  --font-family-code: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --font-weight-regular: 400;
   --font-weight-bold: 500; /* habibi "Bold" styles use the Medium weight */
   --font-weight-semibold: 600; /* habibi Header styles */
@@ -58,6 +68,11 @@
   --header-h3-size: 20px;
   --header-h3-line-height: 28px;
   --header-h3-letter-spacing: 0em;
+
+  /* typography — Code (size / line-height / letter-spacing) */
+  --code-s-size: 12px;
+  --code-s-line-height: 20px;
+  --code-s-letter-spacing: 0em;
 
   /* effects */
   --shadow-default-s: 0 4px 12px 0 rgb(0 0 0 / 0.04), 0 0.5px 5px 0 rgb(0 0 0 / 0.04);
@@ -425,4 +440,11 @@
   line-height: var(--header-h3-line-height);
   letter-spacing: var(--header-h3-letter-spacing);
   font-weight: var(--font-weight-semibold);
+}
+.code-s {
+  font-family: var(--font-family-code);
+  font-size: var(--code-s-size);
+  line-height: var(--code-s-line-height);
+  letter-spacing: var(--code-s-letter-spacing);
+  font-weight: var(--font-weight-regular);
 }
