@@ -412,6 +412,24 @@ a {
   height: auto;
 }
 
+/* Rounded image slot (Figma: radius/m on the image rectangle) */
+.image-loader.image-loader--rounded {
+  border-radius: var(--radius-m);
+  overflow: hidden;
+}
+
+/* Canvas: a smaller screenshot placed on a token background, positioned
+   with the same left/top/width/height percentages as the Figma crop */
+.media__canvas {
+  width: 100%;
+  background-color: var(--uncolorful-grey-disabled);
+}
+
+.media__inset {
+  position: absolute;
+  display: block;
+}
+
 /* icons/arrow-down, 32px, accent-1 */
 .media__arrow {
   flex: none;
