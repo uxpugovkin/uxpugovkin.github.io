@@ -16,6 +16,7 @@
   --font-family: "SF Pro Text", "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "IBM Plex Sans", system-ui, sans-serif;
   --font-weight-regular: 400;
   --font-weight-bold: 500; /* habibi "Bold" styles use the Medium weight */
+  --font-weight-semibold: 600; /* habibi Header styles */
 
   /* radius */
   --radius-xs: 3px;
@@ -40,6 +41,23 @@
   --body-e-size: 10px;
   --body-e-line-height: 12px;
   --body-e-letter-spacing: 0.04em;
+
+  /* typography — Header Display A, Display B, H1…H3 (size / line-height / letter-spacing) */
+  --header-display-a-size: 76px;
+  --header-display-a-line-height: 84px;
+  --header-display-a-letter-spacing: 0.03em;
+  --header-display-b-size: 52px;
+  --header-display-b-line-height: 64px;
+  --header-display-b-letter-spacing: 0em;
+  --header-h1-size: 28px;
+  --header-h1-line-height: 32px;
+  --header-h1-letter-spacing: 0em;
+  --header-h2-size: 24px;
+  --header-h2-line-height: 32px;
+  --header-h2-letter-spacing: 0em;
+  --header-h3-size: 20px;
+  --header-h3-line-height: 28px;
+  --header-h3-letter-spacing: 0em;
 
   /* effects */
   --shadow-default-s: 0 4px 12px 0 rgb(0 0 0 / 0.04), 0 0.5px 5px 0 rgb(0 0 0 / 0.04);
@@ -372,4 +390,39 @@
   line-height: var(--body-e-line-height);
   letter-spacing: var(--body-e-letter-spacing);
   font-weight: var(--font-weight-bold);
+}
+.header-display-a {
+  font-family: var(--font-family);
+  font-size: var(--header-display-a-size);
+  line-height: var(--header-display-a-line-height);
+  letter-spacing: var(--header-display-a-letter-spacing);
+  font-weight: var(--font-weight-semibold);
+}
+.header-display-b {
+  font-family: var(--font-family);
+  font-size: var(--header-display-b-size);
+  line-height: var(--header-display-b-line-height);
+  letter-spacing: var(--header-display-b-letter-spacing);
+  font-weight: var(--font-weight-semibold);
+}
+.header-h1 {
+  font-family: var(--font-family);
+  font-size: var(--header-h1-size);
+  line-height: var(--header-h1-line-height);
+  letter-spacing: var(--header-h1-letter-spacing);
+  font-weight: var(--font-weight-semibold);
+}
+.header-h2 {
+  font-family: var(--font-family);
+  font-size: var(--header-h2-size);
+  line-height: var(--header-h2-line-height);
+  letter-spacing: var(--header-h2-letter-spacing);
+  font-weight: var(--font-weight-semibold);
+}
+.header-h3 {
+  font-family: var(--font-family);
+  font-size: var(--header-h3-size);
+  line-height: var(--header-h3-line-height);
+  letter-spacing: var(--header-h3-letter-spacing);
+  font-weight: var(--font-weight-semibold);
 }

@@ -15,7 +15,7 @@ After a minute the site is live at `https://your-username.github.io`.
 
 ```
 index.html               Storefront (home)
-sbertech/, ma-direct/,   one folder per case study
+sbertech/, ma-direct/,   one folder per case study (header: title, role, tags)
 raiffeisen-bank/, t-bank/
 404.html                 "page not found"
 assets/css/tokens.css    habibi tokens: colours (4 themes), radius, type, shadows, fonts

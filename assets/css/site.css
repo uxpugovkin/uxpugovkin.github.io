@@ -277,6 +277,96 @@ a {
 }
 
 /* --------------------------------------------------------------------------
+   Case study header  (Figma: Pages · title / role • period / tags)
+   -------------------------------------------------------------------------- */
+.case-header {
+  width: 100%;
+  max-width: 728px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding-block: var(--space-8);
+}
+
+.case-header__title {
+  margin: 0;
+  color: var(--uncolorful-grey-secondary);
+}
+
+.case-header__meta {
+  margin: 0;
+  color: var(--uncolorful-grey-primary);
+}
+
+.case-header__tags {
+  list-style: none;
+  margin: 0;
+  padding: var(--space-4) 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+/* --------------------------------------------------------------------------
+   Tag  (Figma: tag · colour × size)
+   Default colour is "In progress"; add a modifier for the others:
+   .tag--neutral · .tag--success · .tag--warning · .tag--error · .tag--s
+   -------------------------------------------------------------------------- */
+.tag {
+  --tag-fill: var(--boring-blue-90);
+  --tag-border: var(--boring-blue-80);
+  --tag-text: var(--boring-blue-50);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  height: 20px;
+  padding-inline: var(--space-6);
+  border: 1px solid var(--tag-border);
+  border-radius: var(--radius-s);
+  background: var(--tag-fill);
+  color: var(--tag-text);
+  font-family: var(--font-family);
+  font-size: var(--body-c-size);
+  line-height: var(--body-c-line-height);
+  letter-spacing: var(--body-c-letter-spacing);
+  font-weight: var(--font-weight-regular);
+  white-space: nowrap;
+}
+
+.tag--neutral {
+  --tag-fill: var(--uncolorful-grey-background);
+  --tag-border: var(--uncolorful-grey-disabled);
+  --tag-text: var(--uncolorful-grey-primary);
+}
+
+.tag--success {
+  --tag-fill: var(--uncreative-green-90);
+  --tag-border: var(--uncreative-green-80);
+  --tag-text: var(--uncreative-green-50);
+}
+
+.tag--warning {
+  --tag-fill: var(--shitpile-orange-90);
+  --tag-border: var(--shitpile-orange-80);
+  --tag-text: var(--shitpile-orange-50);
+}
+
+.tag--error {
+  --tag-fill: var(--traffic-light-red-90);
+  --tag-border: var(--traffic-light-red-80);
+  --tag-text: var(--traffic-light-red-50);
+}
+
+.tag--s {
+  gap: var(--space-2);
+  height: 18px;
+  font-size: var(--body-e-size);
+  line-height: var(--body-e-line-height);
+  letter-spacing: var(--body-e-letter-spacing);
+}
+
+/* --------------------------------------------------------------------------
    Mobile  (Figma: github-sidebar · Device=Mobile)
    The bar hides while scrolling down and returns on scroll up (site.js).
    -------------------------------------------------------------------------- */
