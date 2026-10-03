@@ -18,6 +18,7 @@
   --space-12: 12px;
   --space-16: 16px;
   --space-24: 24px;
+  --space-28: 28px;
 
   --motion-duration: 200ms;
   --motion-ease: cubic-bezier(0.2, 0, 0, 1);
@@ -111,7 +112,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 36px;
+  gap: var(--space-28);
   padding: var(--space-24);
 }
 
@@ -332,9 +333,27 @@ a {
   color: var(--uncolorful-grey-secondary);
 }
 
+/* One body block = one Figma text layer; blocks sit 8px apart (section gap),
+   lines inside a block have no extra spacing */
 .case-section__body {
   margin: 0;
   color: var(--uncolorful-grey-primary);
+}
+
+.case-section__body p,
+.case-section__body ul {
+  margin: 0;
+}
+
+/* Bulleted list — bullet 8px in, text 21px in, no spacing between items */
+.case-section__body ul {
+  padding-inline-start: 21px;
+  list-style: disc;
+}
+
+/* Bold phrases are a 700 weight override on Body C/Regular in Figma */
+.case-section__body strong {
+  font-weight: 700;
 }
 
 /* "Number" layer: Code/S, uncolorful-grey/disabled, hanging 12px left of the
