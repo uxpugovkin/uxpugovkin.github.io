@@ -430,19 +430,36 @@ a {
   display: block;
 }
 
-/* Video slot: Vimeo player at the video's own 16:9, up to 1140px wide */
+/* Video slot: Vimeo player at the video's own 16:9, up to 1140px wide.
+   The slot is 4px shorter than 16:9 and the player is shifted up 2px, so
+   2px are cropped from the top and bottom edges of the video. */
 .media__video {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: 0;
+  padding-bottom: calc(56.25% - 4px);
+  overflow: hidden;
 }
 
 .media__video iframe {
   position: absolute;
-  inset: 0;
+  top: -2px;
+  left: 0;
   display: block;
   width: 100%;
-  height: 100%;
+  height: calc(100% + 4px); /* = exactly 16:9, so the player adds no bars */
   border: 0;
+}
+
+/* Hide the player UI: no hover or focus, so Vimeo never shows its controls.
+   Visitors who prefer reduced motion get a normal, interactive player. */
+.media__video--ambient iframe {
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media__video--ambient iframe {
+    pointer-events: auto;
+  }
 }
 
 /* icons/arrow-down, 32px, accent-1 */

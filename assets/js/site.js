@@ -102,7 +102,12 @@
   // player is ready; reduced-motion visitors get it without autoplay
   function watchVideo(box, frame) {
     var src = frame.getAttribute("data-src");
-    if (reduceMotion) src = src.replace("autoplay=1", "autoplay=0");
+    if (reduceMotion) {
+      // Reduced motion: no autoplay, and give back the controls so it can be played
+      src = src.replace("autoplay=1", "autoplay=0").replace("&background=1", "").replace("&controls=0", "");
+      frame.removeAttribute("tabindex");
+      frame.removeAttribute("aria-hidden");
+    }
     box.setAttribute("data-loading", "");
     box.setAttribute("aria-busy", "true");
     frame.addEventListener("load", function () {
