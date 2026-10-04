@@ -549,6 +549,88 @@ a {
 }
 
 /* --------------------------------------------------------------------------
+   Button  (habibi: button · appearance=White · mode=Primary · size=S)
+   Default surface + Shadow/Default/S, Hover background, Pressed disabled.
+   Icon 20px, then the label with 6px side padding pulled 4px closer (gap -4).
+   -------------------------------------------------------------------------- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: var(--space-2) var(--space-6);
+  border-radius: var(--radius-m);
+  background-color: var(--uncolorful-grey-surface);
+  box-shadow: var(--shadow-default-s);
+  color: var(--uncolorful-grey-primary);
+  font-family: var(--font-family);
+  font-size: var(--body-c-size);
+  line-height: var(--body-c-line-height);
+  letter-spacing: var(--body-c-letter-spacing);
+  font-weight: var(--font-weight-bold);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background-color var(--motion-duration) var(--motion-ease);
+}
+
+.button:hover {
+  background-color: var(--uncolorful-grey-background);
+}
+
+.button:active {
+  background-color: var(--uncolorful-grey-disabled);
+}
+
+.button__icon {
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+
+.button__label {
+  padding-inline: var(--space-6);
+}
+
+.button__icon + .button__label {
+  margin-inline-start: calc(var(--space-4) * -1);
+}
+
+/* --------------------------------------------------------------------------
+   Closing banner  (Figma: image-frame with a centred button)
+   Image fills the block (cover) up to 1140 x 640, keeps that shape and
+   scales down; never shorter than 200px so the button always has room.
+   -------------------------------------------------------------------------- */
+.cta {
+  position: relative;
+  width: 100%;
+  max-width: 1140px;
+  aspect-ratio: 1140 / 640;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-m);
+  overflow: hidden;
+}
+
+.image-loader.cta__media {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+}
+
+.cta__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cta .button {
+  position: relative;
+  z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
    Image loader  (habibi: skeleton + loader)
    Every image sits in .image-loader. While it loads (data-loading, set by
    site.js) the box shows the habibi skeleton pulse; large images

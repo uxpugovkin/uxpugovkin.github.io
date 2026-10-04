@@ -79,6 +79,10 @@ Every page has this line just before `</head>`; new case studies copied from an 
 
 Stats live at https://uxpugovkin.goatcounter.com.
 
+Clicks on important links are counted as GoatCounter events: add `data-goatcounter-click="event-name"`
+(and optionally `data-goatcounter-title`) to the link. The Sberbank "Explore my Figma" button is counted as
+`explore-figma-sbertech`.
+
 ## Updating tokens
 
 `tokens.css` mirrors the habibi-library variables and styles. When the library changes, regenerate it from Figma instead of editing values by hand.
