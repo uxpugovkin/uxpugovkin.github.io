@@ -59,6 +59,29 @@ The three-card block (green / blue / red) is a `<section class="cards">`. It sit
 up to 1140px wide and stacks into one column when the block is narrower than 700px.
 Card colours come from habibi tokens: `card` (green), `card--blue`, `card--red`.
 
+## Buttons
+
+`.button` is the habibi **button** with every variant. Set the same properties as in Figma:
+
+| Attribute | Values | Default |
+|---|---|---|
+| `data-appearance` | `default`, `accent`, `danger`, `white` | `default` |
+| `data-mode` | `primary`, `secondary`, `ghost` | `primary` |
+| `data-size` | `s` (28px), `m` (36px) | `s` |
+
+Hover and pressed states are automatic; add `disabled` (on a `<button>`) or `aria-disabled="true"`
+for the disabled state. An optional start icon goes first as `<svg class="button__icon">`:
+
+```html
+<a class="button" data-appearance="white" data-mode="primary" data-size="s" href="…">
+  <svg class="button__icon" …>…</svg>
+  <span class="button__label">Explore my Figma</span>
+</a>
+```
+
+The button styles in `site.css` are generated from the habibi library's variant table,
+so colours always come from tokens and follow day and night.
+
 ## Day & night
 
 The site follows the visitor's system setting: **olive** by day and **olive-night** by night, the two habibi colour modes used in Figma.

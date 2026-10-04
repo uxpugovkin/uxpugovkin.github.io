@@ -549,19 +549,38 @@ a {
 }
 
 /* --------------------------------------------------------------------------
-   Button  (habibi: button · appearance=White · mode=Primary · size=S)
-   Default surface + Shadow/Default/S, Hover background, Pressed disabled.
-   Icon 20px, then the label with 6px side padding pulled 4px closer (gap -4).
+   Button  (habibi: button — every variant)
+   Generated from the habibi-library button component; do not edit by hand.
+
+   Properties mirror Figma:
+     data-appearance = default | accent | danger | white   (default: default)
+     data-mode       = primary | secondary | ghost          (default: primary)
+     data-size       = s | m                                (default: s)
+   States: Hover = :hover, Pressed = :active,
+           Disabled = disabled attribute or aria-disabled="true".
+   Markup:
+     <a class="button" data-appearance="white" href="…">
+       <svg class="button__icon">…</svg>            (optional start icon)
+       <span class="button__label">Label</span>
+     </a>
+   RTL follows the page direction (dir="rtl"), like the Figma rtl variant.
    -------------------------------------------------------------------------- */
 .button {
+  --btn-fill: var(--uncolorful-grey-primary);
+  --btn-stroke: transparent;
+  --btn-text: var(--uncolorful-grey-background);
+  --btn-shadow: 0 0 #0000;
+
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   height: 28px;
   padding: var(--space-2) var(--space-6);
+  border: 0;
   border-radius: var(--radius-m);
-  background-color: var(--uncolorful-grey-surface);
-  box-shadow: var(--shadow-default-s);
-  color: var(--uncolorful-grey-primary);
+  background-color: var(--btn-fill);
+  box-shadow: inset 0 0 0 1px var(--btn-stroke), var(--btn-shadow);
+  color: var(--btn-text);
   font-family: var(--font-family);
   font-size: var(--body-c-size);
   line-height: var(--body-c-line-height);
@@ -569,15 +588,19 @@ a {
   font-weight: var(--font-weight-bold);
   white-space: nowrap;
   text-decoration: none;
-  transition: background-color var(--motion-duration) var(--motion-ease);
+  cursor: pointer;
+  transition: background-color var(--motion-duration) var(--motion-ease),
+    box-shadow var(--motion-duration) var(--motion-ease),
+    color var(--motion-duration) var(--motion-ease);
 }
 
-.button:hover {
-  background-color: var(--uncolorful-grey-background);
-}
-
-.button:active {
-  background-color: var(--uncolorful-grey-disabled);
+/* Size M: 36px tall, Body B/Bold, 24px icon, 8px insets */
+.button[data-size="m"] {
+  height: 36px;
+  padding: var(--space-6) var(--space-8);
+  font-size: var(--body-b-size);
+  line-height: var(--body-b-line-height);
+  letter-spacing: var(--body-b-letter-spacing);
 }
 
 .button__icon {
@@ -586,12 +609,293 @@ a {
   height: 20px;
 }
 
+.button[data-size="m"] .button__icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* The label carries the side inset again; after an icon it is pulled 4px
+   closer (Figma gap -4), so a button reads icon-inset / gap / text-inset */
 .button__label {
   padding-inline: var(--space-6);
 }
 
+.button[data-size="m"] .button__label {
+  padding-inline: var(--space-8);
+}
+
 .button__icon + .button__label {
   margin-inline-start: calc(var(--space-4) * -1);
+}
+
+.button:hover {
+  --btn-fill: var(--uncolorful-grey-secondary);
+  --btn-stroke: transparent;
+  --btn-text: var(--uncolorful-grey-background);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button:active {
+  --btn-fill: var(--uncolorful-grey-extra);
+  --btn-stroke: transparent;
+  --btn-text: var(--uncolorful-grey-background);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-mode="secondary"] {
+  --btn-fill: transparent;
+  --btn-stroke: var(--uncolorful-grey-disabled);
+  --btn-text: var(--uncolorful-grey-primary);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-mode="secondary"]:hover {
+  --btn-fill: var(--uncolorful-grey-disabled);
+  --btn-stroke: transparent;
+  --btn-text: var(--uncolorful-grey-primary);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-mode="secondary"]:active {
+  --btn-fill: var(--uncolorful-grey-tertiary);
+  --btn-stroke: transparent;
+  --btn-text: var(--uncolorful-grey-primary);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-mode="ghost"] {
+  --btn-fill: transparent;
+  --btn-stroke: transparent;
+  --btn-text: var(--uncolorful-grey-primary);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-mode="ghost"]:hover {
+  --btn-fill: var(--uncolorful-grey-disabled);
+  --btn-stroke: transparent;
+  --btn-text: var(--uncolorful-grey-primary);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-mode="ghost"]:active {
+  --btn-fill: var(--uncolorful-grey-tertiary);
+  --btn-stroke: transparent;
+  --btn-text: var(--uncolorful-grey-primary);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-appearance="accent"] {
+  --btn-fill: var(--boring-blue-50);
+  --btn-stroke: transparent;
+  --btn-text: var(--boring-blue-90);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-appearance="accent"]:hover {
+  --btn-fill: var(--boring-blue-60);
+  --btn-stroke: transparent;
+  --btn-text: var(--boring-blue-90);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-appearance="accent"]:active {
+  --btn-fill: var(--boring-blue-40);
+  --btn-stroke: transparent;
+  --btn-text: var(--boring-blue-90);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-appearance="accent"][data-mode="secondary"] {
+  --btn-fill: transparent;
+  --btn-stroke: var(--boring-blue-60);
+  --btn-text: var(--boring-blue-50);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-appearance="accent"][data-mode="secondary"]:hover {
+  --btn-fill: var(--boring-blue-90);
+  --btn-stroke: var(--boring-blue-60);
+  --btn-text: var(--boring-blue-50);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-appearance="accent"][data-mode="secondary"]:active {
+  --btn-fill: var(--boring-blue-80);
+  --btn-stroke: var(--boring-blue-60);
+  --btn-text: var(--boring-blue-50);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-appearance="accent"][data-mode="ghost"] {
+  --btn-fill: transparent;
+  --btn-stroke: transparent;
+  --btn-text: var(--boring-blue-50);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-appearance="accent"][data-mode="ghost"]:hover {
+  --btn-fill: var(--boring-blue-90);
+  --btn-stroke: transparent;
+  --btn-text: var(--boring-blue-50);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-appearance="accent"][data-mode="ghost"]:active {
+  --btn-fill: var(--boring-blue-80);
+  --btn-stroke: transparent;
+  --btn-text: var(--boring-blue-50);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-appearance="danger"] {
+  --btn-fill: var(--traffic-light-red-50);
+  --btn-stroke: transparent;
+  --btn-text: var(--traffic-light-red-90);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-appearance="danger"]:hover {
+  --btn-fill: var(--traffic-light-red-60);
+  --btn-stroke: transparent;
+  --btn-text: var(--traffic-light-red-90);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-appearance="danger"]:active {
+  --btn-fill: var(--traffic-light-red-40);
+  --btn-stroke: transparent;
+  --btn-text: var(--traffic-light-red-90);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-appearance="danger"][data-mode="secondary"] {
+  --btn-fill: transparent;
+  --btn-stroke: var(--traffic-light-red-60);
+  --btn-text: var(--traffic-light-red-50);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-appearance="danger"][data-mode="secondary"]:hover {
+  --btn-fill: var(--traffic-light-red-90);
+  --btn-stroke: var(--traffic-light-red-60);
+  --btn-text: var(--traffic-light-red-50);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-appearance="danger"][data-mode="secondary"]:active {
+  --btn-fill: var(--traffic-light-red-80);
+  --btn-stroke: var(--traffic-light-red-60);
+  --btn-text: var(--traffic-light-red-50);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-appearance="danger"][data-mode="ghost"] {
+  --btn-fill: transparent;
+  --btn-stroke: transparent;
+  --btn-text: var(--traffic-light-red-50);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-appearance="danger"][data-mode="ghost"]:hover {
+  --btn-fill: var(--traffic-light-red-90);
+  --btn-stroke: transparent;
+  --btn-text: var(--traffic-light-red-50);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-appearance="danger"][data-mode="ghost"]:active {
+  --btn-fill: var(--traffic-light-red-80);
+  --btn-stroke: transparent;
+  --btn-text: var(--traffic-light-red-50);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button[data-appearance="white"] {
+  --btn-fill: var(--uncolorful-grey-surface);
+  --btn-stroke: transparent;
+  --btn-text: var(--uncolorful-grey-primary);
+  --btn-shadow: var(--shadow-default-s);
+}
+
+.button[data-appearance="white"]:hover {
+  --btn-fill: var(--uncolorful-grey-background);
+  --btn-stroke: transparent;
+  --btn-text: var(--uncolorful-grey-primary);
+  --btn-shadow: var(--shadow-default-s);
+}
+
+.button[data-appearance="white"]:active {
+  --btn-fill: var(--uncolorful-grey-disabled);
+  --btn-stroke: transparent;
+  --btn-text: var(--uncolorful-grey-primary);
+  --btn-shadow: var(--shadow-default-s);
+}
+
+.button[data-appearance="white"][data-mode="secondary"] {
+  --btn-fill: var(--uncolorful-grey-surface);
+  --btn-stroke: var(--uncolorful-grey-primary);
+  --btn-text: var(--uncolorful-grey-primary);
+  --btn-shadow: var(--shadow-default-s);
+}
+
+.button[data-appearance="white"][data-mode="secondary"]:hover {
+  --btn-fill: var(--uncolorful-grey-background);
+  --btn-stroke: var(--uncolorful-grey-primary);
+  --btn-text: var(--uncolorful-grey-primary);
+  --btn-shadow: var(--shadow-default-s);
+}
+
+.button[data-appearance="white"][data-mode="secondary"]:active {
+  --btn-fill: var(--uncolorful-grey-disabled);
+  --btn-stroke: var(--uncolorful-grey-primary);
+  --btn-text: var(--uncolorful-grey-primary);
+  --btn-shadow: var(--shadow-default-s);
+}
+
+.button[data-appearance="white"][data-mode="ghost"] {
+  --btn-fill: transparent;
+  --btn-stroke: transparent;
+  --btn-text: var(--uncolorful-grey-primary);
+  --btn-shadow: var(--shadow-default-s);
+}
+
+.button[data-appearance="white"][data-mode="ghost"]:hover {
+  --btn-fill: var(--uncolorful-grey-background);
+  --btn-stroke: transparent;
+  --btn-text: var(--uncolorful-grey-primary);
+  --btn-shadow: var(--shadow-default-s);
+}
+
+.button[data-appearance="white"][data-mode="ghost"]:active {
+  --btn-fill: var(--uncolorful-grey-disabled);
+  --btn-stroke: transparent;
+  --btn-text: var(--uncolorful-grey-primary);
+  --btn-shadow: var(--shadow-default-s);
+}
+
+/* Disabled looks the same for every appearance (keyed by mode) and always
+   wins over hover / pressed */
+.button.button.button:is(:disabled, [aria-disabled="true"]) {
+  --btn-fill: var(--uncolorful-grey-disabled);
+  --btn-stroke: transparent;
+  --btn-text: var(--uncolorful-grey-background);
+  --btn-shadow: 0 0 #0000;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.button.button.button[data-mode="secondary"]:is(:disabled, [aria-disabled="true"]) {
+  --btn-fill: transparent;
+  --btn-stroke: var(--uncolorful-grey-disabled);
+  --btn-text: var(--uncolorful-grey-disabled);
+  --btn-shadow: 0 0 #0000;
+}
+
+.button.button.button[data-mode="ghost"]:is(:disabled, [aria-disabled="true"]) {
+  --btn-fill: transparent;
+  --btn-stroke: transparent;
+  --btn-text: var(--uncolorful-grey-disabled);
+  --btn-shadow: 0 0 #0000;
 }
 
 /* --------------------------------------------------------------------------
