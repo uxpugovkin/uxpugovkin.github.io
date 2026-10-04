@@ -68,6 +68,17 @@ All four habibi themes are in `tokens.css`. To force one, add `data-theme="olive
 
 Layout uses logical properties, so `dir="rtl"` on `<html>` mirrors everything, matching the RTL variants in Figma.
 
+## Analytics
+
+Visits are counted with [GoatCounter](https://www.goatcounter.com) (cookieless, no banner needed).
+Every page has this line just before `</head>`; new case studies copied from an existing folder keep it:
+
+```html
+<script data-goatcounter="https://uxpugovkin.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+```
+
+Stats live at https://uxpugovkin.goatcounter.com.
+
 ## Updating tokens
 
 `tokens.css` mirrors the habibi-library variables and styles. When the library changes, regenerate it from Figma instead of editing values by hand.
