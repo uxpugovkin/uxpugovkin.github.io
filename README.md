@@ -86,6 +86,7 @@ so colours always come from tokens and follow day and night.
 
 The site follows the visitor's system setting: **olive** by day and **olive-night** by night, the two habibi colour modes used in Figma.
 All four habibi themes are in `tokens.css`. To force one, add `data-theme="olive"`, `"olive-night"`, `"light"` or `"dark"` to `<html>`.
+The same attribute on any element pins just that block to a theme, like a fixed variable mode on a Figma frame. The closing banner uses `data-theme="olive"` so its White button stays white at night, over a picture that is dark in both themes.
 
 ## Right-to-left
 
