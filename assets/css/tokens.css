@@ -8,6 +8,11 @@
    Day / night pair used by this site: olive (day) + olive-night (night).
    The theme follows the visitor's system setting. To force one, set
    data-theme="olive" | "olive-night" | "light" | "dark" on <html>.
+
+   Palettes (a day / night pair per page, like a variable mode on a Figma frame):
+     default                              olive (day) + olive-night (night)
+     <html data-palette="classic">        light (day) + dark (night)
+   data-theme still wins over a palette.
    ========================================================================== */
 
 /* Code/* styles use IBM Plex Mono — hosted with the site (OFL licence in assets/fonts) */
@@ -185,7 +190,8 @@
   }
 }
 
-:root[data-theme="light"] {
+:root[data-theme="light"],
+:root[data-palette="classic"]:not([data-theme]) {
   color-scheme: light;
   --accent-1: #e44444;
   --accent-2: #e4af44;
@@ -333,6 +339,59 @@
   --uncreative-green-70: #7200e3;
   --uncreative-green-80: #531294;
   --uncreative-green-90: #3e0e6e;
+}
+
+/* Classic palette at night: dark — follows the system setting unless a theme is forced */
+@media (prefers-color-scheme: dark) {
+  :root[data-palette="classic"]:not([data-theme]) {
+    color-scheme: dark;
+    --accent-1: #e27878;
+    --accent-2: #e2bf78;
+    --accent-3: #bfe278;
+    --accent-4: #78e278;
+    --accent-5: #78e2bf;
+    --accent-6: #78bfe2;
+    --accent-7: #7878e2;
+    --accent-8: #bf78e2;
+    --accent-9: #e278bf;
+    --boring-blue-40: #c6dafe;
+    --boring-blue-50: #91b4f5;
+    --boring-blue-60: #5d88d9;
+    --boring-blue-70: #345188;
+    --boring-blue-80: #24385f;
+    --boring-blue-90: #1b2943;
+    --opacity-01: #ffffff03;
+    --opacity-16: #ffffff29;
+    --opacity-72: #ffffffb8;
+    --pure-0: #ffffff;
+    --pure-100: #000000;
+    --shitpile-orange-40: #f9cebc;
+    --shitpile-orange-50: #ea9f7d;
+    --shitpile-orange-60: #ca6d41;
+    --shitpile-orange-70: #7e3e20;
+    --shitpile-orange-80: #582b16;
+    --shitpile-orange-90: #3f2113;
+    --traffic-light-red-40: #fcccc9;
+    --traffic-light-red-50: #ee9997;
+    --traffic-light-red-60: #cd6665;
+    --traffic-light-red-70: #80393a;
+    --traffic-light-red-80: #5a2828;
+    --traffic-light-red-90: #401e1e;
+    --uncolorful-grey-background: #0a0908;
+    --uncolorful-grey-border: #33302c;
+    --uncolorful-grey-disabled: #5a554f;
+    --uncolorful-grey-extra: #e7e4df;
+    --uncolorful-grey-primary: #dbd7d1;
+    --uncolorful-grey-secondary: #c0bbb4;
+    --uncolorful-grey-surface: #1a1815;
+    --uncolorful-grey-tertiary: #8d8880;
+    --uncreative-green-40: #c1e4c6;
+    --uncreative-green-50: #84c690;
+    --uncreative-green-60: #469f5c;
+    --uncreative-green-70: #226133;
+    --uncreative-green-80: #184423;
+    --uncreative-green-90: #15311b;
+  }
 }
 
 /* Text styles — one class per habibi text style */

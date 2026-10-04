@@ -87,6 +87,10 @@ so colours always come from tokens and follow day and night.
 The site follows the visitor's system setting: **olive** by day and **olive-night** by night, the two habibi colour modes used in Figma.
 All four habibi themes are in `tokens.css`. To force one, add `data-theme="olive"`, `"olive-night"`, `"light"` or `"dark"` to `<html>`.
 
+A page can use another day / night pair, like a variable mode set on one Figma frame.
+`<html data-palette="classic">` switches that page to **light** by day and **dark** by night (MA.direct uses it).
+In the build script it is the page's `palette="classic"` field, which also sets the browser bar colour.
+
 ## Right-to-left
 
 Layout uses logical properties, so `dir="rtl"` on `<html>` mirrors everything, matching the RTL variants in Figma.
