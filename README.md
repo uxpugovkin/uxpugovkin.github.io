@@ -53,6 +53,10 @@ Wrap every image in `<span class="image-loader">` (add `image-loader--spinner` f
 While it loads, it shows the habibi skeleton pulse (and loader), sized to the image so nothing jumps.
 Always write an `alt` that says what the image shows.
 
+Two images side by side (Figma: a horizontal image frame, 12px gap) use `<figure class="media media--row">`.
+Each half is up to 564px; export them at 1032px with a 564px copy. When the block is narrower than 560px
+(phones), the pair stacks into one column. T-bank has two examples.
+
 ## Cards
 
 The three-card block (green / blue / red) is a `<section class="cards">`. It sits side by side

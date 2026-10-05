@@ -462,6 +462,21 @@ a {
   }
 }
 
+/* Row: images side by side, 12px apart (Figma: horizontal image-frame).
+   Each image is at least 274px wide, so below 560px of block width they
+   wrap into one column. */
+.media--row {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.media--row > .media__link {
+  flex: 1 1 274px;
+  width: auto;
+  min-width: 0;
+}
+
 /* icons/arrow-down, 32px, accent-1 */
 .media__arrow {
   flex: none;
