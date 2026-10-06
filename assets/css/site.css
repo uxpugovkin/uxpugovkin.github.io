@@ -489,8 +489,8 @@ a {
 /* --------------------------------------------------------------------------
    Cards  (Figma: image-frame — five-card reflection block)
    Two equal columns, up to 1140px wide:
-     left   Business goal (orange) · Smart work (green, grows) · Hard work (grows)
-     right  Shipped impact (blue, grows) · Fails (red)
+     left   Business goal (orange, grows) · Hard work (blue, grows)
+     right  Smart work (blue, grows) · Shipped impact (green, grows) · Fails (red)
    Both columns share the taller one's height; .card--grow cards take the
    spare room. Below 700px of block width the cards stack into one column.
    -------------------------------------------------------------------------- */
@@ -526,7 +526,7 @@ a {
   }
 }
 
-/* Default card: neutral surface (Hard work); text in the primary colour */
+/* Default card: neutral surface, primary text */
 .card {
   --card-fill: var(--uncolorful-grey-surface);
   --card-text: var(--uncolorful-grey-primary);
@@ -544,9 +544,9 @@ a {
   flex: 1 1 auto;
 }
 
-/* Orange: tinted fill, primary text */
 .card--orange {
   --card-fill: var(--shitpile-orange-90);
+  --card-text: var(--shitpile-orange-40);
 }
 
 .card--green {
