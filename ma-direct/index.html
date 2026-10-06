@@ -34,20 +34,39 @@
       <section class="paragraph case-section" aria-labelledby="outcomes">
         <h2 class="case-section__title header-h3" id="outcomes">Outcomes</h2>
         <p class="case-section__body body-c-regular">The business got an in-house platform to set work shifts for retail employees and <strong>attracted major enterprise clients</strong> like <strong>Tele2</strong> (Sweden) and <strong>Japan Tobacco International</strong>.</p>
-        <div class="case-section__body body-c-regular">
-          <p>I shipped UI/UX for core workflows:</p>
-          <ul>
-            <li>Setting up work shifts for employees across scattered geo-points</li>
-            <li>Enhanced payroll and cash withdrawal under tight technical constraints</li>
-            <li>Re-engineered employee experience (time-to-accept improved by 29%)</li>
-          </ul>
+      </section>
+
+      <section class="cards" aria-label="Reflection">
+        <div class="cards__grid">
+        <div class="cards__col cards__col--main">
+          <article class="card">
+            <h2 class="card__title body-b-bold">Where I was clever</h2>
+            <ul class="card__list body-c-regular">
+              <li>...</li>
+            </ul>
+          </article>
         </div>
-        <p class="case-section__body body-c-regular">I built a scalable <strong>multi-platform design library</strong> that made new features easier to ship</p>
+        <div class="cards__col">
+          <article class="card card--blue">
+            <h2 class="card__title body-b-bold">Worked hard at</h2>
+            <ul class="card__list body-c-regular">
+              <li>...</li>
+            </ul>
+          </article>
+          <article class="card card--red">
+            <h2 class="card__title body-b-bold">What I failed at</h2>
+            <ul class="card__list body-c-regular">
+              <li>...</li>
+            </ul>
+          </article>
+        </div>
+        </div>
       </section>
 
       <section class="paragraph case-section" aria-labelledby="legacy-vs-current">
         <h2 class="case-section__title header-h3" id="legacy-vs-current">Legacy vs Current</h2>
-        <p class="case-section__body body-c-regular">...</p>
+        <p class="case-section__body body-c-regular">The MVP showed every shop as one flat list. That is fine for a few locations. It breaks across a whole country. Thousands of shops. Impossible to navigate. Every shift set one shop at a time.</p>
+        <p class="case-section__body body-c-regular">I built a nested hierarchy: country → region → city → district → street → individual shop. The key move is that a user can act at any level. Pick a region, and you can set shifts for every shop nested beneath it in one action, rather than repeating the same work hundreds of times.</p>
       </section>
 
       <figure class="media">
@@ -69,6 +88,17 @@
           <span class="visually-hidden">(opens full size)</span>
         </a>
       </figure>
+
+      <section class="paragraph case-section" aria-labelledby="hard-part">
+        <h2 class="case-section__title header-h3" id="hard-part">Hard part</h2>
+        <p class="case-section__body body-c-regular">Assigning shifts isn’t just about places — it’s about people, and every self-employed worker has permissions scoped to a specific level. One worker may only be cleared to work in a single district of Samara; another across the whole city. So the location hierarchy and the permission scopes are two different structures that don’t line up neatly.</p>
+        <p class="case-section__body body-c-regular">The solution was a configurable base level. Rather than hard-coding one level for everyone, the client picks the level of the hierarchy where workers get assigned: a business organized around districts sets the base at district; one that thinks in cities sets it there. Assignments then happen at that level, in bulk, so you never have to assign worker-by-shop.</p>
+      </section>
+
+      <section class="paragraph case-section" aria-labelledby="the-trade-off">
+        <h2 class="case-section__title header-h3" id="the-trade-off">The trade-off</h2>
+        <p class="case-section__body body-c-regular">Making the base level a setting meant trading a small amount of upfront simplicity — someone has to make that configuration decision — for a system that adapts to very different business structures instead of forcing them all into one shape. It also keeps assignment fast: you act on a whole level at once rather than shop by shop, at the cost of the fine-grained control you’d get assigning each shop individually.</p>
+      </section>
 
       <!-- Add more sections above; numbers update automatically -->
     </main>
