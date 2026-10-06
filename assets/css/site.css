@@ -489,7 +489,7 @@ a {
 /* --------------------------------------------------------------------------
    Cards  (Figma: image-frame — five-card reflection block)
    Two equal columns, up to 1140px wide:
-     left   Business goal (orange) · Smart work (green, grows) · Hard work
+     left   Business goal (orange) · Smart work (green, grows) · Hard work (grows)
      right  Shipped impact (blue, grows) · Constraints and fails (red)
    Both columns share the taller one's height; .card--grow cards take the
    spare room. Below 700px of block width the cards stack into one column.
@@ -530,12 +530,11 @@ a {
 .card {
   --card-fill: var(--uncolorful-grey-surface);
   --card-text: var(--uncolorful-grey-primary);
-  --card-title: var(--card-text);
 
   display: flex;
   flex-direction: column;
   gap: var(--space-8);
-  padding: var(--space-16) var(--space-12) var(--space-20);
+  padding: var(--space-16) var(--space-16) var(--space-20);
   border-radius: var(--radius-m);
   background-color: var(--card-fill);
   color: var(--card-text);
@@ -560,18 +559,13 @@ a {
   --card-text: var(--boring-blue-50);
 }
 
-/* Red: red title, list in the primary text colour */
 .card--red {
   --card-fill: var(--traffic-light-red-90);
-  --card-title: var(--traffic-light-red-50);
+  --card-text: var(--traffic-light-red-50);
 }
 
 .card > * {
   margin: 0;
-}
-
-.card__title {
-  color: var(--card-title);
 }
 
 .card__list {
