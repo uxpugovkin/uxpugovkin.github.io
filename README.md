@@ -64,11 +64,11 @@ as a `<section class="cards">` with two equal columns:
 
 | Column | Card | Classes |
 |---|---|---|
+| left | Business goal | `card card--orange` |
 | left | Smart work | `card card--green card--grow` |
 | left | Hard work | `card card--grow` |
-| right | Business goal | `card card--orange` |
 | right | Shipped impact | `card card--blue card--grow` |
-| right | Fails | `card card--red` |
+| right | Fails | `card card--red card--grow` |
 
 Both columns match the taller one's height and `card--grow` cards take the spare room. The block is up to
 1140px wide and stacks into one column when it is narrower than 700px. Colours come from habibi tokens,

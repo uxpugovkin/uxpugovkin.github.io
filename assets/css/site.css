@@ -489,8 +489,8 @@ a {
 /* --------------------------------------------------------------------------
    Cards  (Figma: image-frame — five-card reflection block)
    Two equal columns, up to 1140px wide:
-     left   Smart work (green, grows) · Hard work (grows)
-     right  Business goal (orange) · Shipped impact (blue, grows) · Fails (red)
+     left   Business goal (orange) · Smart work (green, grows) · Hard work (grows)
+     right  Shipped impact (blue, grows) · Fails (red, grows)
    Both columns share the taller one's height; .card--grow cards take the
    spare room. Below 700px of block width the cards stack into one column.
    -------------------------------------------------------------------------- */
