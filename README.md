@@ -59,9 +59,20 @@ Each half is up to 564px; export them at 1032px with a 564px copy. When the bloc
 
 ## Cards
 
-The three-card block (green / blue / red) is a `<section class="cards">`. It sits side by side
-up to 1140px wide and stacks into one column when the block is narrower than 700px.
-Card colours come from habibi tokens: `card` (green), `card--blue`, `card--red`.
+Every case study has the five-card reflection block (Figma: `image-frame`) right after Outcomes,
+as a `<section class="cards">` with two equal columns:
+
+| Column | Card | Classes |
+|---|---|---|
+| left | Business goal | `card card--orange` |
+| left | Smart work | `card card--green card--grow` |
+| left | Hard work | `card` |
+| right | Shipped impact | `card card--blue card--grow` |
+| right | Constraints and fails | `card card--red` |
+
+Both columns match the taller one's height and `card--grow` cards take the spare room. The block is up to
+1140px wide and stacks into one column when it is narrower than 700px. Colours come from habibi tokens,
+so they follow the page's theme and day/night. Replace each `<li>...</li>` with real items.
 
 ## Buttons
 

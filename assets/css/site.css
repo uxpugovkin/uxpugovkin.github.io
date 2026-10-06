@@ -17,6 +17,7 @@
   --space-8: 8px;
   --space-12: 12px;
   --space-16: 16px;
+  --space-20: 20px;
   --space-24: 24px;
   --space-28: 28px;
 
@@ -486,10 +487,12 @@ a {
 }
 
 /* --------------------------------------------------------------------------
-   Cards  (Figma: three-card block — green / blue / red)
-   Two columns in Figma's 582 : 550 split, up to 1140px wide. The left card
-   stretches to the height of the two stacked cards on the right. Below
-   700px of block width the cards stack into one column.
+   Cards  (Figma: image-frame — five-card reflection block)
+   Two equal columns, up to 1140px wide:
+     left   Business goal (orange) · Smart work (green, grows) · Hard work
+     right  Shipped impact (blue, grows) · Constraints and fails (red)
+   Both columns share the taller one's height; .card--grow cards take the
+   spare room. Below 700px of block width the cards stack into one column.
    -------------------------------------------------------------------------- */
 .cards {
   width: 100%;
@@ -499,7 +502,7 @@ a {
 
 .cards__grid {
   display: grid;
-  grid-template-columns: 582fr 550fr;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-8);
 }
 
@@ -507,10 +510,6 @@ a {
   display: flex;
   flex-direction: column;
   gap: var(--space-8);
-}
-
-.cards__col--main > .card {
-  flex: 1 1 auto;
 }
 
 @container (max-width: 699.98px) {
@@ -527,31 +526,52 @@ a {
   }
 }
 
+/* Default card: neutral surface (Hard work) */
 .card {
-  --card-fill: var(--uncreative-green-90);
-  --card-text: var(--uncreative-green-40);
+  --card-fill: var(--uncolorful-grey-surface);
+  --card-text: var(--uncolorful-grey-primary);
+  --card-title: var(--card-text);
 
   display: flex;
   flex-direction: column;
   gap: var(--space-8);
-  padding: var(--space-24) var(--space-16) var(--space-28);
+  padding: var(--space-16) var(--space-12) var(--space-20);
   border-radius: var(--radius-m);
   background-color: var(--card-fill);
   color: var(--card-text);
 }
 
-.card--blue {
-  --card-fill: var(--boring-blue-90);
-  --card-text: var(--boring-blue-40);
+.card--grow {
+  flex: 1 1 auto;
 }
 
+.card--orange {
+  --card-fill: var(--shitpile-orange-90);
+  --card-text: var(--shitpile-orange-50);
+}
+
+.card--green {
+  --card-fill: var(--uncreative-green-90);
+  --card-text: var(--uncreative-green-50);
+}
+
+.card--blue {
+  --card-fill: var(--boring-blue-90);
+  --card-text: var(--boring-blue-50);
+}
+
+/* Red: red title, list in the primary text colour */
 .card--red {
   --card-fill: var(--traffic-light-red-90);
-  --card-text: var(--traffic-light-red-40);
+  --card-title: var(--traffic-light-red-50);
 }
 
 .card > * {
   margin: 0;
+}
+
+.card__title {
+  color: var(--card-title);
 }
 
 .card__list {
