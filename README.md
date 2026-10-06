@@ -60,7 +60,7 @@ Each half is up to 564px; export them at 1032px with a 564px copy. When the bloc
 ## Cards
 
 Every case study has the five-card reflection block (Figma: `image-frame`) right after Outcomes,
-as a `<section class="cards">` with two equal columns:
+as a `<section class="cards">`: a white surface frame (8px padding, large radius) with two equal columns:
 
 | Column | Card | Classes |
 |---|---|---|
