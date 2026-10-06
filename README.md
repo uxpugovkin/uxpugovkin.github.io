@@ -60,7 +60,7 @@ Each half is up to 564px; export them at 1032px with a 564px copy. When the bloc
 ## Cards
 
 Every case study has the five-card reflection block (Figma: `image-frame`) right after Outcomes,
-as a `<section class="cards">`: a white surface frame (8px padding, large radius) with two equal columns:
+as a `<section class="cards">` with two equal columns:
 
 | Column | Card | Classes |
 |---|---|---|
@@ -68,7 +68,7 @@ as a `<section class="cards">`: a white surface frame (8px padding, large radius
 | left | Smart work | `card card--green card--grow` |
 | left | Hard work | `card card--grow` |
 | right | Shipped impact | `card card--blue card--grow` |
-| right | Fails | `card card--red card--grow` |
+| right | Fails | `card card--red` |
 
 Both columns match the taller one's height and `card--grow` cards take the spare room. The block is up to
 1140px wide and stacks into one column when it is narrower than 700px. Colours come from habibi tokens,
