@@ -65,7 +65,7 @@ as a `<section class="cards">` with two equal columns:
 | Column | Card | Classes |
 |---|---|---|
 | left | Business goal | `card card--orange card--grow` |
-| left | Hard work | `card card--blue card--grow` |
+| left | Hard work | `card card--grow` |
 | right | Smart work | `card card--blue card--grow` |
 | right | Shipped impact | `card card--green card--grow` |
 | right | Fails | `card card--red` |
