@@ -55,7 +55,7 @@ Always write an `alt` that says what the image shows.
 
 Two images side by side (Figma: a horizontal image frame, 12px gap) use `<figure class="media media--row">`.
 Each half is up to 564px; export them at 1032px with a 564px copy. When the block is narrower than 560px
-(phones), the pair stacks into one column. T-bank has two examples.
+(phones), the pair stacks into one column.
 
 ## Cards
 
