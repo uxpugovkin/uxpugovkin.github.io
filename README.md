@@ -70,7 +70,8 @@ as a `<section class="cards">` with two equal columns:
 | right | Shipped impact | `card card--green card--grow` |
 | right | Fails | `card card--red` |
 
-Both columns match the taller one's height and `card--grow` cards take the spare room. The block is up to
+Side by side the block is at least 512px tall, like the fixed-height Figma frame; both columns match the
+taller one and `card--grow` cards share the spare room equally. The block is up to
 1140px wide and stacks into one column when it is narrower than 700px. Colours come from habibi tokens,
 so they follow the page's theme and day/night. Replace each `<li>...</li>` with real items.
 
@@ -105,7 +106,8 @@ Hover and disabled states come from the library, and inside `dir="rtl"` it mirro
 
 A **toggle-media** block puts two images in one 1140×560 slot with a switch in the corner, as in the
 Figma `raif-legasy-demo` component. `data-active="true"` shows the `--on` image. site.js swaps them,
-keeps screen readers on the visible one, and GoatCounter counts the clicks. Raiffeisen Bank has the example.
+keeps screen readers on the visible one, and GoatCounter counts the clicks. MA.direct and Raiffeisen Bank use it.
+Arrows between images in these Legacy vs Current blocks are 16px away (`media media--gap-16`), as in Figma.
 The switch there carries `data-theme="olive-night"`, the same fixed colour mode it has in Figma.
 
 ## Day & night

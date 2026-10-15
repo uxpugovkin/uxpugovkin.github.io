@@ -401,6 +401,11 @@ a {
   gap: var(--space-12);
 }
 
+/* Figma image-frames with a 16px gap (arrow 16px from each image) */
+.media--gap-16 {
+  gap: var(--space-16);
+}
+
 .media__link {
   display: block;
   width: 100%;
@@ -535,7 +540,9 @@ a {
      left   Business goal (orange, grows) · Hard work (grey, grows)
      right  Smart work (blue, grows) · Shipped impact (green, grows) · Fails (red)
    Both columns share the taller one's height; .card--grow cards take the
-   spare room. Below 700px of block width the cards stack into one column.
+   spare room. Side by side the block is at least 512px tall (the fixed
+   height of the Figma image-frame) and only grows if the text needs it.
+   Below 700px of block width the cards stack into one column.
    -------------------------------------------------------------------------- */
 .cards {
   width: 100%;
@@ -547,6 +554,7 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-8);
+  min-height: 512px;
 }
 
 .cards__col {
@@ -558,6 +566,7 @@ a {
 @container (max-width: 699.98px) {
   .cards__grid {
     grid-template-columns: 1fr;
+    min-height: 0;
   }
 }
 
@@ -565,6 +574,7 @@ a {
   @media (max-width: 1023.98px) {
     .cards__grid {
       grid-template-columns: 1fr;
+      min-height: 0;
     }
   }
 }
@@ -583,8 +593,10 @@ a {
   color: var(--card-text);
 }
 
+/* Figma: fill container — growing cards in a column share the height
+   equally, but never get shorter than their text */
 .card--grow {
-  flex: 1 1 auto;
+  flex: 1 1 0;
 }
 
 .card--orange {
