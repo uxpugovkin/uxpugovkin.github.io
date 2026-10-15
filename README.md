@@ -97,6 +97,17 @@ for the disabled state. An optional start icon goes first as `<svg class="button
 The button styles in `site.css` are generated from the habibi library's variant table,
 so colours always come from tokens and follow day and night.
 
+## Switch and image toggle
+
+The habibi **switch** (Accent, compact) is a `<button role="switch" aria-checked="true|false">` with
+`<span class="switch"><span class="switch__knob"></span></span>` inside; `switch-and-text` adds the label.
+Hover and disabled states come from the library, and inside `dir="rtl"` it mirrors like the Figma rtl variant.
+
+A **toggle-media** block puts two images in one 1140×560 slot with a switch in the corner, as in the
+Figma `raif-legasy-demo` component. `data-active="true"` shows the `--on` image. site.js swaps them,
+keeps screen readers on the visible one, and GoatCounter counts the clicks. Raiffeisen Bank has the example.
+The switch there carries `data-theme="olive-night"`, the same fixed colour mode it has in Figma.
+
 ## Day & night
 
 The site follows the visitor's system setting: **olive** by day and **olive-night** by night, the two habibi colour modes used in Figma.

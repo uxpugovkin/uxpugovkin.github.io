@@ -478,6 +478,49 @@ a {
   min-width: 0;
 }
 
+/* Toggle media (Figma: raif-legasy-demo — variants switched by a habibi
+   switch). Two images share one 1140:560 slot; the switch in the corner
+   cross-fades between them. data-active="true" shows the --on image.
+   site.js keeps data-active, aria-checked and aria-hidden in sync. */
+.toggle-media {
+  position: relative;
+  width: 100%;
+}
+
+.toggle-media__frame {
+  width: 100%;
+  aspect-ratio: 1140 / 560;
+}
+
+.toggle-media__image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.toggle-media[data-active="true"] .toggle-media__image--off,
+.toggle-media[data-active="false"] .toggle-media__image--on {
+  opacity: 0;
+}
+
+/* Figma: switch-and-text, absolute, 12px from the right and bottom edges */
+.toggle-media__switch {
+  position: absolute;
+  right: var(--space-12);
+  bottom: var(--space-12);
+  z-index: 1;
+}
+
+/* A larger touch target than the 20px-tall control, without changing layout */
+.toggle-media__switch::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+}
+
 /* icons/arrow-down, 32px, accent-1 */
 .media__arrow {
   flex: none;
@@ -925,6 +968,105 @@ a {
   --btn-stroke: transparent;
   --btn-text: var(--uncolorful-grey-disabled);
   --btn-shadow: 0 0 #0000;
+}
+
+/* --------------------------------------------------------------------------
+   Switch  (habibi: switch — appearance Accent, compact; switch-and-text)
+   States follow the control: aria-checked = active, :hover = Hover,
+   aria-disabled / disabled = Disabled. Active moves the knob to the end;
+   inside dir="rtl" the switch mirrors, like the Figma rtl variant.
+   Markup:
+     <button class="switch-and-text" type="button" role="switch" aria-checked="true">
+       <span class="switch" aria-hidden="true"><span class="switch__knob"></span></span>
+       <span class="body-c-regular">Label</span>
+     </button>
+   -------------------------------------------------------------------------- */
+.switch {
+  --switch-fill: var(--uncolorful-grey-disabled);
+  --switch-stroke: transparent;
+  --switch-knob: var(--uncolorful-grey-surface);
+
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  box-sizing: border-box;
+  width: 36px;
+  height: 20px;
+  padding: var(--space-4);
+  border-radius: var(--radius-m);
+  background-color: var(--switch-fill);
+  box-shadow: inset 0 0 0 1px var(--switch-stroke);
+  transition: background-color var(--motion-duration) var(--motion-ease);
+}
+
+.switch__knob {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-m);
+  background-color: var(--switch-knob);
+  transition: transform var(--motion-duration) var(--motion-ease),
+    background-color var(--motion-duration) var(--motion-ease);
+}
+
+.switch:hover,
+:hover > .switch {
+  --switch-fill: var(--uncolorful-grey-secondary);
+}
+
+.switch[aria-checked="true"],
+[aria-checked="true"] > .switch {
+  --switch-fill: var(--boring-blue-50);
+  --switch-knob: var(--boring-blue-90);
+}
+
+.switch[aria-checked="true"]:hover,
+[aria-checked="true"]:hover > .switch {
+  --switch-fill: var(--boring-blue-40);
+}
+
+/* Active: knob slides to the end — right, or left in right-to-left text */
+.switch[aria-checked="true"] .switch__knob,
+[aria-checked="true"] > .switch .switch__knob {
+  transform: translateX(16px);
+}
+
+.switch[aria-checked="true"]:dir(rtl) .switch__knob,
+[aria-checked="true"] > .switch:dir(rtl) .switch__knob {
+  transform: translateX(-16px);
+}
+
+/* Disabled wins over hover and active (doubled class = higher specificity) */
+.switch.switch:is(:disabled, [aria-disabled="true"]),
+:is(:disabled, [aria-disabled="true"]) > .switch.switch {
+  --switch-fill: var(--uncolorful-grey-border);
+  --switch-stroke: var(--uncolorful-grey-disabled);
+  --switch-knob: var(--uncolorful-grey-disabled);
+}
+
+/* switch-and-text: label and switch 12px apart, Body C, primary text */
+.switch-and-text {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-12);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--uncolorful-grey-primary);
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.switch-and-text:is(:disabled, [aria-disabled="true"]) {
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .switch,
+  .switch__knob {
+    transition: none;
+  }
 }
 
 /* --------------------------------------------------------------------------

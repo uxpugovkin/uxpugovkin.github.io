@@ -3,6 +3,7 @@
    1. Renders the sidebar / mobile bar from config.js (one source for every page)
    2. Hides the mobile bar on scroll down, shows it again on scroll up
    3. Shows the habibi skeleton (and loader) on images and videos until they load
+   4. Lets a habibi switch swap the two images of a toggle-media block
    ========================================================================== */
 (function () {
   "use strict";
@@ -126,6 +127,45 @@
     document.addEventListener("DOMContentLoaded", initImageLoaders);
   } else {
     initImageLoaders();
+  }
+
+  /* ---- 4. Toggle media: a habibi switch swaps two images ---------------- */
+  // .toggle-media[data-active] holds the state; the switch reports it with
+  // aria-checked, and the hidden image is taken out of the accessibility tree.
+  // site.js runs before <main> is parsed, so this waits for the content
+  function initToggleMedia() {
+    Array.prototype.forEach.call(document.querySelectorAll(".toggle-media"), initToggle);
+  }
+
+  function initToggle(box) {
+    var control = box.querySelector('[role="switch"]');
+    var on = box.querySelector(".toggle-media__image--on");
+    var off = box.querySelector(".toggle-media__image--off");
+    if (!control) return;
+
+    function set(active) {
+      box.setAttribute("data-active", active ? "true" : "false");
+      control.setAttribute("aria-checked", active ? "true" : "false");
+      hide(on, !active);
+      hide(off, active);
+    }
+
+    function hide(img, hidden) {
+      if (!img) return;
+      if (hidden) img.setAttribute("aria-hidden", "true");
+      else img.removeAttribute("aria-hidden");
+    }
+
+    control.addEventListener("click", function () {
+      set(control.getAttribute("aria-checked") !== "true");
+    });
+    set(control.getAttribute("aria-checked") === "true");
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initToggleMedia);
+  } else {
+    initToggleMedia();
   }
 
   /* ---- 2. Mobile bar: hide on scroll down, show on scroll up ------------ */

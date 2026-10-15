@@ -8,6 +8,9 @@
    Day / night pair used by this site: olive (day) + olive-night (night).
    The theme follows the visitor's system setting. To force one, set
    data-theme="olive" | "olive-night" | "light" | "dark" on <html>.
+   data-theme="olive-night" on an element pins just that element to Olive
+   Night, like a fixed variable mode on a Figma layer (the "AI scene" switch
+   over the Raiffeisen photo uses it).
 
    Palettes (a day / night pair per page, like a variable mode on a Figma frame):
      default                              olive (day) + olive-night (night)
@@ -291,7 +294,8 @@
   --uncreative-green-90: #15311b;
 }
 
-:root[data-theme="olive-night"] {
+:root[data-theme="olive-night"],
+[data-theme="olive-night"] {
   color-scheme: dark;
   --accent-1: #ff5b96;
   --accent-2: #ffb18e;
