@@ -108,7 +108,7 @@ A **toggle-media** block puts two images in one 1140×560 slot with a switch in 
 Figma `raif-legasy-demo` component. `data-active="true"` shows the `--on` image. site.js swaps them,
 keeps screen readers on the visible one, and GoatCounter counts the clicks. MA.direct, Raiffeisen Bank and T-bank use it.
 Arrows between images in these Legacy vs Current blocks are 16px away (`media media--gap-16`), as in Figma.
-The switch there carries `data-theme="olive-night"`, the same fixed colour mode it has in Figma.
+The switch sits in a frosted pill (`toggle-media__control`) that carries `data-theme="olive-night"`, the same fixed colour mode it has in Figma; on smaller blocks the pill gets a dark tint so the label stays readable.
 
 ## Day & night
 

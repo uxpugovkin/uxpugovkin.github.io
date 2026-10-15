@@ -490,6 +490,7 @@ a {
 .toggle-media {
   position: relative;
   width: 100%;
+  container-type: inline-size;
 }
 
 /* Figma: radius/m with clip content on every legasy-demo variant */
@@ -514,19 +515,33 @@ a {
   opacity: 0;
 }
 
-/* Figma: switch-and-text, absolute, 12px from the right and bottom edges */
-.toggle-media__switch {
+/* Figma: Frame 5 — a frosted pill 12px from the right and bottom edges,
+   radius/l, opacity/01% fill and a background blur (Figma 150 = CSS 75px).
+   The pill and switch keep a fixed Olive Night mode (data-theme on the pill);
+   the whole pill is the button, so it is also a comfortable touch target. */
+.toggle-media__control {
   position: absolute;
   right: var(--space-12);
   bottom: var(--space-12);
   z-index: 1;
+  border-radius: var(--radius-l);
+  background-color: var(--opacity-01);
+  -webkit-backdrop-filter: blur(75px);
+  backdrop-filter: blur(75px);
 }
 
-/* A larger touch target than the 20px-tall control, without changing layout */
-.toggle-media__switch::before {
-  content: "";
-  position: absolute;
-  inset: -12px;
+.toggle-media__control .toggle-media__switch {
+  padding: var(--space-12) var(--space-16);
+  border-radius: inherit;
+}
+
+/* Figma only has the 1140px layout. When the block shrinks, the pill keeps
+   its size and starts to cover light parts of the picture, so it gets a
+   dark tint (Olive Night background, 72%) to keep the label readable. */
+@container (max-width: 999.98px) {
+  .toggle-media__control {
+    background-color: color-mix(in srgb, var(--uncolorful-grey-background) 72%, transparent);
+  }
 }
 
 /* icons/arrow-down, 32px, accent-1 */
