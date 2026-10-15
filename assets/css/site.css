@@ -492,9 +492,12 @@ a {
   width: 100%;
 }
 
-.toggle-media__frame {
+/* Figma: radius/m with clip content on every legasy-demo variant */
+.image-loader.toggle-media__frame {
   width: 100%;
   aspect-ratio: 1140 / 560;
+  border-radius: var(--radius-m);
+  overflow: hidden;
 }
 
 .toggle-media__image {
