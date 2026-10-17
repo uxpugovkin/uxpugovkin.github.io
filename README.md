@@ -48,8 +48,7 @@ The home page is a grid of case study cards (Figma: Storefront). Each card is a
 title (Header/H1) and the role (Body E, upper case). Row one is 5 + 7 columns of a 12-column grid, row two
 7 + 5; on a desktop the rows share the window height. Tablets get two equal columns, phones one.
 
-To give a card a picture, add `case-card--image` to the link and an
-`<span class="image-loader case-card__media"><img …></span>` before the text, at 2× the card size (see T-bank, which reuses its AI scene with `case-card__media--bleed`, placed 16px past the card's top and start edges like the Figma frame). Over a picture the text turns white with a
+To give a card a picture, add `case-card--image` to the link and an `<span class="image-loader case-card__media"><img …></span>` before the text, cropped at 1× and 2× the card size into `assets/img/home/` (all four cards have one). Over a picture the text turns white with a
 soft shadow. Card clicks are counted in GoatCounter as `home-card-<page>`.
 
 ## Images
