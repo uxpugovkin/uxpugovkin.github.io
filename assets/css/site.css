@@ -462,6 +462,7 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: right center; /* keeps the laptop in view on narrow cards */
 }
 
 .case-card__text {
@@ -499,6 +500,7 @@ a {
 
 .case-card--image .case-card__meta {
   color: var(--pure-0);
+  opacity: 0.72; /* Figma: the role layer at 72% */
 }
 
 .case-card--image .case-card__text {
