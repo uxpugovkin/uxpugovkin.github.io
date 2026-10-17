@@ -401,7 +401,7 @@ a {
    12 columns, 12px gaps; row one is 5 + 7 columns, row two 7 + 5. On a
    desktop the two rows share the window height, like the Figma frame
    (428px each in a 900px window). Two columns on tablets, one on phones.
-   Card: uncolorful-grey/surface, radius/m, shadow default-s, 16/20 insets,
+   Card: uncolorful-grey/surface, radius/m, shadow default-s, 20/16 insets,
    Header/H1 + the role in Body E, upper case. Over a picture the text is pure/0 with a 0.5px
    pure/100 shadow at 16% (Figma: opacity/16% drop shadow).
    -------------------------------------------------------------------------- */
@@ -437,7 +437,7 @@ a {
   flex: 1 1 auto;
   display: flex;
   align-items: flex-start;
-  padding: var(--space-16) var(--space-20);
+  padding: var(--space-20) var(--space-16); /* Figma: 20 top/bottom, 16 sides */
   overflow: hidden;
   border-radius: var(--radius-m);
   background-color: var(--uncolorful-grey-surface);
