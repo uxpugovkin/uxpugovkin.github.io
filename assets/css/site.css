@@ -465,6 +465,10 @@ a {
   object-position: right center; /* keeps the laptop in view on narrow cards */
 }
 
+.case-card__media--center img {
+  object-position: center;
+}
+
 .case-card__text {
   position: relative;
   display: flex;
