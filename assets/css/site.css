@@ -668,6 +668,11 @@ a {
   container-type: inline-size;
 }
 
+/* Figma current-demo: the same switcher at the cover pictures' 1140:641 */
+.toggle-media--current .image-loader.toggle-media__frame {
+  aspect-ratio: 1140 / 641;
+}
+
 /* Figma: radius/m with clip content on every legasy-demo variant */
 .image-loader.toggle-media__frame {
   width: 100%;

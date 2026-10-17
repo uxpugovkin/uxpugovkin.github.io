@@ -101,14 +101,23 @@
           </div>
         </div>
         <span class="media__arrow-pill" aria-hidden="true"><svg class="media__arrow" width="32" height="32" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" focusable="false"><path d="M16.0017 26.3166L24.8267 17.4916C23.9154 16.5804 22.4381 16.5804 21.5268 17.4916L17.335 21.6835L17.335 6L14.6683 6L14.6683 21.6833L10.4766 17.4916C9.56535 16.5804 8.08797 16.5804 7.17674 17.4916L16.0017 26.3166Z"/></svg></span>
-        <a class="media__link" href="../assets/img/t-bank/cover-2x.webp">
-          <span class="image-loader image-loader--spinner image-loader--rounded">
-            <img class="media__image" src="../assets/img/t-bank/cover-1x.webp" srcset="../assets/img/t-bank/cover-1x.webp 1140w, ../assets/img/t-bank/cover-2x.webp 2280w"
+        <div class="toggle-media toggle-media--current" data-active="true">
+          <span class="image-loader image-loader--spinner toggle-media__frame">
+            <img class="toggle-media__image toggle-media__image--on" src="../assets/img/t-bank/cover-1x.webp" srcset="../assets/img/t-bank/cover-1x.webp 1140w, ../assets/img/t-bank/cover-2x.webp 2280w"
                  sizes="(max-width: 767.98px) calc(100vw - 32px), min(1140px, calc(100vw - 280px))"
-                 width="2280" height="1282" alt="After: the new in-house Tinkoff operator workspace on a monitor in a snowy-day call-centre office, beside a swordsman figure, a headset and a desk phone. On screen, a customer chat with Pirog Tatyana Ivanovna on the left and her profile with accounts and cards on the right." loading="lazy" decoding="async">
+                 width="1140" height="641" alt="After: the new in-house Tinkoff operator workspace on a monitor in a snowy-day call-centre office, beside a swordsman figure, a headset and a desk phone. On screen, a customer chat with Pirog Tatyana Ivanovna on the left and her profile with accounts and cards on the right." loading="lazy" decoding="async">
+            <img class="toggle-media__image toggle-media__image--off" src="../assets/img/t-bank/current-ui-1x.webp" srcset="../assets/img/t-bank/current-ui-1x.webp 1140w, ../assets/img/t-bank/current-ui-2x.webp 2280w"
+                 sizes="(max-width: 767.98px) calc(100vw - 32px), min(1140px, calc(100vw - 280px))"
+                 width="1140" height="641" alt="Current: the Tinkoff operator workspace in the browser. A chat with Pirog Tatyana Ivanovna on the left, with routing events and her question, and her profile on the right with quick actions and two RUB accounts with their cards." loading="lazy" decoding="async" aria-hidden="true">
           </span>
-          <span class="visually-hidden">(opens full size)</span>
-        </a>
+          <div class="toggle-media__control" data-theme="olive-night">
+            <button class="switch-and-text toggle-media__switch" type="button" role="switch" aria-checked="true" dir="rtl"
+                    data-goatcounter-click="t-bank-current-ai-scene-toggle" data-goatcounter-title="AI scene switch (current) — t-bank">
+              <span class="switch" aria-hidden="true"><span class="switch__knob"></span></span>
+              <span class="body-c-regular">AI scene</span>
+            </button>
+          </div>
+        </div>
       </figure>
 
       <!-- Add more sections above; numbers update automatically -->
