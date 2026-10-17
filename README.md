@@ -45,12 +45,11 @@ remove or reorder sections without renumbering anything.
 
 The home page is a grid of case study cards (Figma: Storefront). Each card is a
 `<li class="storefront__item storefront__item--<page>">` with an `<a class="case-card">` inside:
-title (Header/H1) and role · dates (Body C). Row one is 5 + 7 columns of a 12-column grid, row two
-6 + 6; on a desktop the rows share the window height. Tablets get two equal columns, phones one.
+title (Header/H1) and the role (Body E, upper case). Row one is 5 + 7 columns of a 12-column grid, row two
+7 + 5; on a desktop the rows share the window height. Tablets get two equal columns, phones one.
 
 To give a card a picture, add `case-card--image` to the link and an
-`<span class="image-loader case-card__media"><img …></span>` before the text, exported at 2× the
-card size into `assets/img/home/` (see Raiffeisen Bank). Over a picture the text turns white with a
+`<span class="image-loader case-card__media"><img …></span>` before the text, at 2× the card size (see T-bank, which reuses its AI scene with `case-card__media--bleed`, placed 16px past the card's top and start edges like the Figma frame). Over a picture the text turns white with a
 soft shadow. Card clicks are counted in GoatCounter as `home-card-<page>`.
 
 ## Images
@@ -119,7 +118,7 @@ Hover and disabled states come from the library, and inside `dir="rtl"` it mirro
 A **toggle-media** block puts two images in one 1140×560 slot with a switch in the corner, as in the
 Figma `raif-legasy-demo` component. `data-active="true"` shows the `--on` image. site.js swaps them,
 keeps screen readers on the visible one, and GoatCounter counts the clicks. MA.direct, Raiffeisen Bank and T-bank use it.
-Arrows between images in these Legacy vs Current blocks are 16px away (`media media--gap-16`), as in Figma.
+In these Legacy vs Current blocks (`media media--gap-16`) the arrow sits in a pill, `<span class="media__arrow-pill">`, 16px from each image: uncreative-green/50 with the icon in uncreative-green/90, so it is green in Light and purple in Olive, as in Figma.
 The switch sits in a frosted pill (`toggle-media__control`) that carries `data-theme="olive-night"`, the same fixed colour mode it has in Figma; on smaller blocks the pill gets a dark tint so the label stays readable.
 
 ## Day & night

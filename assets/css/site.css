@@ -20,6 +20,7 @@
   --space-20: 20px;
   --space-24: 24px;
   --space-28: 28px;
+  --space-32: 32px;
 
   --motion-duration: 200ms;
   --motion-ease: cubic-bezier(0.2, 0, 0, 1);
@@ -114,7 +115,8 @@ a {
   flex-direction: column;
   align-items: center;
   gap: var(--space-28);
-  padding: var(--space-24);
+  /* Figma Layout: 16 top, 24 sides, 32 bottom (the home page grid: 16) */
+  padding: var(--space-16) var(--space-24) var(--space-32);
 }
 
 /* --------------------------------------------------------------------------
@@ -380,19 +382,27 @@ a {
 }
 
 /* Narrow desktop: keep room for the hanging numbers next to the sidebar */
+/* Figma Layout · tablet: 16px all round, blocks 20px apart. Case pages keep
+   24px more on the start side, so the section numbers outside the text
+   column don't run into the sidebar. */
 @media (min-width: 768px) and (max-width: 1023.98px) {
   .content {
-    padding-inline-start: calc(var(--space-24) + var(--space-16));
+    gap: var(--space-20);
+    padding: var(--space-16);
+  }
+
+  .content:has(.case-section) {
+    padding-inline-start: calc(var(--space-16) + var(--space-24));
   }
 }
 
 /* --------------------------------------------------------------------------
    Home: case study cards  (Figma: Storefront · Content, 12-column grid)
-   12 columns, 12px gaps; row one is 5 + 7 columns, row two 6 + 6. On a
+   12 columns, 12px gaps; row one is 5 + 7 columns, row two 7 + 5. On a
    desktop the two rows share the window height, like the Figma frame
-   (420px each in a 900px window). Two columns on tablets, one on phones.
+   (428px each in a 900px window). Two columns on tablets, one on phones.
    Card: uncolorful-grey/surface, radius/m, shadow default-s, 16/20 insets,
-   Header/H1 + Body C. Over a picture the text is pure/0 with a 0.5px
+   Header/H1 + the role in Body E, upper case. Over a picture the text is pure/0 with a 0.5px
    pure/100 shadow at 16% (Figma: opacity/16% drop shadow).
    -------------------------------------------------------------------------- */
 .storefront {
@@ -414,6 +424,13 @@ a {
 
 .storefront__item--sbertech { grid-column: span 5; }
 .storefront__item--ma-direct { grid-column: span 7; }
+.storefront__item--raiffeisen-bank { grid-column: span 7; }
+.storefront__item--t-bank { grid-column: span 5; }
+
+/* The home grid fills the window, so the page keeps Figma's 16px bottom */
+.content:has(> .storefront) {
+  padding-block-end: var(--space-16);
+}
 
 .case-card {
   position: relative;
@@ -460,6 +477,20 @@ a {
 
 .case-card__meta {
   color: var(--uncolorful-grey-secondary);
+  text-transform: uppercase;
+}
+
+/* Picture placed like the Figma legasy-demo frame inside the card: 16px
+   past the top and start edges, as tall as the card + 32px */
+.case-card__media--bleed img {
+  position: absolute;
+  inset-block-start: calc(var(--space-16) * -1);
+  inset-inline-start: calc(var(--space-16) * -1);
+  width: auto;
+  min-width: calc(100% + var(--space-32));
+  height: calc(100% + var(--space-32));
+  object-fit: cover;
+  object-position: left center;
 }
 
 .case-card--image {
@@ -476,8 +507,7 @@ a {
 
 @media (max-width: 1023.98px) {
   .storefront__item,
-  .storefront__item--sbertech,
-  .storefront__item--ma-direct {
+  .storefront__item[class*="--"] {
     grid-column: span 6;
   }
 
@@ -489,8 +519,7 @@ a {
 
 @media (max-width: 767.98px) {
   .storefront__item,
-  .storefront__item--sbertech,
-  .storefront__item--ma-direct {
+  .storefront__item[class*="--"] {
     grid-column: 1 / -1;
   }
 
@@ -661,6 +690,20 @@ a {
   .toggle-media__control {
     background-color: color-mix(in srgb, var(--uncolorful-grey-background) 72%, transparent);
   }
+}
+
+/* Legacy vs Current: the arrow sits in a green pill (Figma: wrapper 80×44,
+   6/24 insets, radius/full, uncreative-green/50; icon uncreative-green/90) */
+.media__arrow-pill {
+  flex: none;
+  display: inline-flex;
+  padding: var(--space-6) var(--space-24);
+  border-radius: var(--radius-full);
+  background-color: var(--uncreative-green-50);
+}
+
+.media__arrow-pill .media__arrow {
+  color: var(--uncreative-green-90);
 }
 
 /* icons/arrow-down, 32px, accent-1 */
@@ -1227,8 +1270,7 @@ a {
   position: relative;
   width: 100%;
   max-width: 1140px;
-  aspect-ratio: 1140 / 640;
-  min-height: 200px;
+  height: 160px; /* Figma: image-frame 1140×160 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1424,7 +1466,9 @@ a {
   .content {
     min-height: 100vh;
     min-height: 100dvh;
-    padding-block-start: calc(var(--bar-height) + var(--space-24));
+    /* Figma Layout · mobile: 16px all round under the bar, blocks 20px apart */
+    gap: var(--space-20);
+    padding: calc(var(--bar-height) + var(--space-16)) var(--space-16) var(--space-16);
   }
 
   /* Figma: the "Number" layer is hidden on mobile */
