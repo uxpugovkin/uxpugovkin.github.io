@@ -398,9 +398,9 @@ a {
 
 /* --------------------------------------------------------------------------
    Home: case study cards  (Figma: Storefront · Content, 12-column grid)
-   12 columns, 12px gaps; row one is 5 + 7 columns, row two 7 + 5. On a
-   desktop the two rows share the window height, like the Figma frame
-   (428px each in a 900px window). Two columns on tablets, one on phones.
+   12 columns × 7 rows, 12px gaps; the top cards (5 + 7 columns) span 4
+   rows and the bottom ones (7 + 5) span 3, filling the window height like
+   the Figma frame (491 and 365px tall in a 900px window). Two columns on tablets, one on phones.
    Card: uncolorful-grey/surface, radius/m, shadow default-s, 20/16 insets,
    Header/H1 + the role in Body E, upper case. Over a picture the text is pure/0 with a 0.5px
    pure/100 shadow at 16% (Figma: opacity/16% drop shadow).
@@ -413,13 +413,20 @@ a {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-template-rows: repeat(2, minmax(320px, 1fr));
+  grid-template-rows: repeat(7, minmax(56px, 1fr));
   gap: var(--space-12);
 }
 
 .storefront__item {
   grid-column: span 6;
+  grid-row: span 4;
   display: flex;
+}
+
+/* Bottom row: 3 of the 7 rows */
+.storefront__item--raiffeisen-bank,
+.storefront__item--t-bank {
+  grid-row: span 3;
 }
 
 .storefront__item--sbertech { grid-column: span 5; }
@@ -462,11 +469,12 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: right center; /* keeps the laptop in view on narrow cards */
+  object-position: center;
 }
 
-.case-card__media--center img {
-  object-position: center;
+/* On narrower cards (tablet, phone) keep the laptop of the MA.direct picture in view */
+.storefront__item--ma-direct .case-card__media img {
+  object-position: right center;
 }
 
 .case-card__text {
@@ -486,18 +494,6 @@ a {
   text-transform: uppercase;
 }
 
-/* Picture placed like the Figma legasy-demo frame inside the card: 16px
-   past the top and start edges, as tall as the card + 32px */
-.case-card__media--bleed img {
-  position: absolute;
-  inset-block-start: calc(var(--space-16) * -1);
-  inset-inline-start: calc(var(--space-16) * -1);
-  width: auto;
-  min-width: calc(100% + var(--space-32));
-  height: calc(100% + var(--space-32));
-  object-fit: cover;
-  object-position: left center;
-}
 
 .case-card--image {
   isolation: isolate;
@@ -508,10 +504,10 @@ a {
   z-index: 0;
 }
 
-/* Progressive blur behind the title (Figma: the 72px "Rectangle 1" with a
-   background blur). Two backdrop-blur layers, each faded out with a
-   gradient mask: the stronger one only near the top edge, the softer one
-   a little further down, so the blur eases off smoothly into the picture. */
+/* Progressive blur behind the title (Figma: "Rectangle 1", 72px, progressive
+   background blur 20 at the top edge to 0 at the bottom; Figma's radius is
+   about twice the CSS blur). Two backdrop-blur layers faded with gradient
+   masks add up to a blur that eases off smoothly into the picture. */
 .case-card--image::before,
 .case-card--image::after {
   content: "";
@@ -519,22 +515,22 @@ a {
   inset-block-start: 0;
   inset-inline: 0;
   z-index: 1;
-  height: 128px;
+  height: 72px;
   pointer-events: none;
 }
 
 .case-card--image::before {
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 35%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 35%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
 }
 
 .case-card--image::after {
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 55%);
-  mask-image: linear-gradient(to bottom, #000 0%, transparent 55%);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 60%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 60%);
 }
 
 .case-card--image .case-card__meta {
@@ -555,6 +551,10 @@ a {
   .storefront {
     grid-template-rows: none;
     grid-auto-rows: minmax(280px, auto);
+  }
+
+  .storefront__item[class*="--"] {
+    grid-row: auto;
   }
 }
 
