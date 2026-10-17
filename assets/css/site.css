@@ -387,6 +387,125 @@ a {
 }
 
 /* --------------------------------------------------------------------------
+   Home: case study cards  (Figma: Storefront · Content, 12-column grid)
+   12 columns, 12px gaps; row one is 5 + 7 columns, row two 6 + 6. On a
+   desktop the two rows share the window height, like the Figma frame
+   (420px each in a 900px window). Two columns on tablets, one on phones.
+   Card: uncolorful-grey/surface, radius/m, shadow default-s, 16/20 insets,
+   Header/H1 + Body C. Over a picture the text is pure/0 with a 0.5px
+   pure/100 shadow at 16% (Figma: opacity/16% drop shadow).
+   -------------------------------------------------------------------------- */
+.storefront {
+  flex: 1 1 auto;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(320px, 1fr));
+  gap: var(--space-12);
+}
+
+.storefront__item {
+  grid-column: span 6;
+  display: flex;
+}
+
+.storefront__item--sbertech { grid-column: span 5; }
+.storefront__item--ma-direct { grid-column: span 7; }
+
+.case-card {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: flex-start;
+  padding: var(--space-16) var(--space-20);
+  overflow: hidden;
+  border-radius: var(--radius-m);
+  background-color: var(--uncolorful-grey-surface);
+  box-shadow: var(--shadow-default-s);
+  color: var(--uncolorful-grey-primary);
+  text-decoration: none;
+  transition: box-shadow var(--motion-duration) var(--motion-ease);
+}
+
+.case-card:hover {
+  box-shadow: var(--shadow-default-l);
+}
+
+.image-loader.case-card__media {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+}
+
+.case-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.case-card__text {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.case-card__title {
+  margin: 0;
+}
+
+.case-card__meta {
+  color: var(--uncolorful-grey-secondary);
+}
+
+.case-card--image {
+  color: var(--pure-0);
+}
+
+.case-card--image .case-card__meta {
+  color: var(--pure-0);
+}
+
+.case-card--image .case-card__text {
+  text-shadow: 0.5px 0.5px 0 color-mix(in srgb, var(--pure-100) 16%, transparent);
+}
+
+@media (max-width: 1023.98px) {
+  .storefront__item,
+  .storefront__item--sbertech,
+  .storefront__item--ma-direct {
+    grid-column: span 6;
+  }
+
+  .storefront {
+    grid-template-rows: none;
+    grid-auto-rows: minmax(280px, auto);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .storefront__item,
+  .storefront__item--sbertech,
+  .storefront__item--ma-direct {
+    grid-column: 1 / -1;
+  }
+
+  .storefront {
+    grid-auto-rows: minmax(240px, auto);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-card {
+    transition: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
    Image block  (Figma: image-frame)
    Wider than text: fills the content area up to 1140px, centred; images keep
    their aspect ratio and scale down with the window. Items 12px apart.

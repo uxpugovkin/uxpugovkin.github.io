@@ -14,7 +14,7 @@ After a minute the site is live at `https://your-username.github.io`.
 ## What's where
 
 ```
-index.html               Storefront (home)
+index.html               Home: case study cards
 sbertech/, ma-direct/,   one folder per case study (header: title, role, tags)
 raiffeisen-bank/, t-bank/
 404.html                 "page not found"
@@ -22,7 +22,7 @@ assets/css/tokens.css    habibi tokens: colours (4 themes), radius, type, shadow
 assets/css/site.css      layout and components; uses tokens only
 assets/js/config.js      name, role, menu: edit this to change the menu
 assets/js/site.js        renders the sidebar and runs the mobile bar scroll behaviour
-assets/img/              logo favicon, empty-state image
+assets/img/              favicon, 404 empty-state image, home/ card pictures
 assets/fonts/            IBM Plex Mono for habibi Code styles (OFL licence)
 ```
 
@@ -40,6 +40,18 @@ The menu on every page updates automatically.
 Each section is a `<section class="case-section">` with an `h2` title and a text paragraph.
 The numbers (01, 02, …) are added automatically in order and are hidden on mobile, so you can add,
 remove or reorder sections without renumbering anything.
+
+## Home page
+
+The home page is a grid of case study cards (Figma: Storefront). Each card is a
+`<li class="storefront__item storefront__item--<page>">` with an `<a class="case-card">` inside:
+title (Header/H1) and role · dates (Body C). Row one is 5 + 7 columns of a 12-column grid, row two
+6 + 6; on a desktop the rows share the window height. Tablets get two equal columns, phones one.
+
+To give a card a picture, add `case-card--image` to the link and an
+`<span class="image-loader case-card__media"><img …></span>` before the text, exported at 2× the
+card size into `assets/img/home/` (see Raiffeisen Bank). Over a picture the text turns white with a
+soft shadow. Card clicks are counted in GoatCounter as `home-card-<page>`.
 
 ## Images
 

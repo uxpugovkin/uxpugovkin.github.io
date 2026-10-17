@@ -8,10 +8,9 @@ window.SITE = {
   role: "Product Designer",
 
   // id    — must match <body data-page="..."> on that page
-  // href  — path from the site root ("" is the home page)
+  // href  — path from the site root (the logo links to the home page)
   // icon  — any key from ICONS in site.js ("doc", "folder")
   menu: [
-    { id: "storefront", title: "Storefront", href: "", icon: "doc" },
     { id: "sbertech", title: "Sberbank Technology", href: "sbertech/", icon: "doc" },
     { id: "ma-direct", title: "MA.direct", href: "ma-direct/", icon: "doc" },
     { id: "raiffeisen-bank", title: "Raiffeisen Bank", href: "raiffeisen-bank/", icon: "doc" },

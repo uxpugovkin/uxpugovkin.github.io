@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Storefront — Konstantin P</title>
-  <meta name="description" content="Konstantin P — Product Designer. Storefront.">
+  <title>Konstantin P — Product Designer</title>
+  <meta name="description" content="Konstantin P — Product Designer. Case studies: Sberbank Technology, MA.direct, Raiffeisen Bank, T-bank.">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#191721" media="(prefers-color-scheme: dark)">
@@ -21,21 +21,47 @@
     <script src="./assets/js/site.js"></script>
 
     <main class="content" id="main">
-      <h1 class="visually-hidden">Storefront</h1>
+      <h1 class="visually-hidden">Case studies</h1>
 
-      <!-- Replace this empty state with the case study content -->
-      <section class="empty-state" aria-label="Nothing here yet">
-        <span class="image-loader">
-          <picture>
-            <source srcset="./assets/img/empty-state.webp" type="image/webp">
-            <img class="empty-state__image" src="./assets/img/empty-state.png" width="128" height="128" alt="A cartoon proboscis monkey holding a green table-tennis paddle and a yellow ball">
-          </picture>
-        </span>
-        <div class="empty-state__text">
-          <p class="empty-state__title body-b-bold">Nothing here yet</p>
-          <p class="empty-state__body body-c-regular">When items are added, they’ll show up here</p>
-        </div>
-      </section>
+      <ul class="storefront" aria-label="Case studies">
+        <li class="storefront__item storefront__item--sbertech">
+          <a class="case-card" href="./sbertech/" data-goatcounter-click="home-card-sbertech" data-goatcounter-title="Home card — Sberbank Technology">
+            <span class="case-card__text">
+              <h2 class="case-card__title header-h1">Sberbank Technology</h2>
+              <span class="case-card__meta body-c-regular">Sr. Product Designer <span aria-hidden="true">•</span> since February 2026</span>
+            </span>
+          </a>
+        </li>
+        <li class="storefront__item storefront__item--ma-direct">
+          <a class="case-card" href="./ma-direct/" data-goatcounter-click="home-card-ma-direct" data-goatcounter-title="Home card — MA.direct">
+            <span class="case-card__text">
+              <h2 class="case-card__title header-h1">MA.direct</h2>
+              <span class="case-card__meta body-c-regular">Sr. Product Designer <span aria-hidden="true">•</span> January 2024&nbsp;— January 2026</span>
+            </span>
+          </a>
+        </li>
+        <li class="storefront__item storefront__item--raiffeisen-bank">
+          <a class="case-card case-card--image" href="./raiffeisen-bank/" data-goatcounter-click="home-card-raiffeisen-bank" data-goatcounter-title="Home card — Raiffeisen Bank">
+            <span class="image-loader case-card__media">
+              <img src="./assets/img/home/raiffeisen-card-574.webp" srcset="./assets/img/home/raiffeisen-card-574.webp 574w, ./assets/img/home/raiffeisen-card-1148.webp 1148w"
+                   sizes="(max-width: 767.98px) calc(100vw - 48px), (max-width: 1023.98px) calc(50vw - 150px), calc((100vw - 292px) / 2)"
+                   width="1148" height="840" alt="" loading="eager" decoding="async">
+            </span>
+            <span class="case-card__text">
+              <h2 class="case-card__title header-h1">Raiffeisen Bank</h2>
+              <span class="case-card__meta body-c-regular">Product Designer <span aria-hidden="true">•</span> October 2022&nbsp;— January 2024</span>
+            </span>
+          </a>
+        </li>
+        <li class="storefront__item storefront__item--t-bank">
+          <a class="case-card" href="./t-bank/" data-goatcounter-click="home-card-t-bank" data-goatcounter-title="Home card — T-bank">
+            <span class="case-card__text">
+              <h2 class="case-card__title header-h1">T-bank</h2>
+              <span class="case-card__meta body-c-regular">Product Designer <span aria-hidden="true">•</span> June 2021&nbsp;— October 2022</span>
+            </span>
+          </a>
+        </li>
+      </ul>
     </main>
   </div>
 </body>
