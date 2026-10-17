@@ -471,6 +471,7 @@ a {
 
 .case-card__text {
   position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -499,7 +500,41 @@ a {
 }
 
 .case-card--image {
+  isolation: isolate;
   color: var(--pure-0);
+}
+
+.case-card__media {
+  z-index: 0;
+}
+
+/* Progressive blur behind the title (Figma: the 72px "Rectangle 1" with a
+   background blur). Two backdrop-blur layers, each faded out with a
+   gradient mask: the stronger one only near the top edge, the softer one
+   a little further down, so the blur eases off smoothly into the picture. */
+.case-card--image::before,
+.case-card--image::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 1;
+  height: 128px;
+  pointer-events: none;
+}
+
+.case-card--image::before {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 35%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 35%, transparent 100%);
+}
+
+.case-card--image::after {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 55%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 55%);
 }
 
 .case-card--image .case-card__meta {
