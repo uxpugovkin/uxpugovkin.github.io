@@ -398,9 +398,11 @@ a {
 
 /* --------------------------------------------------------------------------
    Home: case study cards  (Figma: Storefront · Content)
-   One column of full-width cards, 512px tall and 16px apart (Figma: four
-   1160 × 512 frames in a vertical auto layout, gap 16). Phones and tablets
-   keep the card's proportions, with a floor so the title has room.
+   One column of full-width cards 16px apart (Figma: four 1160 × 512 frames
+   in a vertical auto layout, gap 16). Every card keeps Figma's 1160:512
+   shape, so it is exactly 512px tall in the 1440px frame and every width
+   shows the same crop of the picture, with no jumps between breakpoints.
+   Narrow phones get a 240px floor so the title has room.
    Card: uncolorful-grey/surface, radius/m, shadow default-s, 20/16 insets,
    Header/H1 + the role in Body E, upper case. Over a picture the text is pure/0 with a 0.5px
    pure/100 shadow at 16% (Figma: opacity/16% drop shadow).
@@ -417,7 +419,8 @@ a {
 
 .storefront__item {
   display: flex;
-  height: 512px;
+  aspect-ratio: 1160 / 512;
+  min-height: 240px;
 }
 
 /* The page keeps Figma's 16px bottom under the last card */
@@ -522,14 +525,6 @@ a {
 
 .case-card--image .case-card__text {
   text-shadow: 0.5px 0.5px 0 color-mix(in srgb, var(--pure-100) 16%, transparent);
-}
-
-@media (max-width: 1023.98px) {
-  .storefront__item {
-    height: auto;
-    aspect-ratio: 1160 / 512;
-    min-height: 240px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

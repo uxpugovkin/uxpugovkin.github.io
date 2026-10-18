@@ -46,7 +46,8 @@ remove or reorder sections without renumbering anything.
 The home page is a grid of case study cards (Figma: Storefront). Each card is a
 `<li class="storefront__item storefront__item--<page>">` with an `<a class="case-card">` inside:
 title (Header/H1) and the role (Body E, upper case). The cards sit in one column, full width,
-512px tall and 16px apart, like the four 1160×512 frames in Figma; phones and tablets keep that shape (at least 240px tall).
+16px apart, like the four 1160×512 frames in Figma. Each card keeps the 1160:512 shape at every width
+(512px tall in a 1440px window), with a 240px floor on narrow phones.
 
 To give a card a picture, add `case-card--image` to the link and an `<span class="image-loader case-card__media"><img …></span>` before the text, cropped at 1× and 2× the card size (1160×512 and 2320×1024) into `assets/img/home/` (all four cards have one). Over a picture the text turns white with a
 soft shadow. Card clicks are counted in GoatCounter as `home-card-<page>`.
