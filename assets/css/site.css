@@ -397,37 +397,30 @@ a {
 }
 
 /* --------------------------------------------------------------------------
-   Home: case study cards  (Figma: Storefront · Content, 12-column grid)
-   12 columns × 2 equal rows, 12px gaps; row one is 5 + 7 columns, row two
-   7 + 5. The rows share the window height like the Figma frame (428px
-   each in a 900px window). Two columns on tablets, one on phones.
+   Home: case study cards  (Figma: Storefront · Content)
+   One column of full-width cards, 512px tall and 16px apart (Figma: four
+   1160 × 512 frames in a vertical auto layout, gap 16). Phones and tablets
+   keep the card's proportions, with a floor so the title has room.
    Card: uncolorful-grey/surface, radius/m, shadow default-s, 20/16 insets,
    Header/H1 + the role in Body E, upper case. Over a picture the text is pure/0 with a 0.5px
    pure/100 shadow at 16% (Figma: opacity/16% drop shadow).
    -------------------------------------------------------------------------- */
 .storefront {
-  flex: 1 1 auto;
   width: 100%;
   margin: 0;
   padding: 0;
   list-style: none;
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-template-rows: repeat(2, minmax(320px, 1fr));
-  gap: var(--space-12);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
 }
 
 .storefront__item {
-  grid-column: span 6;
   display: flex;
+  height: 512px;
 }
 
-.storefront__item--sbertech { grid-column: span 5; }
-.storefront__item--ma-direct { grid-column: span 7; }
-.storefront__item--raiffeisen-bank { grid-column: span 7; }
-.storefront__item--t-bank { grid-column: span 5; }
-
-/* The home grid fills the window, so the page keeps Figma's 16px bottom */
+/* The page keeps Figma's 16px bottom under the last card */
 .content:has(> .storefront) {
   padding-block-end: var(--space-16);
 }
@@ -495,7 +488,7 @@ a {
 
 /* Progressive blur behind the title (Figma: "Rectangle 1", progressive
    background blur 20 at the top edge to 0 at the bottom; Figma's radius is
-   about twice the CSS blur), now 88px tall. Two backdrop-blur layers faded with gradient
+   about twice the CSS blur), 80px tall. Two backdrop-blur layers faded with gradient
    masks add up to a blur that eases off smoothly into the picture. */
 .case-card--image::before,
 .case-card--image::after {
@@ -504,7 +497,7 @@ a {
   inset-block-start: 0;
   inset-inline: 0;
   z-index: 1;
-  height: 88px;
+  height: 80px;
   pointer-events: none;
 }
 
@@ -532,26 +525,10 @@ a {
 }
 
 @media (max-width: 1023.98px) {
-  .storefront__item,
-  .storefront__item[class*="--"] {
-    grid-column: span 6;
-  }
-
-  .storefront {
-    grid-template-rows: none;
-    grid-auto-rows: minmax(280px, auto);
-  }
-
-}
-
-@media (max-width: 767.98px) {
-  .storefront__item,
-  .storefront__item[class*="--"] {
-    grid-column: 1 / -1;
-  }
-
-  .storefront {
-    grid-auto-rows: minmax(240px, auto);
+  .storefront__item {
+    height: auto;
+    aspect-ratio: 1160 / 512;
+    min-height: 240px;
   }
 }
 
