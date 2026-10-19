@@ -644,7 +644,8 @@ a {
 }
 
 /* Toggle media (Figma: raif-legasy-demo — variants switched by a habibi
-   switch). Two images share one 1140:560 slot; the switch in the corner
+   switch). Two images share one 1140:640 slot (legacy-demo and current-demo
+   are both 1140 × 640 in Figma); the switch in the corner
    cross-fades between them. data-active="true" shows the --on image.
    site.js keeps data-active, aria-checked and aria-hidden in sync. */
 .toggle-media {
@@ -653,15 +654,10 @@ a {
   container-type: inline-size;
 }
 
-/* Figma current-demo: the same switcher at the cover pictures' 1140:641 */
-.toggle-media--current .image-loader.toggle-media__frame {
-  aspect-ratio: 1140 / 641;
-}
-
 /* Figma: radius/m with clip content on every legasy-demo variant */
 .image-loader.toggle-media__frame {
   width: 100%;
-  aspect-ratio: 1140 / 560;
+  aspect-ratio: 1140 / 640;
   border-radius: var(--radius-m);
   overflow: hidden;
 }
