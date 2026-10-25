@@ -239,6 +239,19 @@ a {
   outline-offset: -2px;
 }
 
+/* Figma: divider — 2px rule, 12px in from the sides, 8px above and below */
+.menu-divider {
+  padding: var(--space-8) var(--space-12);
+}
+
+.menu-divider::before {
+  content: "";
+  display: block;
+  height: 2px;
+  border-radius: var(--radius-xs);
+  background: var(--uncolorful-grey-border);
+}
+
 /* --------------------------------------------------------------------------
    Empty state  (Figma: empty-state · type=empty)
    -------------------------------------------------------------------------- */

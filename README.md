@@ -17,6 +17,7 @@ After a minute the site is live at `https://your-username.github.io`.
 index.html               Home: case study cards
 sbertech/, ma-direct/,   one folder per case study (header: title, role, tags)
 raiffeisen-bank/, t-bank/
+ma-mobile/               placeholder ("coming soon" empty state) until the case is written
 404.html                 "page not found"
 assets/css/tokens.css    habibi tokens: colours (4 themes), radius, type, shadows, fonts
 assets/css/site.css      layout and components; uses tokens only
@@ -31,9 +32,11 @@ assets/fonts/            IBM Plex Mono for habibi Code styles (OFL licence)
 1. Copy the `t-bank/` folder and rename the copy, e.g. `new-project/`.
 2. In `new-project/index.html`, change `data-page="t-bank"` to `new-project` and update the `<title>`.
 3. Add one line to `assets/js/config.js`:
-   `{ id: "new-project", title: "New Project", href: "new-project/", icon: "doc" }`
+   `{ id: "new-project", title: "New Project", href: "new-project/", icon: "desktop" }`
 
-The menu on every page updates automatically.
+The menu on every page updates automatically. Icons (Figma `icons/…`): `desktop` for web and desktop
+products, `phone` for mobile apps. `{ divider: true }` draws the 2px divider between groups, as in the
+Figma `github-sidebar`: the four desktop cases, a divider, then MA.mobile.
 
 ## Case study sections
 
