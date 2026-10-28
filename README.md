@@ -73,8 +73,11 @@ Each half is up to 564px; export them at 1032px with a 564px copy. When the bloc
 
 ## Cards
 
-Every case study has the five-card reflection block (Figma: `image-frame`) right after Outcomes,
-as a `<section class="cards">` with two equal columns:
+Every case study has the reflection block (Figma: `image-frame`) right after Outcomes,
+as a `<section class="cards">` with two equal columns. Sberbank Technology and MA.direct use all five cards;
+Raiffeisen Bank and T-bank have no Fails card, and there Business goal drops `card--grow` so it hugs its text
+while Hard work takes the rest of the column, as in Figma. Business goal is a plain `<p class="body-c-regular">`,
+the other cards are bullet lists:
 
 | Column | Card | Classes |
 |---|---|---|
