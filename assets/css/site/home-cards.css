@@ -1,8 +1,8 @@
 /* ==========================================================================
    HOME PAGE: CASE STUDY CARDS  (Figma: Storefront · Content)
 
-   One column of full-width cards, 16px apart — like the four 1160 × 512
-   frames in a vertical auto-layout in Figma.
+   One column of cards, 16px apart — like the four 1140 × 512 frames in a
+   vertical auto-layout in Figma.
 
    ┌─────────────────────────────────────────────┐
    │ Sberbank Technology   ← title, Header H1    │ ← blurred strip behind
@@ -11,10 +11,10 @@
    │          (picture fills the card)           │
    └─────────────────────────────────────────────┘
 
-   Size: the card is as wide as the space between the side paddings.
-   Its height follows that width at Figma's 1160:512 ratio (exactly 512px
-   in a 1440px window), but never less than 240px so the title fits on
-   phones.
+   Size: the card is as wide as the space between the side paddings, up
+   to 1140px (Figma: max width 1140). Its height follows that width at
+   Figma's 1140:512 ratio (exactly 512px at full width), but never less
+   than 240px so the title fits on phones.
 
    Picture: the whole 16:9 scene, cropped to fill the card ("cover", like
    Figma's Fill image mode) and held on its focal point (the screen in the
@@ -23,6 +23,7 @@
    Card: uncolorful-grey/surface, radius/l, shadow default-s, 20/16 padding.
    Over a picture the text is white (pure/0) with a 0.5px black shadow
    at 16% (Figma: opacity/16% drop shadow).
+   Hover: the picture darkens under a black (pure/100) layer at 56%.
    ========================================================================== */
 
 
@@ -40,14 +41,16 @@
   container-type: inline-size;
 }
 
-/* One card slot. Height = list width × 512 / 1160, at least 240px.
+/* One card slot. Height = card width × 512 / 1140, at least 240px.
+   The card width is the list width, but no more than 1140px.
    (Worked out from the width directly, not with aspect-ratio: Safari gets
    that combination wrong and pushes cards past the right padding.) */
 .storefront__item {
   display: flex;
   min-width: 0;
+  max-width: 1140px; /* Figma: max width 1140 */
   height: 240px; /* fallback for old browsers that can't do the line below */
-  height: max(240px, 100cqi * 512 / 1160);
+  height: max(240px, min(100cqi, 1140px) * 512 / 1140);
 }
 
 /* Raiffeisen only: crop lower than the centre to keep the laptop in view,
@@ -77,12 +80,6 @@
   color: var(--uncolorful-grey-primary);
   min-width: 0;
   text-decoration: none;
-  transition: box-shadow var(--motion-duration) var(--motion-ease);
-}
-
-/* Hover: the shadow grows from default-s to default-l */
-.case-card:hover {
-  box-shadow: var(--shadow-default-l);
 }
 
 /* The picture fills the whole card, behind the text.
@@ -127,6 +124,24 @@
 
 .case-card__media {
   z-index: 0;
+}
+
+/* Hover: a black layer at 56% over the picture, under the blur and the
+   text (Figma: "Hover" layer, pure/100 at opacity 56) */
+.case-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-color: var(--pure-100);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--motion-duration) var(--motion-ease);
+}
+
+.case-card:hover .case-card__media::after,
+.case-card:focus-visible .case-card__media::after {
+  opacity: 0.56;
 }
 
 /* Progressive blur behind the title (Figma: "Rectangle 1", progressive
@@ -175,7 +190,7 @@
 
 /* Visitors who turned on "reduce motion" on their device: no animation */
 @media (prefers-reduced-motion: reduce) {
-  .case-card {
+  .case-card__media::after {
     transition: none;
   }
 }
