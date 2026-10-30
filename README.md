@@ -27,6 +27,24 @@ assets/img/              favicon, 404 empty-state image, home/ card pictures
 assets/fonts/            IBM Plex Mono for habibi Code styles (OFL licence)
 ```
 
+## The Figma file
+
+Everything here comes from **habibi-portfolio**, which is organised one page per thing you can
+build, with `–––` rules between the groups:
+
+```
+layout                   the page shell: github-sidebar, menu, the content column
+storefront               the home page grid of case study cards
+sbertech, ma-direct,     one page per case study, each holding that case's
+raiffeisen, t-bank,      <page>-page frame plus its legacy-vs-new sources
+ma-mobile
+visuals                  cover scenes and other rendered artwork
+```
+
+A case page's `Content` frame is the page's blocks in order, so the frames read top to bottom the
+same way the HTML does. The `legacy-vs-new` section beside it holds the raw 1440 × 872 screens the
+Legacy vs Current block and the section images are exported from.
+
 ## Add a case study
 
 1. Copy the `t-bank/` folder and rename the copy, e.g. `new-project/`.
@@ -43,6 +61,9 @@ Figma `github-sidebar`: the four desktop cases, a divider, then MA.mobile.
 Each section is a `<section class="case-section">` with an `h2` title and a text paragraph.
 The numbers (01, 02, …) are added automatically in order and are hidden on mobile, so you can add,
 remove or reorder sections without renumbering anything.
+
+Blocks in the content column sit `--vert-space` apart — the habibi `vert-space` variable, 20px,
+the same at every breakpoint. Change it in one place in `site.css` and every page follows.
 
 ## Home page
 
