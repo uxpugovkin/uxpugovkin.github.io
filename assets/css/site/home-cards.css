@@ -27,9 +27,11 @@
    ========================================================================== */
 
 
-/* The list of cards */
+/* The list of cards: up to 1140px wide (Figma: max width 1140),
+   centred by the page like every other block */
 .storefront {
   width: 100%;
+  max-width: 1140px;
   min-width: 0;
   margin: 0;
   padding: 0;
@@ -41,16 +43,14 @@
   container-type: inline-size;
 }
 
-/* One card slot. Height = card width × 512 / 1140, at least 240px.
-   The card width is the list width, but no more than 1140px.
+/* One card slot. Height = list width × 512 / 1140, at least 240px.
    (Worked out from the width directly, not with aspect-ratio: Safari gets
    that combination wrong and pushes cards past the right padding.) */
 .storefront__item {
   display: flex;
   min-width: 0;
-  max-width: 1140px; /* Figma: max width 1140 */
   height: 240px; /* fallback for old browsers that can't do the line below */
-  height: max(240px, min(100cqi, 1140px) * 512 / 1140);
+  height: max(240px, 100cqi * 512 / 1140);
 }
 
 /* Raiffeisen only: crop lower than the centre to keep the laptop in view,
