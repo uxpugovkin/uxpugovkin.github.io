@@ -85,6 +85,8 @@ Export each image at 2160px wide and add a 1140px copy, both as `.webp`:
 others the small one, and clicking an image opens it full size.
 
 Wrap every image in `<span class="image-loader">` (add `image-loader--spinner` for large ones).
+Every image slot is rounded with habibi `radius/l` (10px) and clips its image, as in Figma, so images,
+the video, the Legacy vs Current switchers, the home cards and the Figma button block all share one corner.
 While it loads, it shows the habibi skeleton pulse (and loader), sized to the image so nothing jumps.
 Always write an `alt` that says what the image shows.
 

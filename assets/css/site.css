@@ -423,7 +423,7 @@ a {
    into a minimum width and pushes the cards past the right padding.
    Pictures are the whole 16:9 scene, covered and held on its focal point
    (the screen in the middle), so tall phone cards show more of the scene.
-   Card: uncolorful-grey/surface, radius/m, shadow default-s, 20/16 insets,
+   Card: uncolorful-grey/surface, radius/l, shadow default-s, 20/16 insets,
    Header/H1 + the role in Body E, upper case. Over a picture the text is pure/0 with a 0.5px
    pure/100 shadow at 16% (Figma: opacity/16% drop shadow).
    -------------------------------------------------------------------------- */
@@ -463,7 +463,7 @@ a {
   align-items: flex-start;
   padding: var(--space-20) var(--space-16); /* Figma: 20 top/bottom, 16 sides */
   overflow: hidden;
-  border-radius: var(--radius-m);
+  border-radius: var(--radius-l); /* Figma: radius/l, like every image */
   background-color: var(--uncolorful-grey-surface);
   box-shadow: var(--shadow-default-s);
   color: var(--uncolorful-grey-primary);
@@ -594,12 +594,6 @@ a {
   height: auto;
 }
 
-/* Rounded image slot (Figma: radius/m on the image rectangle) */
-.image-loader.image-loader--rounded {
-  border-radius: var(--radius-m);
-  overflow: hidden;
-}
-
 /* Canvas: a smaller screenshot placed on a token background, positioned
    with the same left/top/width/height percentages as the Figma crop */
 .media__canvas {
@@ -670,11 +664,11 @@ a {
   container-type: inline-size;
 }
 
-/* Figma: radius/m with clip content on every legasy-demo variant */
+/* Figma: radius/l with clip content on every legasy-demo and current-demo variant */
 .image-loader.toggle-media__frame {
   width: 100%;
   aspect-ratio: 1140 / 640;
-  border-radius: var(--radius-m);
+  border-radius: var(--radius-l);
   overflow: hidden;
 }
 
@@ -1303,7 +1297,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-m);
+  border-radius: var(--radius-l);
   overflow: hidden;
 }
 
@@ -1339,7 +1333,9 @@ a {
 .image-loader {
   position: relative;
   display: block;
+  /* Figma: radius/l on every image and video, clipped */
   border-radius: var(--radius-l);
+  overflow: hidden;
 }
 
 .image-loader img,
