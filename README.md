@@ -88,6 +88,10 @@ Wrap every image in `<span class="image-loader">` (add `image-loader--spinner` f
 While it loads, it shows the habibi skeleton pulse (and loader), sized to the image so nothing jumps.
 Always write an `alt` that says what the image shows.
 
+MA.direct, Raiffeisen Bank and T-bank each close with a section image: the case's own
+1440 × 872 screen from its `legacy-vs-new` section, exported as `cover-source-1140.webp` and
+`cover-source-2160.webp` and shown at 1140 × 690.
+
 Two images side by side (Figma: a horizontal image frame, 12px gap) use `<figure class="media media--row">`.
 Each half is up to 564px; export them at 1032px with a 564px copy. When the block is narrower than 560px
 (phones), the pair stacks into one column.
