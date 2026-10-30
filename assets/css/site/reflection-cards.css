@@ -1,0 +1,129 @@
+/* ==========================================================================
+   REFLECTION CARDS  (Figma: image-frame — the five-card block)
+
+   Comes right after "Outcomes" on every case study. Two equal columns,
+   up to 1140px wide, 8px gaps:
+
+   ┌──────────────────┬──────────────────┐
+   │ Business goal    │ Smart work       │
+   │ (orange, grows)  │ (blue, grows)    │
+   ├──────────────────┼──────────────────┤
+   │ Hard work        │ Shipped impact   │
+   │ (grey, grows)    │ (green, grows)   │
+   │                  ├──────────────────┤
+   │                  │ Fails (red)      │
+   └──────────────────┴──────────────────┘
+
+   Height: at least 512px (the fixed height of the Figma frame); taller
+   only if the text needs it. Both columns match the taller one, and
+   cards marked card--grow share the spare room equally
+   (= Figma "Fill container").
+
+   When the block is narrower than 700px, the cards stack into one column.
+
+   Card colours (fill / text) — add the class to the card in HTML:
+     card              grey     uncolorful-grey/border  / primary
+     card--orange      orange   shitpile-orange 90 / 40
+     card--green       green    uncreative-green 90 / 40
+     card--blue        blue     boring-blue 90 / 40
+     card--red         red      traffic-light-red 90 / 40
+   ========================================================================== */
+
+/* The whole block */
+.cards {
+  width: 100%;
+  max-width: 1140px;
+  /* lets the rule below react to this block's own width */
+  container-type: inline-size;
+}
+
+/* Two equal columns, 8px apart */
+.cards__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  min-height: 512px;
+}
+
+/* One column: cards stacked, 8px apart */
+.cards__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+/* Block narrower than 700px: one column */
+@container (max-width: 699.98px) {
+  .cards__grid {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+}
+
+/* Same thing for old browsers that can't measure the block's width:
+   they switch to one column when the window is under 1024px */
+@supports not (container-type: inline-size) {
+  @media (max-width: 1023.98px) {
+    .cards__grid {
+      grid-template-columns: 1fr;
+      min-height: 0;
+    }
+  }
+}
+
+/* One card. The default is the neutral grey card (Hard work).
+   --card-fill and --card-text are set here, and the colour classes below
+   just replace those two values. */
+.card {
+  --card-fill: var(--uncolorful-grey-border);
+  --card-text: var(--uncolorful-grey-primary);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding: var(--space-16) var(--space-16) var(--space-20);   /* 16 top, 16 sides, 20 bottom */
+  border-radius: var(--radius-s);
+  background-color: var(--card-fill);
+  color: var(--card-text);
+}
+
+/* Figma: fill container — growing cards in a column share the height
+   equally, but never get shorter than their text */
+.card--grow {
+  flex: 1 1 0;
+}
+
+.card--orange {
+  --card-fill: var(--shitpile-orange-90);
+  --card-text: var(--shitpile-orange-40);
+}
+
+.card--green {
+  --card-fill: var(--uncreative-green-90);
+  --card-text: var(--uncreative-green-40);
+}
+
+.card--blue {
+  --card-fill: var(--boring-blue-90);
+  --card-text: var(--boring-blue-40);
+}
+
+.card--red {
+  --card-fill: var(--traffic-light-red-90);
+  --card-text: var(--traffic-light-red-40);
+}
+
+/* Items in a card have no margins; the 8px gap does the spacing */
+.card > * {
+  margin: 0;
+}
+
+/* Bulleted list in a card — text 21px in */
+.card__list {
+  padding-inline-start: 21px;
+  list-style: disc;
+}
+
+.card__list strong {
+  font-weight: 700;
+}

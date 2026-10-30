@@ -1,0 +1,46 @@
+/* ==========================================================================
+   CLOSING BANNER  (Figma: image-frame 1140 × 160 with a centred button)
+
+   A picture strip with one button in the middle, e.g. "Explore my Figma"
+   at the end of the Sberbank Technology case.
+
+   ┌──────────────────────────────────────────┐
+   │      (picture)  [ Explore my Figma ]      │  160px tall
+   └──────────────────────────────────────────┘
+
+   The picture fills the strip (cropped like Figma "Fill"), up to 1140px
+   wide; the button sits above it.
+   ========================================================================== */
+
+.cta {
+  position: relative;
+  width: 100%;
+  max-width: 1140px;
+  height: 160px; /* Figma: image-frame 1140×160 */
+  display: flex;
+  align-items: center;       /* button centred top-to-bottom… */
+  justify-content: center;   /* …and left-to-right */
+  border-radius: var(--radius-l);
+  overflow: hidden;
+}
+
+/* The picture fills the whole strip, behind the button.
+   (The strip already rounds the corners, so the picture itself doesn't.) */
+.image-loader.cta__media {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+}
+
+.cta__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* = Figma image "Fill" */
+}
+
+/* The button sits above the picture */
+.cta .button {
+  position: relative;
+  z-index: 1;
+}

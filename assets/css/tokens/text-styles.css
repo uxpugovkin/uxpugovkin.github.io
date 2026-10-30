@@ -1,0 +1,203 @@
+/* ==========================================================================
+   TEXT STYLES  (habibi text styles)
+
+   Two parts:
+   1. The numbers behind each style (size, line height, letter spacing)
+   2. One class per Figma text style. In HTML, add the class to any text
+      to apply that style, e.g.  <p class="body-c-regular">…</p>
+
+   Figma name            →  class in HTML
+   Body A / Regular      →  body-a-regular       (20 / 28)
+   Body A / Bold         →  body-a-bold
+   Body B …  Body E      →  body-b-…  body-e-…   (16/24, 14/20, 12/16, 10/12)
+   Header / Display A    →  header-display-a     (76 / 84)
+   Header / Display B    →  header-display-b     (52 / 64)
+   Header / H1, H2, H3   →  header-h1, -h2, -h3  (28/32, 24/32, 20/28)
+   Code / S              →  code-s               (12 / 20)
+
+   Do not edit by hand — update in Figma and regenerate.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. The numbers
+   -------------------------------------------------------------------------- */
+:root {
+  /* Body A…E */
+  --body-a-size: 20px;
+  --body-a-line-height: 28px;
+  --body-a-letter-spacing: 0em;
+  --body-b-size: 16px;
+  --body-b-line-height: 24px;
+  --body-b-letter-spacing: 0em;
+  --body-c-size: 14px;
+  --body-c-line-height: 20px;
+  --body-c-letter-spacing: 0em;
+  --body-d-size: 12px;
+  --body-d-line-height: 16px;
+  --body-d-letter-spacing: 0em;
+  --body-e-size: 10px;
+  --body-e-line-height: 12px;
+  --body-e-letter-spacing: 0.04em;
+
+  /* Header Display A, Display B, H1…H3 */
+  --header-display-a-size: 76px;
+  --header-display-a-line-height: 84px;
+  --header-display-a-letter-spacing: 0.03em;
+  --header-display-b-size: 52px;
+  --header-display-b-line-height: 64px;
+  --header-display-b-letter-spacing: 0em;
+  --header-h1-size: 28px;
+  --header-h1-line-height: 32px;
+  --header-h1-letter-spacing: 0em;
+  --header-h2-size: 24px;
+  --header-h2-line-height: 32px;
+  --header-h2-letter-spacing: 0em;
+  --header-h3-size: 20px;
+  --header-h3-line-height: 28px;
+  --header-h3-letter-spacing: 0em;
+
+  /* Code */
+  --code-s-size: 12px;
+  --code-s-line-height: 20px;
+  --code-s-letter-spacing: 0em;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. The classes — one per Figma text style
+   -------------------------------------------------------------------------- */
+
+/* Body A — 20px */
+.body-a-regular {
+  font-family: var(--font-family);
+  font-size: var(--body-a-size);
+  line-height: var(--body-a-line-height);
+  letter-spacing: var(--body-a-letter-spacing);
+  font-weight: var(--font-weight-regular);
+}
+.body-a-bold {
+  font-family: var(--font-family);
+  font-size: var(--body-a-size);
+  line-height: var(--body-a-line-height);
+  letter-spacing: var(--body-a-letter-spacing);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Body B — 16px */
+.body-b-regular {
+  font-family: var(--font-family);
+  font-size: var(--body-b-size);
+  line-height: var(--body-b-line-height);
+  letter-spacing: var(--body-b-letter-spacing);
+  font-weight: var(--font-weight-regular);
+}
+.body-b-bold {
+  font-family: var(--font-family);
+  font-size: var(--body-b-size);
+  line-height: var(--body-b-line-height);
+  letter-spacing: var(--body-b-letter-spacing);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Body C — 14px (the main text size of the site) */
+.body-c-regular {
+  font-family: var(--font-family);
+  font-size: var(--body-c-size);
+  line-height: var(--body-c-line-height);
+  letter-spacing: var(--body-c-letter-spacing);
+  font-weight: var(--font-weight-regular);
+}
+.body-c-bold {
+  font-family: var(--font-family);
+  font-size: var(--body-c-size);
+  line-height: var(--body-c-line-height);
+  letter-spacing: var(--body-c-letter-spacing);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Body D — 12px */
+.body-d-regular {
+  font-family: var(--font-family);
+  font-size: var(--body-d-size);
+  line-height: var(--body-d-line-height);
+  letter-spacing: var(--body-d-letter-spacing);
+  font-weight: var(--font-weight-regular);
+}
+.body-d-bold {
+  font-family: var(--font-family);
+  font-size: var(--body-d-size);
+  line-height: var(--body-d-line-height);
+  letter-spacing: var(--body-d-letter-spacing);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Body E — 10px */
+.body-e-regular {
+  font-family: var(--font-family);
+  font-size: var(--body-e-size);
+  line-height: var(--body-e-line-height);
+  letter-spacing: var(--body-e-letter-spacing);
+  font-weight: var(--font-weight-regular);
+}
+.body-e-bold {
+  font-family: var(--font-family);
+  font-size: var(--body-e-size);
+  line-height: var(--body-e-line-height);
+  letter-spacing: var(--body-e-letter-spacing);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Header Display A — 76px */
+.header-display-a {
+  font-family: var(--font-family);
+  font-size: var(--header-display-a-size);
+  line-height: var(--header-display-a-line-height);
+  letter-spacing: var(--header-display-a-letter-spacing);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Header Display B — 52px */
+.header-display-b {
+  font-family: var(--font-family);
+  font-size: var(--header-display-b-size);
+  line-height: var(--header-display-b-line-height);
+  letter-spacing: var(--header-display-b-letter-spacing);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Header H1 — 28px */
+.header-h1 {
+  font-family: var(--font-family);
+  font-size: var(--header-h1-size);
+  line-height: var(--header-h1-line-height);
+  letter-spacing: var(--header-h1-letter-spacing);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Header H2 — 24px */
+.header-h2 {
+  font-family: var(--font-family);
+  font-size: var(--header-h2-size);
+  line-height: var(--header-h2-line-height);
+  letter-spacing: var(--header-h2-letter-spacing);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Header H3 — 20px */
+.header-h3 {
+  font-family: var(--font-family);
+  font-size: var(--header-h3-size);
+  line-height: var(--header-h3-line-height);
+  letter-spacing: var(--header-h3-letter-spacing);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Code S — 12px, monospace */
+.code-s {
+  font-family: var(--font-family-code);
+  font-size: var(--code-s-size);
+  line-height: var(--code-s-line-height);
+  letter-spacing: var(--code-s-letter-spacing);
+  font-weight: var(--font-weight-regular);
+}

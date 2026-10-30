@@ -1,0 +1,181 @@
+/* ==========================================================================
+   HOME PAGE: CASE STUDY CARDS  (Figma: Storefront · Content)
+
+   One column of full-width cards, 16px apart — like the four 1160 × 512
+   frames in a vertical auto-layout in Figma.
+
+   ┌─────────────────────────────────────────────┐
+   │ Sberbank Technology   ← title, Header H1    │ ← blurred strip behind
+   │ SR. PRODUCT DESIGNER  ← role, Body E, CAPS  │   the text, 80px tall
+   │                                             │
+   │          (picture fills the card)           │
+   └─────────────────────────────────────────────┘
+
+   Size: the card is as wide as the space between the side paddings.
+   Its height follows that width at Figma's 1160:512 ratio (exactly 512px
+   in a 1440px window), but never less than 240px so the title fits on
+   phones.
+
+   Picture: the whole 16:9 scene, cropped to fill the card ("cover", like
+   Figma's Fill image mode) and held on its focal point (the screen in the
+   middle). So tall phone cards show more of the scene.
+
+   Card: uncolorful-grey/surface, radius/l, shadow default-s, 20/16 padding.
+   Over a picture the text is white (pure/0) with a 0.5px black shadow
+   at 16% (Figma: opacity/16% drop shadow).
+   ========================================================================== */
+
+
+/* The list of cards */
+.storefront {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  /* lets the cards below measure this list's width (the "cqi" unit) */
+  container-type: inline-size;
+}
+
+/* One card slot. Height = list width × 512 / 1160, at least 240px.
+   (Worked out from the width directly, not with aspect-ratio: Safari gets
+   that combination wrong and pushes cards past the right padding.) */
+.storefront__item {
+  display: flex;
+  min-width: 0;
+  height: 240px; /* fallback for old browsers that can't do the line below */
+  height: max(240px, 100cqi * 512 / 1160);
+}
+
+/* Raiffeisen only: crop lower than the centre to keep the laptop in view,
+   as in Figma. 50% = centred left-right, 78% = towards the bottom.
+   Copy this rule for another card to move its picture. */
+.storefront__item--raiffeisen-bank .case-card__media img {
+  object-position: 50% 78%;
+}
+
+/* The home page keeps Figma's 16px under the last card
+   (other pages have 32px) */
+.content:has(> .storefront) {
+  padding-block-end: var(--space-16);
+}
+
+/* The card itself — the whole card is one link */
+.case-card {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: flex-start;   /* text sits at the top */
+  padding: var(--space-20) var(--space-16); /* Figma: 20 top/bottom, 16 sides */
+  overflow: hidden;   /* clips the picture to the rounded corners */
+  border-radius: var(--radius-l); /* Figma: radius/l, like every image */
+  background-color: var(--uncolorful-grey-surface);
+  box-shadow: var(--shadow-default-s);
+  color: var(--uncolorful-grey-primary);
+  min-width: 0;
+  text-decoration: none;
+  transition: box-shadow var(--motion-duration) var(--motion-ease);
+}
+
+/* Hover: the shadow grows from default-s to default-l */
+.case-card:hover {
+  box-shadow: var(--shadow-default-l);
+}
+
+/* The picture fills the whole card, behind the text.
+   (The card already rounds the corners, so the picture itself doesn't.) */
+.image-loader.case-card__media {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+}
+
+.case-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* = Figma image "Fill" */
+  object-position: center;
+}
+
+/* Title + role, stacked, above the picture and the blur */
+.case-card__text {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.case-card__title {
+  margin: 0;
+}
+
+.case-card__meta {
+  color: var(--uncolorful-grey-secondary);
+  text-transform: uppercase;
+}
+
+/* A card with a picture (all four have one): white text */
+.case-card--image {
+  isolation: isolate;
+  color: var(--pure-0);
+}
+
+.case-card__media {
+  z-index: 0;
+}
+
+/* Progressive blur behind the title (Figma: "Rectangle 1", progressive
+   background blur from 20 at the top edge to 0 at the bottom; Figma's
+   blur number is about twice the CSS one), 80px tall.
+   CSS has no progressive blur, so it is faked with two blurred layers,
+   each fading out downwards. Together they ease off smoothly into the
+   picture.
+     ::before  — light blur (4px), fades out over the full 80px
+     ::after   — strong blur (10px), fades out over the top 60% */
+.case-card--image::before,
+.case-card--image::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 1;
+  height: 80px;
+  pointer-events: none;   /* clicks pass through to the card */
+}
+
+.case-card--image::before {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
+}
+
+.case-card--image::after {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 60%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 60%);
+}
+
+.case-card--image .case-card__meta {
+  color: var(--pure-0);
+  opacity: 0.72; /* Figma: the role layer at 72% */
+}
+
+/* The soft drop shadow under the white text: x 0.5, y 0.5, no blur,
+   black at 16% */
+.case-card--image .case-card__text {
+  text-shadow: 0.5px 0.5px 0 color-mix(in srgb, var(--pure-100) 16%, transparent);
+}
+
+/* Visitors who turned on "reduce motion" on their device: no animation */
+@media (prefers-reduced-motion: reduce) {
+  .case-card {
+    transition: none;
+  }
+}

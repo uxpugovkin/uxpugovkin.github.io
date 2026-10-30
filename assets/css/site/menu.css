@@ -1,0 +1,81 @@
+/* ==========================================================================
+   MENU ITEM  (Figma: Menu · Active × Hover × RTL)
+
+   One row in the sidebar menu: icon + case study name.
+
+   States, like the Figma variants:
+     default  — no background
+     Hover    — light accent background
+     Active   — the page you are on: accent background and accent text
+                (in HTML it carries aria-current="page", set by sidebar.js)
+   ========================================================================== */
+
+/* The list itself: no bullets, items stacked */
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-m);
+  color: var(--uncolorful-grey-primary);
+  transition: background-color var(--motion-duration) var(--motion-ease);
+}
+
+/* Icon slot: 16 × 20 in Figma; the 20px icon overflows it slightly on purpose */
+.menu-item__icon {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 20px;
+}
+
+.menu-item__icon svg {
+  width: 20px;
+  height: 20px;
+  max-width: none;
+}
+
+/* Hover */
+.menu-item:hover {
+  background: var(--boring-blue-90);
+}
+
+/* Active: the page you are on */
+.menu-item[aria-current="page"] {
+  background: var(--boring-blue-90);
+  color: var(--boring-blue-50);
+}
+
+/* Active + Hover */
+.menu-item[aria-current="page"]:hover {
+  background: var(--boring-blue-80);
+}
+
+/* Keyboard focus ring drawn inside the item, so it is not cut off */
+.menu-item:focus-visible {
+  outline-offset: -2px;
+}
+
+/* Figma: divider — 2px rule, 12px in from the sides, 8px above and below.
+   Added in config.js as  { divider: true } */
+.menu-divider {
+  padding: var(--space-8) var(--space-12);
+}
+
+.menu-divider::before {
+  content: "";
+  display: block;
+  height: 2px;
+  border-radius: var(--radius-xs);
+  background: var(--uncolorful-grey-border);
+}

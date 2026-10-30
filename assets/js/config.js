@@ -1,15 +1,24 @@
 /* ==========================================================================
-   Site content — edit this file to change the name, role and menu.
-   Add a case study: add one line to `menu` and create the matching page
-   (copy any case study folder, e.g. t-bank/, and change its data-page and title).
+   SITE CONTENT — edit this file to change the name, role and menu
+
+   The sidebar on every page is built from this list (by sidebar.js), so a
+   change here shows up on all pages at once.
+
+   To add a case study:
+   1. Copy any case study folder (e.g. t-bank/) and rename the copy
+   2. In its index.html, change <body data-page="…"> and the <title>
+   3. Add one line to `menu` below
    ========================================================================== */
+
 window.SITE = {
   name: "Konstantin P",
   role: "Product Designer",
 
-  // id    — must match <body data-page="..."> on that page
-  // href  — path from the site root (the logo links to the home page)
-  // icon  — any key from ICONS in site.js ("desktop", "phone", "doc", "folder")
+  // One line per menu item, top to bottom:
+  //   id    — must match <body data-page="..."> on that page
+  //   title — the text shown in the menu
+  //   href  — the page's folder, from the site's top folder
+  //   icon  — an icon name from icons.js: "desktop", "phone", "doc", "folder"
   // { divider: true } draws a line between groups of items
   menu: [
     { id: "sbertech", title: "Sberbank Technology", href: "sbertech/", icon: "desktop" },

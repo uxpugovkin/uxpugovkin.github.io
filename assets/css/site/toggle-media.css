@@ -1,0 +1,90 @@
+/* ==========================================================================
+   TOGGLE MEDIA — two images with a switch  (Figma: raif-legasy-demo)
+
+   Two images share one 1140 × 640 slot. A switch in the bottom-right
+   corner swaps between them with a cross-fade, like switching variants
+   of a Figma component.
+
+   ┌──────────────────────────────────────────┐
+   │                                          │
+   │        image "on" or image "off"         │
+   │                                          │
+   │                     ┌──────────────────┐ │
+   │                     │ (●─) AI scene    │ │ ← frosted pill with
+   │                     └──────────────────┘ │   the switch
+   └──────────────────────────────────────────┘
+
+   In HTML:
+     data-active="true"   on .toggle-media  → shows the image marked --on
+     data-active="false"                     → shows the image marked --off
+   The click itself is handled by assets/js/toggle-media.js.
+
+   Used twice on MA.direct, Raiffeisen Bank and T-bank:
+   Legacy (Figma legacy-demo) and Current (Figma current-demo).
+   ========================================================================== */
+
+.toggle-media {
+  position: relative;
+  width: 100%;
+  /* lets the rule at the bottom react to this block's own width */
+  container-type: inline-size;
+}
+
+/* The image slot: always 1140:640, radius/l, clips its content
+   (Figma: radius/l with clip content on every legacy-demo and
+   current-demo variant) */
+.image-loader.toggle-media__frame {
+  width: 100%;
+  aspect-ratio: 1140 / 640;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+}
+
+/* Both images lie on top of each other and fill the slot */
+.toggle-media__image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The hidden one is made transparent:
+   switch on  → hide the --off image
+   switch off → hide the --on image */
+.toggle-media[data-active="true"] .toggle-media__image--off,
+.toggle-media[data-active="false"] .toggle-media__image--on {
+  opacity: 0;
+}
+
+/* The frosted pill (Figma: Frame 5): 12px from the right and bottom edges,
+   radius/l, opacity/01% fill, background blur (Figma 150 = CSS 75px).
+   In HTML the pill carries data-theme="olive-night", so it always uses
+   Olive Night colours, like a fixed variable mode on a Figma layer.
+   The whole pill is the button, so it's easy to tap on phones. */
+.toggle-media__control {
+  position: absolute;
+  right: var(--space-12);
+  bottom: var(--space-12);
+  z-index: 1;
+  border-radius: var(--radius-l);
+  background-color: var(--opacity-01);
+  -webkit-backdrop-filter: blur(75px);
+  backdrop-filter: blur(75px);
+}
+
+.toggle-media__control .toggle-media__switch {
+  padding: var(--space-12) var(--space-16);
+  border-radius: inherit;
+}
+
+/* Figma only has the 1140px layout. When the block is narrower than
+   1000px, the pill keeps its size and starts to cover light parts of the
+   picture, so it gets a dark tint (Olive Night background at 72%) to keep
+   the label readable. */
+@container (max-width: 999.98px) {
+  .toggle-media__control {
+    background-color: color-mix(in srgb, var(--uncolorful-grey-background) 72%, transparent);
+  }
+}

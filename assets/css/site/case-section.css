@@ -1,0 +1,90 @@
+/* ==========================================================================
+   CASE STUDY SECTION  (Figma: paragraph · title / text / Number)
+
+          Outcomes                     ← title  (Header H3)
+     01   Sberbank moved closer to…    ← text   (Body C)
+     ↑
+     the "Number": counted automatically (01, 02, 03…) in page order, and
+     hung 12px to the left of the text. So you can add, remove or reorder
+     sections without renumbering anything. Hidden on phones.
+
+   In HTML a section is:
+     <section class="paragraph case-section">
+       <h2 class="case-section__title header-h3">Title</h2>
+       <p class="case-section__body body-c-regular">Text</p>
+     </section>
+   ========================================================================== */
+
+
+/* The counter starts from zero on every page… */
+.content {
+  counter-reset: case-section;
+}
+
+/* …and each section adds one */
+.case-section {
+  position: relative;
+  counter-increment: case-section;
+}
+
+.case-section__title {
+  margin: 0;
+  color: var(--uncolorful-grey-secondary);
+}
+
+/* One body block = one Figma text layer. Blocks sit 8px apart (the
+   section gap); lines inside a block have no extra spacing. */
+.case-section__body {
+  margin: 0;
+  color: var(--uncolorful-grey-primary);
+}
+
+.case-section__body p,
+.case-section__body ul {
+  margin: 0;
+}
+
+/* Bulleted list — bullet 8px in, text 21px in, no spacing between items */
+.case-section__body ul {
+  padding-inline-start: 21px;
+  list-style: disc;
+}
+
+/* Bold words (<strong>) are a 700 weight override on Body C/Regular in Figma */
+.case-section__body strong {
+  font-weight: 700;
+}
+
+/* The "Number" layer: Code/S, uncolorful-grey/disabled, hanging 12px left
+   of the section, centred on the 28px title line */
+.case-section::before {
+  content: counter(case-section, decimal-leading-zero);   /* 01, 02, … */
+  position: absolute;
+  inset-block-start: calc(var(--space-8) + var(--space-4));   /* 12px from the top */
+  inset-inline-end: calc(100% + var(--space-12));   /* 12px outside the left edge */
+  color: var(--uncolorful-grey-disabled);
+  font-family: var(--font-family-code);
+  font-size: var(--code-s-size);
+  line-height: var(--code-s-line-height);
+  letter-spacing: var(--code-s-letter-spacing);
+  font-weight: var(--font-weight-regular);
+  text-align: end;
+}
+
+
+/* --------------------------------------------------------------------------
+   TABLET  (window 768px – 1023px wide)
+   Figma Layout · tablet: 16px padding all round. Case study pages get 24px
+   more on the left, so the section numbers outside the text column don't
+   run into the sidebar.
+   -------------------------------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .content {
+    padding: var(--space-16);
+  }
+
+  /* "a .content that has a .case-section inside" = case study pages only */
+  .content:has(.case-section) {
+    padding-inline-start: calc(var(--space-16) + var(--space-24));
+  }
+}

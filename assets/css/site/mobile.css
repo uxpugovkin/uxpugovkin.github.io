@@ -1,0 +1,76 @@
+/* ==========================================================================
+   PHONES  (Figma: github-sidebar · Device=Mobile)
+
+   Everything in the block below only applies when the window is narrower
+   than 768px. It changes the desktop layout into the phone layout:
+
+   ┌──────────────────────────┐
+   │ [logo] Konstantin P      │ ← the sidebar becomes a 52px top bar
+   ├──────────────────────────┤   (logo and name only, no menu)
+   │                          │
+   │   content, 16px padding  │
+   │                          │
+
+   The top bar slides away when you scroll down and comes back when you
+   scroll up (assets/js/mobile-bar.js does that).
+
+   This file must stay LAST in site.css, so these rules win over the
+   desktop ones.
+   ========================================================================== */
+
+@media (max-width: 767.98px) {
+  /* Sidebar and content no longer side by side */
+  .app {
+    display: block;
+  }
+
+  /* The sidebar becomes a bar pinned to the top of the screen */
+  .sidebar {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    width: auto;
+    height: var(--bar-height);
+    padding: 0;
+    gap: 0;
+    overflow: visible;
+    transition: transform var(--motion-duration) var(--motion-ease),
+      box-shadow var(--motion-duration) var(--motion-ease);
+  }
+
+  /* Bar hidden while scrolling down: moved up by its own height */
+  .sidebar.is-hidden {
+    transform: translateY(-100%);
+    box-shadow: none;
+  }
+
+  .sidebar__brand {
+    align-items: center;
+  }
+
+  /* The phone design is intentionally minimal: logo and name only */
+  .sidebar__nav {
+    display: none;
+  }
+
+  .content {
+    min-height: 100vh;
+    min-height: 100dvh;
+    /* Figma Layout · mobile: 16px all round, starting under the bar.
+       The gap between blocks stays `vert-space`. */
+    padding: calc(var(--bar-height) + var(--space-16)) var(--space-16) var(--space-16);
+  }
+
+  /* Figma: the section "Number" (01, 02…) is hidden on phones */
+  .case-section::before {
+    content: none;
+  }
+}
+
+/* Visitors who turned on "reduce motion": the bar and menu don't animate */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .menu-item {
+    transition: none;
+  }
+}

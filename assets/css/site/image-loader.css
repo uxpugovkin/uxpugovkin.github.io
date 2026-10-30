@@ -1,0 +1,91 @@
+/* ==========================================================================
+   IMAGE LOADER  (habibi: skeleton + loader)
+
+   Every image and video on the site sits in a box:
+     <span class="image-loader"> <img …> </span>
+
+   While the image loads, the box shows the habibi skeleton: a grey shape
+   that gently pulses. Big images (add image-loader--spinner) also show the
+   spinning habibi loader in the middle. The box already has the image's
+   size (from its width/height), so nothing jumps when the image arrives.
+
+   assets/js/image-loader.js marks a box with data-loading while it loads,
+   and removes it when the image is there.
+
+   skeleton:  uncolorful-grey/border ↔ uncolorful-grey/disabled,
+              0.6s pause, 0.8s ease-in-out change, looping (2.8s cycle)
+   loader:    24px, boring-blue/50, one turn every 0.4s, linear
+   ========================================================================== */
+
+.image-loader {
+  position: relative;
+  display: block;
+  /* Figma: radius/l on every image and video, clipped */
+  border-radius: var(--radius-l);
+  overflow: hidden;
+}
+
+/* The image fades in when it's ready */
+.image-loader img,
+.image-loader iframe {
+  transition: opacity var(--motion-duration) var(--motion-ease);
+}
+
+/* Still loading: grey pulsing box, image hidden */
+.image-loader[data-loading] {
+  background-color: var(--uncolorful-grey-border);
+  animation: skeleton-pulse 2.8s ease-in-out infinite;
+}
+
+.image-loader[data-loading] img,
+.image-loader[data-loading] iframe {
+  opacity: 0;
+}
+
+/* Big images: the spinning loader icon in the centre */
+.image-loader--spinner[data-loading]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 24px;
+  height: 24px;
+  margin: auto;   /* centres it */
+  background-color: var(--boring-blue-50);   /* the icon's colour */
+  -webkit-mask: var(--loader-shape) center / 24px 24px no-repeat;
+  mask: var(--loader-shape) center / 24px 24px no-repeat;
+  animation: loader-spin 0.4s linear infinite;
+}
+
+/* Image failed to load: a calm, still grey box (screen readers read the
+   alt text instead) */
+.image-loader[data-failed] {
+  background-color: var(--uncolorful-grey-border);
+}
+
+:root {
+  /* The habibi icons/loader shape (an open circle), written out as an SVG.
+     It is used as a mask — a stencil — so its colour can come from a
+     token (background-color above). */
+  --loader-shape: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 4C12 3.44772 11.5506 2.99417 11.0016 3.05475C6.50088 3.55147 3 7.3669 3 12C3 16.9706 7.02944 21 12 21C16.6331 21 20.4485 17.4991 20.9452 12.9984C21.0058 12.4494 20.5523 12 20 12C19.4477 12 19.0075 12.4503 18.9295 12.997C18.4456 16.3908 15.5275 19 12 19C8.13401 19 5 15.866 5 12C5 8.4725 7.60923 5.55442 11.003 5.07046C11.5497 4.9925 12 4.55228 12 4Z'/%3E%3C/svg%3E");
+}
+
+/* The skeleton pulse, as keyframes over a 2.8s loop:
+   0–0.6s border colour, 0.8s change to disabled, 0.6s hold, 0.8s back */
+@keyframes skeleton-pulse {
+  0%, 21.43% { background-color: var(--uncolorful-grey-border); }
+  50%, 71.43% { background-color: var(--uncolorful-grey-disabled); }
+  100% { background-color: var(--uncolorful-grey-border); }
+}
+
+/* The loader: one full turn */
+@keyframes loader-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Visitors who turned on "reduce motion": no pulse, no spinning */
+@media (prefers-reduced-motion: reduce) {
+  .image-loader[data-loading],
+  .image-loader--spinner[data-loading]::after {
+    animation: none;
+  }
+}

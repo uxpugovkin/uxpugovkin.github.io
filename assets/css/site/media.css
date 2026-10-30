@@ -1,0 +1,115 @@
+/* ==========================================================================
+   IMAGE BLOCK  (Figma: image-frame)
+
+   Wider than the text: fills the content area up to 1140px and is centred
+   (text stays at 728px). Images keep their proportions and shrink with
+   the window. Items inside sit 12px apart.
+
+   In HTML:  <figure class="media"> … images … </figure>
+
+   Variants:
+     media--gap-16  — 16px between items instead of 12
+                      (the Legacy vs Current blocks)
+     media--row     — two images side by side
+   Inside a block:
+     media__link    — a clickable image that opens full size
+     media__video   — the Vimeo video
+   ========================================================================== */
+
+.media {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+/* Figma image-frames with a 16px gap (arrow 16px from each image) */
+.media--gap-16 {
+  gap: var(--space-16);
+}
+
+/* A clickable image: the mouse becomes a magnifying glass */
+.media__link {
+  display: block;
+  width: 100%;
+  cursor: zoom-in;
+}
+
+.media__image {
+  display: block;
+  width: 100%;
+  height: auto;   /* keeps the image's proportions */
+}
+
+/* Canvas: a smaller screenshot placed on a grey background, positioned
+   with the same left / top / width / height percentages as the Figma crop.
+   (Not used on any page right now; kept for later.) */
+.media__canvas {
+  width: 100%;
+  background-color: var(--uncolorful-grey-disabled);
+}
+
+.media__inset {
+  position: absolute;
+  display: block;
+}
+
+
+/* --------------------------------------------------------------------------
+   VIDEO  (Sberbank Technology showreel)
+   Vimeo player at the video's own 16:9, up to 1140px wide.
+   The slot is 4px shorter than 16:9 and the player is moved up 2px, so 2px
+   are cropped off the top and bottom edges of the video (hides thin lines
+   at the edges).
+   -------------------------------------------------------------------------- */
+.media__video {
+  width: 100%;
+  height: 0;
+  padding-bottom: calc(56.25% - 4px);   /* 56.25% = 9 ÷ 16, so the height follows the width */
+  overflow: hidden;
+}
+
+.media__video iframe {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: calc(100% + 4px); /* = exactly 16:9, so the player adds no bars */
+  border: 0;
+}
+
+/* "ambient" video: plays on its own like a moving picture. The mouse can't
+   reach it, so Vimeo never shows its controls on hover.
+   Visitors who turned on "reduce motion" get a normal player they can use
+   (and site.js turns off autoplay for them). */
+.media__video--ambient iframe {
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media__video--ambient iframe {
+    pointer-events: auto;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   ROW: two images side by side, 12px apart (Figma: horizontal image-frame)
+   Each image is at least 274px wide, so when the block is narrower than
+   560px (phones) they wrap into one column.
+   -------------------------------------------------------------------------- */
+.media--row {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.media--row > .media__link {
+  flex: 1 1 274px;
+  width: auto;
+  min-width: 0;
+}

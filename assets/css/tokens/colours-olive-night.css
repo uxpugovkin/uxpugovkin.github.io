@@ -1,0 +1,121 @@
+/* ==========================================================================
+   COLOURS · OLIVE NIGHT  (habibi colour mode "olive-night")
+
+   The site's NIGHT theme. The same colour names as Olive, with dark values.
+
+   The list appears twice below, with identical values:
+   1. Automatic: used when the visitor's device is set to dark mode
+   2. Forced: used when an element has data-theme="olive-night".
+      On <html> that forces the whole page. On a single element it pins only
+      that element, like a fixed variable mode on one Figma layer. The
+      frosted "AI scene" switch pill uses this.
+
+   Do not edit by hand — update in Figma and regenerate.
+   ========================================================================== */
+
+
+/* 1. Automatic: device in dark mode (and no theme forced on the page) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --accent-1: #ff5b96;
+    --accent-2: #ffb18e;
+    --accent-3: #ffd055;
+    --accent-4: #c5d500;
+    --accent-5: #66eb00;
+    --accent-6: #00cdac;
+    --accent-7: #307fff;
+    --accent-8: #9384ff;
+    --accent-9: #d572ff;
+    --boring-blue-40: #a7ee00;
+    --boring-blue-50: #8ac500;
+    --boring-blue-60: #699600;
+    --boring-blue-70: #3f5a00;
+    --boring-blue-80: #2e3e08;
+    --boring-blue-90: #212d06;
+    --opacity-01: #ffffff03;
+    --opacity-16: #ffffff29;
+    --opacity-72: #ffffffb8;
+    --pure-0: #ffffff;
+    --pure-100: #000000;
+    --shitpile-orange-40: #ffcf90;
+    --shitpile-orange-50: #ff9811;
+    --shitpile-orange-60: #c77100;
+    --shitpile-orange-70: #774300;
+    --shitpile-orange-80: #4f310a;
+    --shitpile-orange-90: #3a2407;
+    --traffic-light-red-40: #ffc9d7;
+    --traffic-light-red-50: #ff8daa;
+    --traffic-light-red-60: #ff265c;
+    --traffic-light-red-70: #a20028;
+    --traffic-light-red-80: #6f0e26;
+    --traffic-light-red-90: #520a1c;
+    --uncolorful-grey-background: #0a080f;
+    --uncolorful-grey-border: #322d46;
+    --uncolorful-grey-disabled: #59516f;
+    --uncolorful-grey-extra: #e6e3ee;
+    --uncolorful-grey-primary: #d8d6e2;
+    --uncolorful-grey-secondary: #bdbac8;
+    --uncolorful-grey-surface: #191721;
+    --uncolorful-grey-tertiary: #8b859e;
+    --uncreative-green-40: #e9d3ff;
+    --uncreative-green-50: #d1a4ff;
+    --uncreative-green-60: #b468ff;
+    --uncreative-green-70: #7200e3;
+    --uncreative-green-80: #531294;
+    --uncreative-green-90: #3e0e6e;
+  }
+}
+
+
+/* 2. Forced with data-theme="olive-night" — on the page or on one element */
+:root[data-theme="olive-night"],
+[data-theme="olive-night"] {
+  color-scheme: dark;
+  --accent-1: #ff5b96;
+  --accent-2: #ffb18e;
+  --accent-3: #ffd055;
+  --accent-4: #c5d500;
+  --accent-5: #66eb00;
+  --accent-6: #00cdac;
+  --accent-7: #307fff;
+  --accent-8: #9384ff;
+  --accent-9: #d572ff;
+  --boring-blue-40: #a7ee00;
+  --boring-blue-50: #8ac500;
+  --boring-blue-60: #699600;
+  --boring-blue-70: #3f5a00;
+  --boring-blue-80: #2e3e08;
+  --boring-blue-90: #212d06;
+  --opacity-01: #ffffff03;
+  --opacity-16: #ffffff29;
+  --opacity-72: #ffffffb8;
+  --pure-0: #ffffff;
+  --pure-100: #000000;
+  --shitpile-orange-40: #ffcf90;
+  --shitpile-orange-50: #ff9811;
+  --shitpile-orange-60: #c77100;
+  --shitpile-orange-70: #774300;
+  --shitpile-orange-80: #4f310a;
+  --shitpile-orange-90: #3a2407;
+  --traffic-light-red-40: #ffc9d7;
+  --traffic-light-red-50: #ff8daa;
+  --traffic-light-red-60: #ff265c;
+  --traffic-light-red-70: #a20028;
+  --traffic-light-red-80: #6f0e26;
+  --traffic-light-red-90: #520a1c;
+  --uncolorful-grey-background: #0a080f;
+  --uncolorful-grey-border: #322d46;
+  --uncolorful-grey-disabled: #59516f;
+  --uncolorful-grey-extra: #e6e3ee;
+  --uncolorful-grey-primary: #d8d6e2;
+  --uncolorful-grey-secondary: #bdbac8;
+  --uncolorful-grey-surface: #191721;
+  --uncolorful-grey-tertiary: #8b859e;
+  --uncreative-green-40: #e9d3ff;
+  --uncreative-green-50: #d1a4ff;
+  --uncreative-green-60: #b468ff;
+  --uncreative-green-70: #7200e3;
+  --uncreative-green-80: #531294;
+  --uncreative-green-90: #3e0e6e;
+}

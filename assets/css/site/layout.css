@@ -1,0 +1,32 @@
+/* ==========================================================================
+   LAYOUT — the page shell  (Figma: layout page)
+
+   ┌─────────┬──────────────────────────────┐
+   │ sidebar │          content             │
+   │  232px  │  blocks stacked top to bottom │
+   │         │  `vert-space` (20px) apart    │
+   └─────────┴──────────────────────────────┘
+
+   .app      — the whole window: sidebar + content side by side
+   .content  — the column with the page blocks. Like a vertical Figma
+               auto-layout, centred, gap = vert-space.
+
+   Phones: see mobile.css. Tablets: see case-section.css.
+   ========================================================================== */
+
+.app {
+  display: flex;   /* side by side, like a horizontal auto-layout */
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.content {
+  flex: 1 1 auto;   /* takes all the width the sidebar leaves */
+  min-width: 0;
+  display: flex;
+  flex-direction: column;   /* vertical auto-layout */
+  align-items: center;
+  gap: var(--vert-space);
+  /* Figma Layout: 16 top, 24 sides, 32 bottom (the home page grid: 16) */
+  padding: var(--space-16) var(--space-24) var(--space-32);
+}

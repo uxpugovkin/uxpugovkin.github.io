@@ -1,0 +1,33 @@
+/* ==========================================================================
+   SETTINGS — sizes and spacing used across the whole site
+
+   habibi has no spacing variables, so these are the exact pixel values from
+   the Figma auto-layouts, given names here. Change a value once and every
+   place that uses it follows.
+   ========================================================================== */
+
+:root {
+  /* Layout — from the "github-site" Figma page */
+  --sidebar-width: 232px;   /* the menu on the left (desktop) */
+  --bar-height: 52px;       /* the top bar on phones (screens under 768px) */
+
+  /* Spacing — the gaps and paddings from Figma auto-layout */
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --space-32: 32px;
+
+  /* habibi variable `vert-space`: the gap between blocks on a page
+     (text, images, cards…). The same on every screen size, as in Figma. */
+  --vert-space: 20px;
+
+  /* Animation: how long hovers and slides take, and their easing curve */
+  --motion-duration: 200ms;
+  --motion-ease: cubic-bezier(0.2, 0, 0, 1);
+}

@@ -1,0 +1,119 @@
+/* ==========================================================================
+   SWITCH  (habibi: switch — appearance Accent, compact; switch-and-text)
+
+   (●─)  off           (─●)  on
+   36 × 20 track, 12px knob.
+
+   States follow the Figma variants:
+     Active   = aria-checked="true"   (knob slides to the end, accent fill)
+     Hover    = mouse over it
+     Disabled = disabled or aria-disabled="true"
+   On right-to-left pages (dir="rtl") it mirrors, like the Figma rtl variant.
+
+   HTML:
+     <button class="switch-and-text" type="button" role="switch" aria-checked="true">
+       <span class="switch" aria-hidden="true"><span class="switch__knob"></span></span>
+       <span class="body-c-regular">Label</span>
+     </button>
+   ========================================================================== */
+
+/* The track. --switch-fill / --switch-stroke / --switch-knob are its three
+   colours; the states below only swap them. */
+.switch {
+  --switch-fill: var(--uncolorful-grey-disabled);
+  --switch-stroke: transparent;
+  --switch-knob: var(--uncolorful-grey-surface);
+
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  box-sizing: border-box;
+  width: 36px;
+  height: 20px;
+  padding: var(--space-4);
+  border-radius: var(--radius-m);
+  background-color: var(--switch-fill);
+  box-shadow: inset 0 0 0 1px var(--switch-stroke);
+  transition: background-color var(--motion-duration) var(--motion-ease);
+}
+
+/* The knob */
+.switch__knob {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-m);
+  background-color: var(--switch-knob);
+  transition: transform var(--motion-duration) var(--motion-ease),
+    background-color var(--motion-duration) var(--motion-ease);
+}
+
+/* Each state is written twice: once for the switch on its own, and once
+   for a switch inside a labelled button (switch-and-text), where hovering
+   the label counts too. */
+
+/* Hover */
+.switch:hover,
+:hover > .switch {
+  --switch-fill: var(--uncolorful-grey-secondary);
+}
+
+/* Active (on) */
+.switch[aria-checked="true"],
+[aria-checked="true"] > .switch {
+  --switch-fill: var(--boring-blue-50);
+  --switch-knob: var(--boring-blue-90);
+}
+
+/* Active + Hover */
+.switch[aria-checked="true"]:hover,
+[aria-checked="true"]:hover > .switch {
+  --switch-fill: var(--boring-blue-40);
+}
+
+/* Active: knob slides 16px to the end — right, or left in right-to-left text */
+.switch[aria-checked="true"] .switch__knob,
+[aria-checked="true"] > .switch .switch__knob {
+  transform: translateX(16px);
+}
+
+.switch[aria-checked="true"]:dir(rtl) .switch__knob,
+[aria-checked="true"] > .switch:dir(rtl) .switch__knob {
+  transform: translateX(-16px);
+}
+
+/* Disabled wins over Hover and Active
+   (".switch.switch" repeats the name on purpose to make this rule stronger) */
+.switch.switch:is(:disabled, [aria-disabled="true"]),
+:is(:disabled, [aria-disabled="true"]) > .switch.switch {
+  --switch-fill: var(--uncolorful-grey-border);
+  --switch-stroke: var(--uncolorful-grey-disabled);
+  --switch-knob: var(--uncolorful-grey-disabled);
+}
+
+/* switch-and-text: switch + label 12px apart, Body C, primary text.
+   It is a <button>, so the browser's button look is removed first. */
+.switch-and-text {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-12);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--uncolorful-grey-primary);
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;   /* no grey flash when tapped on phones */
+}
+
+.switch-and-text:is(:disabled, [aria-disabled="true"]) {
+  cursor: not-allowed;
+}
+
+/* Visitors who turned on "reduce motion": the knob jumps instead of sliding */
+@media (prefers-reduced-motion: reduce) {
+  .switch,
+  .switch__knob {
+    transition: none;
+  }
+}

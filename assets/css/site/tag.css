@@ -1,0 +1,71 @@
+/* ==========================================================================
+   TAG  (Figma: tag · colour × size)
+
+   The small labels under a case study title: [Enterprise] [B2B] …
+
+   Colour variants — add the class next to "tag" in HTML:
+     tag                  In progress (accent) — the default
+     tag tag--neutral     Neutral (grey)
+     tag tag--success     Success (green)
+     tag tag--warning     Warning (orange)
+     tag tag--error       Error (red)
+   Size:
+     tag--s               small: 18px tall, Body E text
+   ========================================================================== */
+
+/* --tag-fill / --tag-border / --tag-text are the tag's three colours;
+   the variants below only swap them */
+.tag {
+  --tag-fill: var(--boring-blue-90);
+  --tag-border: var(--boring-blue-80);
+  --tag-text: var(--boring-blue-50);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  height: 20px;
+  padding-inline: var(--space-6);
+  border: 1px solid var(--tag-border);
+  border-radius: var(--radius-s);
+  background: var(--tag-fill);
+  color: var(--tag-text);
+  font-family: var(--font-family);
+  font-size: var(--body-c-size);
+  line-height: var(--body-c-line-height);
+  letter-spacing: var(--body-c-letter-spacing);
+  font-weight: var(--font-weight-regular);
+  white-space: nowrap;
+}
+
+.tag--neutral {
+  --tag-fill: var(--uncolorful-grey-background);
+  --tag-border: var(--uncolorful-grey-disabled);
+  --tag-text: var(--uncolorful-grey-primary);
+}
+
+.tag--success {
+  --tag-fill: var(--uncreative-green-90);
+  --tag-border: var(--uncreative-green-80);
+  --tag-text: var(--uncreative-green-50);
+}
+
+.tag--warning {
+  --tag-fill: var(--shitpile-orange-90);
+  --tag-border: var(--shitpile-orange-80);
+  --tag-text: var(--shitpile-orange-50);
+}
+
+.tag--error {
+  --tag-fill: var(--traffic-light-red-90);
+  --tag-border: var(--traffic-light-red-80);
+  --tag-text: var(--traffic-light-red-50);
+}
+
+/* Size S */
+.tag--s {
+  gap: var(--space-2);
+  height: 18px;
+  font-size: var(--body-e-size);
+  line-height: var(--body-e-line-height);
+  letter-spacing: var(--body-e-letter-spacing);
+}

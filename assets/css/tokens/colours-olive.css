@@ -1,0 +1,65 @@
+/* ==========================================================================
+   COLOURS · OLIVE  (habibi colour mode "olive")
+
+   The site's DAY theme. This is the default: it applies whenever nothing
+   else says otherwise.
+
+   How to read a line:   --uncolorful-grey-primary: #322e42;
+                          └ Figma variable name ┘   └ hex ┘
+   The rest of the site never uses hex colours, only these names. So when
+   the theme changes, the names stay and only the hex values swap.
+
+   Do not edit by hand — update in Figma and regenerate.
+   ========================================================================== */
+
+/* Day (default): olive */
+:root,
+:root[data-theme="olive"] {
+  color-scheme: light;
+  --accent-1: #ff4d8d;
+  --accent-2: #ff7a3d;
+  --accent-3: #ffb800;
+  --accent-4: #cfe000;
+  --accent-5: #7fd93a;
+  --accent-6: #22cbb0;
+  --accent-7: #2563c9;
+  --accent-8: #6d5ce8;
+  --accent-9: #b44ae0;
+  --boring-blue-40: #424d00;
+  --boring-blue-50: #556200;
+  --boring-blue-60: #6a7a00;
+  --boring-blue-70: #92a60d;
+  --boring-blue-80: #b3c72f;
+  --boring-blue-90: #e3e7ca;
+  --opacity-01: #00000003;
+  --opacity-16: #00000029;
+  --opacity-72: #000000b8;
+  --pure-0: #ffffff;
+  --pure-100: #000000;
+  --shitpile-orange-40: #a25d06;
+  --shitpile-orange-50: #c27809;
+  --shitpile-orange-60: #de940d;
+  --shitpile-orange-70: #fab411;
+  --shitpile-orange-80: #fed57c;
+  --shitpile-orange-90: #fff1d2;
+  --traffic-light-red-40: #af1649;
+  --traffic-light-red-50: #da1b5b;
+  --traffic-light-red-60: #eb5e8d;
+  --traffic-light-red-70: #f18dae;
+  --traffic-light-red-80: #f7bbcf;
+  --traffic-light-red-90: #fce8ef;
+  --uncolorful-grey-background: #f7f6fa;
+  --uncolorful-grey-border: #e8e6ef;
+  --uncolorful-grey-disabled: #cbc7d6;
+  --uncolorful-grey-extra: #16131f;
+  --uncolorful-grey-primary: #322e42;
+  --uncolorful-grey-secondary: #5f5a72;
+  --uncolorful-grey-surface: #ffffff;
+  --uncolorful-grey-tertiary: #918ca3;
+  --uncreative-green-40: #661ba7;
+  --uncreative-green-50: #8223d5;
+  --uncreative-green-60: #9a49e1;
+  --uncreative-green-70: #bc85eb;
+  --uncreative-green-80: #d2aef2;
+  --uncreative-green-90: #eddffa;
+}

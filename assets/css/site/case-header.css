@@ -1,0 +1,54 @@
+/* ==========================================================================
+   CASE STUDY HEADER  (Figma: Pages · title / role • period / tags)
+
+   The top of every case study:
+
+     Sberbank Technology                        ← title  (Header H1)
+     Sr. Product Designer • since February 2026  ← meta   (Body A)
+     [Enterprise] [Internal tooling] [...]       ← tags   (see tag.css)
+   ========================================================================== */
+
+
+/* PARAGRAPH block (Figma: "paragraph" auto-layout)
+   The header and every text section are one of these: a vertical
+   auto-layout, max 728px wide, 8px between items, 8px top and bottom.
+   Blocks sit `vert-space` apart (set on .content in layout.css). */
+.paragraph {
+  width: 100%;
+  max-width: 728px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding-block: var(--space-8);
+}
+
+/* Items inside a paragraph have no margins of their own;
+   the 8px gap does all the spacing, as in Figma */
+.paragraph > * {
+  margin: 0;
+}
+
+/* The "•" between role and period, in a lighter grey */
+.case-header__sep {
+  color: var(--uncolorful-grey-tertiary);
+}
+
+.case-header__title {
+  margin: 0;
+  color: var(--uncolorful-grey-secondary);
+}
+
+.case-header__meta {
+  margin: 0;
+  color: var(--uncolorful-grey-primary);
+}
+
+/* The row of tags: wraps onto a new line when it runs out of room */
+.case-header__tags {
+  list-style: none;
+  margin: 0;
+  padding: var(--space-4) 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}

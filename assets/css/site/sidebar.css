@@ -1,0 +1,87 @@
+/* ==========================================================================
+   SIDEBAR  (Figma: github-sidebar · Device=Desktop)
+
+   The panel on the left of every page:
+
+   ┌──────────────────────┐
+   │ [logo] Konstantin P  │  ← .sidebar__brand (links to the home page)
+   │        Product Desi… │
+   │                      │
+   │  ▭ Sberbank Tech…    │  ← .sidebar__nav (the menu, see menu.css)
+   │  ▭ MA.direct         │
+   │  …                   │
+   └──────────────────────┘
+
+   You don't write the sidebar in each page's HTML. The page only has an
+   empty <header data-sidebar>, and assets/js/sidebar.js fills it in from
+   the list in assets/js/config.js.
+
+   On phones it becomes a top bar (see mobile.css).
+   ========================================================================== */
+
+.sidebar {
+  position: sticky;   /* stays in place while the page scrolls */
+  inset-block-start: 0;
+  flex: 0 0 var(--sidebar-width);
+  width: var(--sidebar-width);
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding-block: var(--space-8) var(--space-16);
+  overflow-y: auto;   /* scrolls on its own if the menu gets taller than the window */
+  background: var(--uncolorful-grey-surface);
+  box-shadow: var(--shadow-default-s);
+  z-index: 10;   /* sits above the page content */
+}
+
+/* Logo + name + role, together one link to the home page */
+.sidebar__brand {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-8);
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-m);
+}
+
+.sidebar__logo {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  color: var(--uncolorful-grey-extra);   /* the logo icon takes this colour */
+}
+
+.sidebar__logo svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* Name and role, stacked */
+.sidebar__name {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.sidebar__title {
+  color: var(--uncolorful-grey-primary);
+  white-space: nowrap;
+}
+
+.sidebar__role {
+  margin-block-start: calc(var(--space-4) * -1);   /* -4px: pulled closer to the name */
+  padding-inline-start: var(--space-2);
+  color: var(--uncolorful-grey-tertiary);
+  white-space: nowrap;
+}
+
+/* The area that holds the menu */
+.sidebar__nav {
+  flex: 1 1 auto;
+  padding: var(--space-8);
+}

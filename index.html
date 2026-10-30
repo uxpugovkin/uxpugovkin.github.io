@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-root="./">
 <head>
+  <!-- Page settings: title, description for Google and link previews,
+       and the browser bar colour for day and night (theme-color) -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Konstantin P — Product Designer</title>
@@ -8,22 +10,47 @@
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#191721" media="(prefers-color-scheme: dark)">
+  <!-- The small icon in the browser tab -->
   <link rel="icon" href="./assets/img/favicon.svg" type="image/svg+xml">
+  <!-- Styles: habibi tokens first, then the site styles (order matters) -->
   <link rel="stylesheet" href="./assets/css/tokens.css">
   <link rel="stylesheet" href="./assets/css/site.css">
+  <!-- Visit counter (GoatCounter): https://uxpugovkin.goatcounter.com -->
   <script data-goatcounter="https://uxpugovkin.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body data-page="storefront">
+  <!-- "Skip to content" — only visible to keyboard users who press Tab -->
   <a class="skip-link body-c-regular" href="#main">Skip to content</a>
   <div class="app">
+    <!-- SIDEBAR — left empty on purpose. It is filled in automatically from
+         the menu list in assets/js/config.js, so every page shows the same menu. -->
     <header class="sidebar" data-sidebar></header>
+    <!-- Scripts — the order matters:
+         config.js        the name, role and menu list
+         icons.js         the sidebar icons
+         sidebar.js       builds the sidebar from the two files above
+         mobile-bar.js    hides the phone top bar on scroll down
+         image-loader.js  grey pulsing placeholder until images load
+         toggle-media.js  the "AI scene" switch that swaps two images -->
     <script src="./assets/js/config.js"></script>
-    <script src="./assets/js/site.js"></script>
+    <script src="./assets/js/icons.js"></script>
+    <script src="./assets/js/sidebar.js"></script>
+    <script src="./assets/js/mobile-bar.js"></script>
+    <script src="./assets/js/image-loader.js"></script>
+    <script src="./assets/js/toggle-media.js"></script>
 
+    <!-- === PAGE CONTENT ===
+         Blocks stack top to bottom, 20px apart (vert-space), in the same
+         order as the Content frame in Figma. -->
     <main class="content" id="main">
+      <!-- Page title for screen readers and Google (not shown on screen) -->
       <h1 class="visually-hidden">Case studies</h1>
 
+      <!-- === CASE STUDY CARDS ===
+           One <li> per card: a picture (1160px file for normal screens, 2320px
+           for retina), the title and the role. The whole card is one link. -->
       <ul class="storefront" aria-label="Case studies">
+        <!-- Card: sbertech -->
         <li class="storefront__item storefront__item--sbertech">
           <a class="case-card case-card--image" href="./sbertech/" data-goatcounter-click="home-card-sbertech" data-goatcounter-title="Home card — Sberbank Technology">
             <span class="image-loader case-card__media">
@@ -37,6 +64,7 @@
             </span>
           </a>
         </li>
+        <!-- Card: ma-direct -->
         <li class="storefront__item storefront__item--ma-direct">
           <a class="case-card case-card--image" href="./ma-direct/" data-goatcounter-click="home-card-ma-direct" data-goatcounter-title="Home card — MA.direct">
             <span class="image-loader case-card__media">
@@ -50,6 +78,7 @@
             </span>
           </a>
         </li>
+        <!-- Card: raiffeisen-bank -->
         <li class="storefront__item storefront__item--raiffeisen-bank">
           <a class="case-card case-card--image" href="./raiffeisen-bank/" data-goatcounter-click="home-card-raiffeisen-bank" data-goatcounter-title="Home card — Raiffeisen Bank">
             <span class="image-loader case-card__media">
@@ -63,6 +92,7 @@
             </span>
           </a>
         </li>
+        <!-- Card: t-bank -->
         <li class="storefront__item storefront__item--t-bank">
           <a class="case-card case-card--image" href="./t-bank/" data-goatcounter-click="home-card-t-bank" data-goatcounter-title="Home card — T-bank">
             <span class="image-loader case-card__media">

@@ -1,0 +1,61 @@
+/* ==========================================================================
+   COLOURS · LIGHT  (habibi colour mode "light")
+
+   Used in two cases:
+   - the page is forced to it:  <html data-theme="light">
+   - the page uses the "classic" palette in daytime:
+       <html data-palette="classic">   (MA.direct uses this)
+
+   Do not edit by hand — update in Figma and regenerate.
+   ========================================================================== */
+
+:root[data-theme="light"],
+:root[data-palette="classic"]:not([data-theme]) {
+  color-scheme: light;
+  --accent-1: #e44444;
+  --accent-2: #e4af44;
+  --accent-3: #afe444;
+  --accent-4: #44e444;
+  --accent-5: #44e4af;
+  --accent-6: #44afe4;
+  --accent-7: #4444e4;
+  --accent-8: #af44e4;
+  --accent-9: #e444af;
+  --boring-blue-40: #0b3fa7;
+  --boring-blue-50: #0e50d7;
+  --boring-blue-60: #286af1;
+  --boring-blue-70: #6f9bf6;
+  --boring-blue-80: #9fbdf9;
+  --boring-blue-90: #d8e5fd;
+  --opacity-01: #00000003;
+  --opacity-16: #00000029;
+  --opacity-72: #000000b8;
+  --pure-0: #ffffff;
+  --pure-100: #000000;
+  --shitpile-orange-40: #bd4205;
+  --shitpile-orange-50: #e25d09;
+  --shitpile-orange-60: #fa782a;
+  --shitpile-orange-70: #fea26e;
+  --shitpile-orange-80: #fec9a9;
+  --shitpile-orange-90: #ffede2;
+  --traffic-light-red-40: #ae1e30;
+  --traffic-light-red-50: #d9263c;
+  --traffic-light-red-60: #e46776;
+  --traffic-light-red-70: #ec929d;
+  --traffic-light-red-80: #f3bec4;
+  --traffic-light-red-90: #fbe9eb;
+  --uncolorful-grey-background: #f8f6f3;
+  --uncolorful-grey-border: #ece9e5;
+  --uncolorful-grey-disabled: #cdc9c3;
+  --uncolorful-grey-extra: #12100e;
+  --uncolorful-grey-primary: #353230;
+  --uncolorful-grey-secondary: #67625d;
+  --uncolorful-grey-surface: #fffefc;
+  --uncolorful-grey-tertiary: #9b958d;
+  --uncreative-green-40: #0d7234;
+  --uncreative-green-50: #13a049;
+  --uncreative-green-60: #17ce5e;
+  --uncreative-green-70: #76efa4;
+  --uncreative-green-80: #a4f4c2;
+  --uncreative-green-90: #d2f9e1;
+}

@@ -1,0 +1,14 @@
+/* ==========================================================================
+   CORNER RADIUS  (habibi variables: radius/*)
+
+   Same names as in Figma. Every image and video uses radius/l (10px).
+   Do not edit by hand — update in Figma and regenerate.
+   ========================================================================== */
+
+:root {
+  --radius-xs: 3px;
+  --radius-s: 4px;
+  --radius-m: 6px;
+  --radius-l: 10px;
+  --radius-full: 9999px;   /* a pill: fully round ends */
+}

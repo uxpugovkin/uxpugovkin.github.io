@@ -1,0 +1,13 @@
+/* ==========================================================================
+   SHADOWS  (habibi effect styles)
+
+   Each shadow is two drop shadows stacked, exactly like the Figma effect
+   style. Reading one drop shadow: x  y  blur  spread  colour.
+   Do not edit by hand — update in Figma and regenerate.
+   ========================================================================== */
+
+:root {
+  --shadow-default-s: 0 4px 12px 0 rgb(0 0 0 / 0.04), 0 0.5px 5px 0 rgb(0 0 0 / 0.04);
+  --shadow-default-l: 0 40px 56px 0 rgb(0 0 0 / 0.04), 0 16px 20px 0 rgb(0 0 0 / 0.06);
+  --shadow-accent-l: 0 10px 8px 0 rgb(0 77 230 / 0.08), 0 2px 8px 0 rgb(0 77 230 / 0.24);
+}

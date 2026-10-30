@@ -1,0 +1,35 @@
+/* ==========================================================================
+   ARROW — the down arrow between "before" and "after" images
+
+   Two looks:
+   1. Plain arrow (Sberbank Technology):
+        <svg class="media__arrow">       icons/arrow-down, 32px, accent-1
+   2. Arrow in a pill (Legacy vs Current blocks):
+        <span class="media__arrow-pill"><svg class="media__arrow">…</svg></span>
+      Figma: wrapper 80 × 44, padding 6 / 24, radius/full,
+      fill uncreative-green/50, icon uncreative-green/90.
+      (So it is green in the Light theme and purple in Olive.)
+   ========================================================================== */
+
+/* The pill */
+.media__arrow-pill {
+  flex: none;
+  display: inline-flex;
+  padding: var(--space-6) var(--space-24);
+  border-radius: var(--radius-full);
+  background-color: var(--uncreative-green-50);
+}
+
+/* The arrow inside the pill */
+.media__arrow-pill .media__arrow {
+  color: var(--uncreative-green-90);
+}
+
+/* The arrow itself (the icon is drawn in "currentColor", so `color`
+   sets its fill) */
+.media__arrow {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  color: var(--accent-1);
+}
