@@ -31,7 +31,7 @@
          sidebar.js       builds the sidebar from the two files above
          mobile-bar.js    hides the phone top bar on scroll down
          image-loader.js  grey pulsing placeholder until images load
-         toggle-media.js  the "AI scene" switch that swaps two images -->
+         toggle-media.js  the Legacy / Current segments and "AI scene" switch -->
     <script src="../assets/js/config.js"></script>
     <script src="../assets/js/icons.js"></script>
     <script src="../assets/js/sidebar.js"></script>
@@ -103,45 +103,37 @@
       </section>
 
       <!-- === LEGACY vs CURRENT ===
-           Two toggle blocks with an arrow between them. Each block holds two
-           images; its "AI scene" switch swaps them. Images: -1x.webp (1140px)
-           for normal screens, -2x.webp (2280px) for retina screens. -->
-      <figure class="media media--gap-16">
-        <!-- Legacy (Figma: legacy-demo) -->
-        <div class="toggle-media" data-active="true">
+           One block, four images (Figma: legaсy-demo-raiffeisen). The segment group
+           picks Legacy or Current, the "AI scene" switch picks the scene or the
+           plain screen. Images: -1x.webp (1140px) for normal screens, -2x.webp
+           (2280px) for retina screens. -->
+      <figure class="media">
+        <div class="toggle-media" data-type="legacy">
           <span class="image-loader image-loader--spinner toggle-media__frame">
-            <img class="toggle-media__image toggle-media__image--on" src="../assets/img/raiffeisen-bank/legacy-ai-scene-1x.webp" srcset="../assets/img/raiffeisen-bank/legacy-ai-scene-1x.webp 1140w, ../assets/img/raiffeisen-bank/legacy-ai-scene-2x.webp 2280w"
+            <img class="toggle-media__image" data-type="legacy" data-ai="true" src="../assets/img/raiffeisen-bank/legacy-ai-scene-1x.webp" srcset="../assets/img/raiffeisen-bank/legacy-ai-scene-1x.webp 1140w, ../assets/img/raiffeisen-bank/legacy-ai-scene-2x.webp 2280w"
                  sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
                  width="1140" height="640" alt="Before, as an AI-generated scene: the legacy collateral system on a desktop monitor in a plain grey office on a rainy winter day, with a thermos, tea in a glass holder, a stack of folders, an umbrella and a coat over the chair, and apartment blocks outside the window. On screen is the Internet Explorer “Collateral type definer” form." loading="lazy" decoding="async">
-            <img class="toggle-media__image toggle-media__image--off" src="../assets/img/raiffeisen-bank/legacy-ui-1x.webp" srcset="../assets/img/raiffeisen-bank/legacy-ui-1x.webp 1140w, ../assets/img/raiffeisen-bank/legacy-ui-2x.webp 1496w"
+            <img class="toggle-media__image" data-type="legacy" data-ai="false" src="../assets/img/raiffeisen-bank/legacy-ui-1x.webp" srcset="../assets/img/raiffeisen-bank/legacy-ui-1x.webp 1140w, ../assets/img/raiffeisen-bank/legacy-ui-2x.webp 2280w"
                  sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
                  width="1140" height="640" alt="Before: the legacy collateral system running in Internet Explorer (Runtime – CmsRzbRu). A dense “Collateral type definer” form stacks five grey dropdowns — main type, three subtypes and a business collateral code — above a small “Confirm collateral type” button." loading="lazy" decoding="async" aria-hidden="true">
-          </span>
-          <!-- The "AI scene" switch in a frosted pill (always Olive Night colours) -->
-          <div class="toggle-media__control" data-theme="olive-night">
-            <button class="switch-and-text toggle-media__switch" type="button" role="switch" aria-checked="true" dir="rtl"
-                    data-goatcounter-click="raiffeisen-ai-scene-toggle" data-goatcounter-title="AI scene switch — raiffeisen-bank">
-              <span class="switch" aria-hidden="true"><span class="switch__knob"></span></span>
-              <span class="body-c-regular">AI scene</span>
-            </button>
-          </div>
-        </div>
-        <!-- Arrow in a green pill -->
-        <span class="media__arrow-pill" aria-hidden="true"><svg class="media__arrow" width="32" height="32" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" focusable="false"><path d="M16.0017 26.3166L24.8267 17.4916C23.9154 16.5804 22.4381 16.5804 21.5268 17.4916L17.335 21.6835L17.335 6L14.6683 6L14.6683 21.6833L10.4766 17.4916C9.56535 16.5804 8.08797 16.5804 7.17674 17.4916L16.0017 26.3166Z"/></svg></span>
-        <!-- Current (Figma: current-demo) -->
-        <div class="toggle-media toggle-media--current" data-active="true">
-          <span class="image-loader image-loader--spinner toggle-media__frame">
-            <img class="toggle-media__image toggle-media__image--on" src="../assets/img/raiffeisen-bank/cover-1x.webp" srcset="../assets/img/raiffeisen-bank/cover-1x.webp 1140w, ../assets/img/raiffeisen-bank/cover-2x.webp 2280w"
-                 sizes="(max-width: 767.98px) calc(100vw - 32px), min(1140px, calc(100vw - 280px))"
-                 width="1140" height="640" alt="After: the new Raiffeisen Collateral Platform on a laptop at a field table under an umbrella, with a refinery behind the trees, a thermos, work gloves, a map and a hard hat. On screen, creating a collateral agreement: linked collateral objects — an office floor, a retail unit and a land plot — with their values and a yellow Link object button." loading="lazy" decoding="async">
-            <img class="toggle-media__image toggle-media__image--off" src="../assets/img/raiffeisen-bank/current-ui-1x.webp" srcset="../assets/img/raiffeisen-bank/current-ui-1x.webp 1140w, ../assets/img/raiffeisen-bank/current-ui-2x.webp 2280w"
-                 sizes="(max-width: 767.98px) calc(100vw - 32px), min(1140px, calc(100vw - 280px))"
+            <img class="toggle-media__image" data-type="current" data-ai="true" src="../assets/img/raiffeisen-bank/current-ai-scene-1x.webp" srcset="../assets/img/raiffeisen-bank/current-ai-scene-1x.webp 1140w, ../assets/img/raiffeisen-bank/current-ai-scene-2x.webp 2280w"
+                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
+                 width="1140" height="640" alt="After: the new Raiffeisen Collateral Platform on a laptop at a field table under an umbrella, with a refinery behind the trees, a thermos, work gloves, a map and a hard hat. On screen, creating a collateral agreement: linked collateral objects — an office floor, a retail unit and a land plot — with their values and a yellow Link object button." loading="lazy" decoding="async" aria-hidden="true">
+            <img class="toggle-media__image" data-type="current" data-ai="false" src="../assets/img/raiffeisen-bank/current-ui-1x.webp" srcset="../assets/img/raiffeisen-bank/current-ui-1x.webp 1140w, ../assets/img/raiffeisen-bank/current-ui-2x.webp 2280w"
+                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
                  width="1140" height="640" alt="Current: the Raiffeisen Collateral Platform in the browser, creating a collateral agreement. Step two of four, Collateral objects: 8 linked objects worth 211,000,000.00 SAR, with an office floor and a retail unit listed with their addresses, owners, title deeds and market values, a yellow Link object button and Continue." loading="lazy" decoding="async" aria-hidden="true">
           </span>
+          <!-- Legacy / Current (habibi: segment-group, always Olive Night colours) -->
+          <div class="segment-group toggle-media__segments" data-theme="olive-night" role="group" aria-label="Version">
+            <button class="segment body-c-regular" type="button" data-type="legacy" aria-pressed="true"
+                    data-goatcounter-click="raiffeisen-bank-legacy-segment" data-goatcounter-title="Legacy segment — raiffeisen-bank">Legacy</button>
+            <button class="segment body-c-regular" type="button" data-type="current" aria-pressed="false"
+                    data-goatcounter-click="raiffeisen-bank-current-segment" data-goatcounter-title="Current segment — raiffeisen-bank">Current</button>
+          </div>
           <!-- The "AI scene" switch in a frosted pill (always Olive Night colours) -->
           <div class="toggle-media__control" data-theme="olive-night">
             <button class="switch-and-text toggle-media__switch" type="button" role="switch" aria-checked="true" dir="rtl"
-                    data-goatcounter-click="raiffeisen-bank-current-ai-scene-toggle" data-goatcounter-title="AI scene switch (current) — raiffeisen-bank">
+                    data-goatcounter-click="raiffeisen-bank-ai-scene-toggle" data-goatcounter-title="AI scene switch — raiffeisen-bank">
               <span class="switch" aria-hidden="true"><span class="switch__knob"></span></span>
               <span class="body-c-regular">AI scene</span>
             </button>

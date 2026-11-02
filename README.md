@@ -47,11 +47,12 @@ assets/css/                HOW THINGS LOOK
     case-section.css       numbered text sections (01, 02…), tablet layout
     home-cards.css         the big cards on the home page
     media.css              image blocks, video, images side by side
-    toggle-media.css       Legacy vs Current: two images + a switch
+    toggle-media.css       Legacy vs Current: four images, segments + a switch
     arrow.css              the down arrow between before / after
     reflection-cards.css   Business goal, Hard work, Smart work, Shipped impact, Fails
     button.css             habibi button, all variants
     switch.css             habibi switch
+    segment.css            habibi segment-group
     cta-banner.css         picture strip with a button ("Explore my Figma")
     image-loader.css       grey pulsing placeholder while images load
     tag.css                habibi tag
@@ -63,7 +64,7 @@ assets/js/                 WHAT MOVES
   sidebar.js               builds the sidebar on every page from config.js
   mobile-bar.js            hides the phone top bar on scroll down, shows it on scroll up
   image-loader.js          shows the placeholder until each image has loaded
-  toggle-media.js          the "AI scene" switch that swaps two images
+  toggle-media.js          the Legacy / Current segments and "AI scene" switch
 
 assets/img/                favicon, 404 empty-state image, one folder of images per page
 assets/fonts/              IBM Plex Mono for habibi Code styles (OFL licence)
@@ -193,10 +194,13 @@ The habibi **switch** (Accent, compact) is a `<button role="switch" aria-checked
 `<span class="switch"><span class="switch__knob"></span></span>` inside; `switch-and-text` adds the label.
 Hover and disabled states come from the library, and inside `dir="rtl"` it mirrors like the Figma rtl variant.
 
-A **toggle-media** block puts two images in one 1140×640 slot with a switch in the corner, as in the
-Figma `raif-legasy-demo` component. `data-active="true"` shows the `--on` image. `toggle-media.js` swaps them,
-keeps screen readers on the visible one, and GoatCounter counts the clicks. MA.direct, Raiffeisen Bank and T-bank use it twice: the legacy screen (Figma `legacy-demo`) and the current design (Figma `current-demo`, `toggle-media--current`), both 1140×640. Their images are `legacy-ai-scene` / `legacy-ui` and `cover` / `current-ui`, each as `-1x.webp` (1140px) and `-2x.webp` (2280px).
-In these Legacy vs Current blocks (`media media--gap-16`) the arrow sits in a pill, `<span class="media__arrow-pill">`, 16px from each image: uncreative-green/50 with the icon in uncreative-green/90, so it is green in Light and purple in Olive, as in Figma.
+A **toggle-media** block is the Legacy vs Current block on MA.direct, Raiffeisen Bank and T-bank (Figma
+`legaсy-demo-ma`, `legaсy-demo-raiffeisen`, `legaсy-demo-t-bank`). Four images share one 1140×640 slot, one per
+component variant: `legacy-ai-scene`, `legacy-ui`, `current-ai-scene` and `current-ui`, each as `-1x.webp` (1140px) and
+`-2x.webp` (2280px). Export each variant whole, with the segment group and the switch hidden, so the picture comes out
+already cropped to the slot. Each `<img>` carries `data-type="legacy|current"` and `data-ai="true|false"`.
+The habibi **segment group** (`site/segment.css`, top left) picks Legacy or Current, the switch picks the AI scene;
+`toggle-media.js` shows the matching image, keeps screen readers on it, and GoatCounter counts the clicks.
 The switch sits in a frosted pill (`toggle-media__control`) that carries `data-theme="olive-night"`, the same fixed colour mode it has in Figma; on smaller blocks the pill gets a dark tint so the label stays readable.
 
 ## Day & night

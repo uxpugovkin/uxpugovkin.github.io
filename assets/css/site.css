@@ -30,13 +30,14 @@
 @import url("site/case-section.css");      /* numbered text sections (01, 02…) */
 @import url("site/home-cards.css");        /* the four big cards on the home page */
 @import url("site/media.css");             /* image blocks, video, images side by side */
-@import url("site/toggle-media.css");      /* Legacy vs Current: two images + a switch */
+@import url("site/toggle-media.css");      /* Legacy vs Current: four images, segments + a switch */
 @import url("site/arrow.css");             /* the down arrow between before / after */
 @import url("site/reflection-cards.css");  /* Business goal, Hard work, Smart work… */
 
 /* Components */
 @import url("site/button.css");            /* habibi button, all variants */
 @import url("site/switch.css");            /* habibi switch */
+@import url("site/segment.css");           /* habibi segment-group */
 @import url("site/cta-banner.css");        /* picture strip with a button ("Explore my Figma") */
 @import url("site/image-loader.css");      /* grey pulsing placeholder while images load */
 @import url("site/tag.css");               /* habibi tag */

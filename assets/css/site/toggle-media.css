@@ -1,26 +1,27 @@
 /* ==========================================================================
-   TOGGLE MEDIA — two images with a switch  (Figma: raif-legasy-demo)
+   TOGGLE MEDIA — Legacy vs Current  (Figma: legaсy-demo-ma / -raiffeisen / -t-bank)
 
-   Two images share one 1140 × 640 slot. A switch in the bottom-right
-   corner swaps between them with a cross-fade, like switching variants
-   of a Figma component.
+   Four images share one 1140 × 640 slot, like the four variants of the
+   Figma component (Type = Legacy / Current × AI-scene = True / False).
+   The segment group picks the type, the switch picks the AI scene, and
+   the image cross-fades.
 
    ┌──────────────────────────────────────────┐
+   │ [Legacy|Current]  ← habibi segment-group │
    │                                          │
-   │        image "on" or image "off"         │
+   │         one of the four images           │
    │                                          │
    │                     ┌──────────────────┐ │
    │                     │ (●─) AI scene    │ │ ← frosted pill with
    │                     └──────────────────┘ │   the switch
    └──────────────────────────────────────────┘
 
-   In HTML:
-     data-active="true"   on .toggle-media  → shows the image marked --on
-     data-active="false"                     → shows the image marked --off
-   The click itself is handled by assets/js/toggle-media.js.
+   In HTML each image carries data-type="legacy|current" and
+   data-ai="true|false". assets/js/toggle-media.js puts aria-hidden="true"
+   on the three images that are not shown; the CSS below makes them
+   transparent.
 
-   Used twice on MA.direct, Raiffeisen Bank and T-bank:
-   Legacy (Figma legacy-demo) and Current (Figma current-demo).
+   Used on MA.direct, Raiffeisen Bank and T-bank.
    ========================================================================== */
 
 .toggle-media {
@@ -50,12 +51,18 @@
   object-fit: cover;
 }
 
-/* The hidden one is made transparent:
-   switch on  → hide the --off image
-   switch off → hide the --on image */
-.toggle-media[data-active="true"] .toggle-media__image--off,
-.toggle-media[data-active="false"] .toggle-media__image--on {
+/* The images not shown are made transparent */
+.toggle-media__image[aria-hidden="true"] {
   opacity: 0;
+}
+
+/* Legacy / Current segments: 16px from the top and left edges
+   (Figma: segment-group at 16, 16) */
+.toggle-media__segments {
+  position: absolute;
+  top: var(--space-16);
+  left: var(--space-16);
+  z-index: 1;
 }
 
 /* The frosted pill (Figma: Frame 5): 12px from the right and bottom edges,

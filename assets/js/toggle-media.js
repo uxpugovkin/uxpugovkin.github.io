@@ -1,62 +1,67 @@
 /* ==========================================================================
-   TOGGLE MEDIA — the "AI scene" switch that swaps two images
+   TOGGLE MEDIA — the Legacy vs Current block
 
-   Used in the Legacy vs Current blocks (MA.direct, Raiffeisen Bank, T-bank).
-   Each block has two images and a habibi switch. Clicking the switch:
-   - flips data-active on the block ("true" ↔ "false"); the CSS then fades
-     the right image in (assets/css/site/toggle-media.css)
-   - flips aria-checked on the switch, which moves the knob
-   - hides the invisible image from screen readers, so they only describe
-     the picture that is actually on screen
+   Used on MA.direct, Raiffeisen Bank and T-bank. One block holds four
+   images, a Legacy / Current segment group and an "AI scene" switch.
+   - a segment click sets data-type on the block ("legacy" or "current")
+     and presses that segment (aria-pressed)
+   - a switch click flips aria-checked, which moves the knob
+   Then the one image that matches both (data-type and data-ai) is shown;
+   the other three get aria-hidden="true", which the CSS fades out
+   (assets/css/site/toggle-media.css) and screen readers skip.
 
-   The starting state comes from the HTML: aria-checked="true" on the
-   switch shows the image marked  toggle-media__image--on.
+   The starting state comes from the HTML: data-type on the block and
+   aria-checked on the switch.
    ========================================================================== */
 
 
 // Sets up one toggle block
 function setUpToggle(block) {
   var switchButton = block.querySelector('[role="switch"]');
-  var imageOn = block.querySelector(".toggle-media__image--on");
-  var imageOff = block.querySelector(".toggle-media__image--off");
+  var segments = block.querySelectorAll(".segment");
+  var images = block.querySelectorAll(".toggle-media__image");
 
   if (!switchButton) {
     return;
   }
 
-  // Show or hide an image for screen readers
-  function hideFromScreenReaders(image, hidden) {
-    if (!image) {
-      return;
+  // Show the image that matches the segment and the switch, hide the rest
+  function update() {
+    var type = block.getAttribute("data-type");
+    var ai = switchButton.getAttribute("aria-checked");
+
+    for (var i = 0; i < segments.length; i++) {
+      var isPressed = segments[i].getAttribute("data-type") === type;
+      segments[i].setAttribute("aria-pressed", isPressed ? "true" : "false");
     }
-    if (hidden) {
-      image.setAttribute("aria-hidden", "true");
-    } else {
-      image.removeAttribute("aria-hidden");
+
+    for (var j = 0; j < images.length; j++) {
+      var image = images[j];
+      if (image.getAttribute("data-type") === type && image.getAttribute("data-ai") === ai) {
+        image.removeAttribute("aria-hidden");
+      } else {
+        image.setAttribute("aria-hidden", "true");
+      }
     }
   }
 
-  // Put the block into the on (true) or off (false) state
-  function setState(isOn) {
-    if (isOn) {
-      block.setAttribute("data-active", "true");
-      switchButton.setAttribute("aria-checked", "true");
-    } else {
-      block.setAttribute("data-active", "false");
-      switchButton.setAttribute("aria-checked", "false");
-    }
-    hideFromScreenReaders(imageOn, !isOn);
-    hideFromScreenReaders(imageOff, isOn);
-  }
-
-  // A click flips the state
+  // A switch click flips the AI scene
   switchButton.addEventListener("click", function () {
     var isOnNow = switchButton.getAttribute("aria-checked") === "true";
-    setState(!isOnNow);
+    switchButton.setAttribute("aria-checked", isOnNow ? "false" : "true");
+    update();
   });
 
+  // A segment click picks Legacy or Current
+  for (var k = 0; k < segments.length; k++) {
+    segments[k].addEventListener("click", function () {
+      block.setAttribute("data-type", this.getAttribute("data-type"));
+      update();
+    });
+  }
+
   // Start in the state written in the HTML
-  setState(switchButton.getAttribute("aria-checked") === "true");
+  update();
 }
 
 

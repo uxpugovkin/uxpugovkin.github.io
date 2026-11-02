@@ -1,0 +1,52 @@
+/* ==========================================================================
+   SEGMENT GROUP  (habibi: segment-group)
+
+   [ Legacy | Current ]
+   A row of segments on a grey track; the pressed one is a raised tile.
+
+   States follow the Figma variants:
+     Active  = aria-pressed="true"   (surface fill, shadow/default/s)
+     Default = aria-pressed="false"  (no fill, sits on the track)
+
+   HTML:
+     <div class="segment-group" role="group" aria-label="…">
+       <button class="segment body-c-regular" type="button" aria-pressed="true">One</button>
+       <button class="segment body-c-regular" type="button" aria-pressed="false">Two</button>
+     </div>
+   ========================================================================== */
+
+/* The track: uncolorful-grey/border, radius/m, no padding */
+.segment-group {
+  display: inline-flex;
+  border-radius: var(--radius-m);
+  background-color: var(--uncolorful-grey-border);
+}
+
+/* One segment: 4 / 10 padding (Figma: 4 / 6 + 4 on the label), Body C,
+   primary text. It is a <button>, so the browser's button look is removed. */
+.segment {
+  margin: 0;
+  padding: var(--space-4) calc(var(--space-6) + var(--space-4));
+  border: 0;
+  border-radius: var(--radius-m);
+  background: none;
+  color: var(--uncolorful-grey-primary);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;   /* no grey flash when tapped on phones */
+  transition: background-color var(--motion-duration) var(--motion-ease),
+    box-shadow var(--motion-duration) var(--motion-ease);
+}
+
+/* Active */
+.segment[aria-pressed="true"] {
+  background-color: var(--uncolorful-grey-surface);
+  box-shadow: var(--shadow-default-s);
+  cursor: default;
+}
+
+/* Visitors who turned on "reduce motion": no fade between segments */
+@media (prefers-reduced-motion: reduce) {
+  .segment {
+    transition: none;
+  }
+}

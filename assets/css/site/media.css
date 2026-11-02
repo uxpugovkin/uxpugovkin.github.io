@@ -8,8 +8,6 @@
    In HTML:  <figure class="media"> … images … </figure>
 
    Variants:
-     media--gap-16  — 16px between items instead of 12
-                      (the Legacy vs Current blocks)
      media--row     — two images side by side
    Inside a block:
      media__link    — a clickable image that opens full size
@@ -24,11 +22,6 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-12);
-}
-
-/* Figma image-frames with a 16px gap (arrow 16px from each image) */
-.media--gap-16 {
-  gap: var(--space-16);
 }
 
 /* A clickable image: the mouse becomes a magnifying glass */
