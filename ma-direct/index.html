@@ -54,6 +54,45 @@
         </ul>
       </header>
 
+      <!-- === LEGACY vs CURRENT ===
+           One block, four images (Figma: legaсy-demo-ma). The segment group
+           picks Legacy or Current, the "AI scene" switch picks the scene or the
+           plain screen. Images: -1x.webp (1140px) for normal screens, -2x.webp
+           (2280px) for retina screens. -->
+      <figure class="media">
+        <div class="toggle-media" data-type="legacy">
+          <span class="image-loader image-loader--spinner toggle-media__frame">
+            <img class="toggle-media__image" data-type="legacy" data-ai="true" src="../assets/img/ma-direct/legacy-ai-scene-1x.webp" srcset="../assets/img/ma-direct/legacy-ai-scene-1x.webp 1140w, ../assets/img/ma-direct/legacy-ai-scene-2x.webp 2280w"
+                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
+                 width="1140" height="640" alt="Before, as an AI-generated scene: the old MA shift scheduler on a desktop monitor by a window on a snowy winter evening, with apartment blocks and street lamps outside, a desk lamp, a green mug with a tea bag, keys, biscuits and an old radiator with a sock drying on it. On screen is the Merchandising project schedule, a week of shifts for each store." decoding="async">
+            <img class="toggle-media__image" data-type="legacy" data-ai="false" src="../assets/img/ma-direct/legacy-ui-1x.webp" srcset="../assets/img/ma-direct/legacy-ui-1x.webp 1140w, ../assets/img/ma-direct/legacy-ui-2x.webp 2280w"
+                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
+                 width="1140" height="640" alt="Before: the old MA shift scheduler in a browser. The Merchandising Charts project schedule lists stores by territory (Moscow SW) against a week from Mon, Sep 10 to Sun, Sep 16, with small shift cards showing hours and pay, and a plus button to add a shift on each day." loading="lazy" decoding="async" aria-hidden="true">
+            <img class="toggle-media__image" data-type="current" data-ai="true" src="../assets/img/ma-direct/current-ai-scene-1x.webp" srcset="../assets/img/ma-direct/current-ai-scene-1x.webp 1140w, ../assets/img/ma-direct/current-ai-scene-2x.webp 2280w"
+                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
+                 width="1140" height="640" alt="After: the new MA.direct shift planner on a monitor in a Riyadh office at night, with the Kingdom Centre lit green outside the window, a brass lamp, a coffee pot and bookshelves. On screen, the 7-Eleven project shows a location tree down to a single store and a week of shift cards with pay in SAR and hours." loading="lazy" decoding="async" aria-hidden="true">
+            <img class="toggle-media__image" data-type="current" data-ai="false" src="../assets/img/ma-direct/current-ui-1x.webp" srcset="../assets/img/ma-direct/current-ui-1x.webp 1140w, ../assets/img/ma-direct/current-ui-2x.webp 2280w"
+                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
+                 width="1140" height="640" alt="Current: the MA.direct shift planner in the browser. The 7-Eleven project, Assignment view, shows a location tree from Saudi Arabia down to store 1042 on Olaya St, daily shift counts for Mon, Jan 1 to Fri, Jan 5, and shift cards with pay and hours, such as SAR 180 · 5 rates, 09:00 — 13:00." loading="lazy" decoding="async" aria-hidden="true">
+          </span>
+          <!-- Legacy / Current (habibi: segment-group, always Olive Night colours) -->
+          <div class="segment-group toggle-media__segments" data-theme="olive-night" role="group" aria-label="Version">
+            <button class="segment body-c-regular" type="button" data-type="legacy" aria-pressed="true"
+                    data-goatcounter-click="ma-direct-legacy-segment" data-goatcounter-title="Legacy segment — ma-direct">Legacy</button>
+            <button class="segment body-c-regular" type="button" data-type="current" aria-pressed="false"
+                    data-goatcounter-click="ma-direct-current-segment" data-goatcounter-title="Current segment — ma-direct">Current</button>
+          </div>
+          <!-- The "AI scene" switch in a frosted pill (always Olive Night colours) -->
+          <div class="toggle-media__control" data-theme="olive-night">
+            <button class="switch-and-text toggle-media__switch" type="button" role="switch" aria-checked="true" dir="rtl"
+                    data-goatcounter-click="ma-direct-ai-scene-toggle" data-goatcounter-title="AI scene switch — ma-direct">
+              <span class="switch" aria-hidden="true"><span class="switch__knob"></span></span>
+              <span class="body-c-regular">AI scene</span>
+            </button>
+          </div>
+        </div>
+      </figure>
+
       <!-- === SECTION — numbered automatically (01, 02…): title + text === -->
       <section class="paragraph case-section" aria-labelledby="outcomes">
         <h2 class="case-section__title header-h3" id="outcomes">Outcomes</h2>
@@ -103,50 +142,6 @@
           </div>
         </div>
       </section>
-
-      <!-- === SECTION — numbered automatically (01, 02…): title + text === -->
-      <section class="paragraph case-section" aria-labelledby="legacy-vs-current">
-        <h2 class="case-section__title header-h3" id="legacy-vs-current">Legacy vs Current</h2>
-      </section>
-
-      <!-- === LEGACY vs CURRENT ===
-           One block, four images (Figma: legaсy-demo-ma). The segment group
-           picks Legacy or Current, the "AI scene" switch picks the scene or the
-           plain screen. Images: -1x.webp (1140px) for normal screens, -2x.webp
-           (2280px) for retina screens. -->
-      <figure class="media">
-        <div class="toggle-media" data-type="legacy">
-          <span class="image-loader image-loader--spinner toggle-media__frame">
-            <img class="toggle-media__image" data-type="legacy" data-ai="true" src="../assets/img/ma-direct/legacy-ai-scene-1x.webp" srcset="../assets/img/ma-direct/legacy-ai-scene-1x.webp 1140w, ../assets/img/ma-direct/legacy-ai-scene-2x.webp 2280w"
-                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
-                 width="1140" height="640" alt="Before, as an AI-generated scene: the old MA shift scheduler on a desktop monitor by a window on a snowy winter evening, with apartment blocks and street lamps outside, a desk lamp, a green mug with a tea bag, keys, biscuits and an old radiator with a sock drying on it. On screen is the Merchandising project schedule, a week of shifts for each store." loading="lazy" decoding="async">
-            <img class="toggle-media__image" data-type="legacy" data-ai="false" src="../assets/img/ma-direct/legacy-ui-1x.webp" srcset="../assets/img/ma-direct/legacy-ui-1x.webp 1140w, ../assets/img/ma-direct/legacy-ui-2x.webp 2280w"
-                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
-                 width="1140" height="640" alt="Before: the old MA shift scheduler in a browser. The Merchandising Charts project schedule lists stores by territory (Moscow SW) against a week from Mon, Sep 10 to Sun, Sep 16, with small shift cards showing hours and pay, and a plus button to add a shift on each day." loading="lazy" decoding="async" aria-hidden="true">
-            <img class="toggle-media__image" data-type="current" data-ai="true" src="../assets/img/ma-direct/current-ai-scene-1x.webp" srcset="../assets/img/ma-direct/current-ai-scene-1x.webp 1140w, ../assets/img/ma-direct/current-ai-scene-2x.webp 2280w"
-                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
-                 width="1140" height="640" alt="After: the new MA.direct shift planner on a monitor in a Riyadh office at night, with the Kingdom Centre lit green outside the window, a brass lamp, a coffee pot and bookshelves. On screen, the 7-Eleven project shows a location tree down to a single store and a week of shift cards with pay in SAR and hours." loading="lazy" decoding="async" aria-hidden="true">
-            <img class="toggle-media__image" data-type="current" data-ai="false" src="../assets/img/ma-direct/current-ui-1x.webp" srcset="../assets/img/ma-direct/current-ui-1x.webp 1140w, ../assets/img/ma-direct/current-ui-2x.webp 2280w"
-                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
-                 width="1140" height="640" alt="Current: the MA.direct shift planner in the browser. The 7-Eleven project, Assignment view, shows a location tree from Saudi Arabia down to store 1042 on Olaya St, daily shift counts for Mon, Jan 1 to Fri, Jan 5, and shift cards with pay and hours, such as SAR 180 · 5 rates, 09:00 — 13:00." loading="lazy" decoding="async" aria-hidden="true">
-          </span>
-          <!-- Legacy / Current (habibi: segment-group, always Olive Night colours) -->
-          <div class="segment-group toggle-media__segments" data-theme="olive-night" role="group" aria-label="Version">
-            <button class="segment body-c-regular" type="button" data-type="legacy" aria-pressed="true"
-                    data-goatcounter-click="ma-direct-legacy-segment" data-goatcounter-title="Legacy segment — ma-direct">Legacy</button>
-            <button class="segment body-c-regular" type="button" data-type="current" aria-pressed="false"
-                    data-goatcounter-click="ma-direct-current-segment" data-goatcounter-title="Current segment — ma-direct">Current</button>
-          </div>
-          <!-- The "AI scene" switch in a frosted pill (always Olive Night colours) -->
-          <div class="toggle-media__control" data-theme="olive-night">
-            <button class="switch-and-text toggle-media__switch" type="button" role="switch" aria-checked="true" dir="rtl"
-                    data-goatcounter-click="ma-direct-ai-scene-toggle" data-goatcounter-title="AI scene switch — ma-direct">
-              <span class="switch" aria-hidden="true"><span class="switch__knob"></span></span>
-              <span class="body-c-regular">AI scene</span>
-            </button>
-          </div>
-        </div>
-      </figure>
 
       <!-- === SECTION — numbered automatically (01, 02…): title + text === -->
       <section class="paragraph case-section" aria-labelledby="title">

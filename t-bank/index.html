@@ -54,6 +54,45 @@
         </ul>
       </header>
 
+      <!-- === LEGACY vs CURRENT ===
+           One block, four images (Figma: legaсy-demo-t-bank). The segment group
+           picks Legacy or Current, the "AI scene" switch picks the scene or the
+           plain screen. Images: -1x.webp (1140px) for normal screens, -2x.webp
+           (2280px) for retina screens. -->
+      <figure class="media">
+        <div class="toggle-media" data-type="legacy">
+          <span class="image-loader image-loader--spinner toggle-media__frame">
+            <img class="toggle-media__image" data-type="legacy" data-ai="true" src="../assets/img/t-bank/legacy-ai-scene-1x.webp" srcset="../assets/img/t-bank/legacy-ai-scene-1x.webp 1140w, ../assets/img/t-bank/legacy-ai-scene-2x.webp 2280w"
+                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
+                 width="1140" height="640" alt="Before, as an AI-generated scene: the legacy Siebel verification screen, in English with test data, on a monitor at a small home desk by a window on a rainy winter night, with lit high-rises outside, a glowing desk lamp, a headset, an instant noodle cup, a mug and a phone. A drying rack and an armchair stand in the dark behind." decoding="async">
+            <img class="toggle-media__image" data-type="legacy" data-ai="false" src="../assets/img/t-bank/legacy-ui-1x.webp" srcset="../assets/img/t-bank/legacy-ui-1x.webp 1140w, ../assets/img/t-bank/legacy-ui-2x.webp 2280w"
+                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
+                 width="1140" height="640" alt="Before: the legacy Oracle Siebel verification screen in a browser, in English with test data. The Romashka Trade LLC loan application with its verification steps, the CEO’s contacts and roles and a long list of company activities, with the Tinkoff dialogs panel of customer chats on the right." loading="lazy" decoding="async" aria-hidden="true">
+            <img class="toggle-media__image" data-type="current" data-ai="true" src="../assets/img/t-bank/current-ai-scene-1x.webp" srcset="../assets/img/t-bank/current-ai-scene-1x.webp 1140w, ../assets/img/t-bank/current-ai-scene-2x.webp 2280w"
+                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
+                 width="1140" height="640" alt="After: the new in-house Tinkoff operator workspace on a monitor in a snowy-day call-centre office, beside a swordsman figure, a headset and a desk phone. On screen, a customer chat with Pirog Tatyana Ivanovna on the left and her profile with accounts and cards on the right." loading="lazy" decoding="async" aria-hidden="true">
+            <img class="toggle-media__image" data-type="current" data-ai="false" src="../assets/img/t-bank/current-ui-1x.webp" srcset="../assets/img/t-bank/current-ui-1x.webp 1140w, ../assets/img/t-bank/current-ui-2x.webp 2280w"
+                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
+                 width="1140" height="640" alt="Current: the Tinkoff operator workspace in the browser. A chat with Pirog Tatyana Ivanovna on the left, with routing events and her question, and her profile on the right with quick actions and two RUB accounts with their cards." loading="lazy" decoding="async" aria-hidden="true">
+          </span>
+          <!-- Legacy / Current (habibi: segment-group, always Olive Night colours) -->
+          <div class="segment-group toggle-media__segments" data-theme="olive-night" role="group" aria-label="Version">
+            <button class="segment body-c-regular" type="button" data-type="legacy" aria-pressed="true"
+                    data-goatcounter-click="t-bank-legacy-segment" data-goatcounter-title="Legacy segment — t-bank">Legacy</button>
+            <button class="segment body-c-regular" type="button" data-type="current" aria-pressed="false"
+                    data-goatcounter-click="t-bank-current-segment" data-goatcounter-title="Current segment — t-bank">Current</button>
+          </div>
+          <!-- The "AI scene" switch in a frosted pill (always Olive Night colours) -->
+          <div class="toggle-media__control" data-theme="olive-night">
+            <button class="switch-and-text toggle-media__switch" type="button" role="switch" aria-checked="true" dir="rtl"
+                    data-goatcounter-click="t-bank-ai-scene-toggle" data-goatcounter-title="AI scene switch — t-bank">
+              <span class="switch" aria-hidden="true"><span class="switch__knob"></span></span>
+              <span class="body-c-regular">AI scene</span>
+            </button>
+          </div>
+        </div>
+      </figure>
+
       <!-- === SECTION — numbered automatically (01, 02…): title + text === -->
       <section class="paragraph case-section" aria-labelledby="outcomes">
         <h2 class="case-section__title header-h3" id="outcomes">Outcomes</h2>
@@ -96,50 +135,6 @@
           </div>
         </div>
       </section>
-
-      <!-- === SECTION — numbered automatically (01, 02…): title + text === -->
-      <section class="paragraph case-section" aria-labelledby="legacy-vs-current">
-        <h2 class="case-section__title header-h3" id="legacy-vs-current">Legacy vs Current</h2>
-      </section>
-
-      <!-- === LEGACY vs CURRENT ===
-           One block, four images (Figma: legaсy-demo-t-bank). The segment group
-           picks Legacy or Current, the "AI scene" switch picks the scene or the
-           plain screen. Images: -1x.webp (1140px) for normal screens, -2x.webp
-           (2280px) for retina screens. -->
-      <figure class="media">
-        <div class="toggle-media" data-type="legacy">
-          <span class="image-loader image-loader--spinner toggle-media__frame">
-            <img class="toggle-media__image" data-type="legacy" data-ai="true" src="../assets/img/t-bank/legacy-ai-scene-1x.webp" srcset="../assets/img/t-bank/legacy-ai-scene-1x.webp 1140w, ../assets/img/t-bank/legacy-ai-scene-2x.webp 2280w"
-                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
-                 width="1140" height="640" alt="Before, as an AI-generated scene: the legacy Siebel verification screen, in English with test data, on a monitor at a small home desk by a window on a rainy winter night, with lit high-rises outside, a glowing desk lamp, a headset, an instant noodle cup, a mug and a phone. A drying rack and an armchair stand in the dark behind." loading="lazy" decoding="async">
-            <img class="toggle-media__image" data-type="legacy" data-ai="false" src="../assets/img/t-bank/legacy-ui-1x.webp" srcset="../assets/img/t-bank/legacy-ui-1x.webp 1140w, ../assets/img/t-bank/legacy-ui-2x.webp 2280w"
-                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
-                 width="1140" height="640" alt="Before: the legacy Oracle Siebel verification screen in a browser, in English with test data. The Romashka Trade LLC loan application with its verification steps, the CEO’s contacts and roles and a long list of company activities, with the Tinkoff dialogs panel of customer chats on the right." loading="lazy" decoding="async" aria-hidden="true">
-            <img class="toggle-media__image" data-type="current" data-ai="true" src="../assets/img/t-bank/current-ai-scene-1x.webp" srcset="../assets/img/t-bank/current-ai-scene-1x.webp 1140w, ../assets/img/t-bank/current-ai-scene-2x.webp 2280w"
-                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
-                 width="1140" height="640" alt="After: the new in-house Tinkoff operator workspace on a monitor in a snowy-day call-centre office, beside a swordsman figure, a headset and a desk phone. On screen, a customer chat with Pirog Tatyana Ivanovna on the left and her profile with accounts and cards on the right." loading="lazy" decoding="async" aria-hidden="true">
-            <img class="toggle-media__image" data-type="current" data-ai="false" src="../assets/img/t-bank/current-ui-1x.webp" srcset="../assets/img/t-bank/current-ui-1x.webp 1140w, ../assets/img/t-bank/current-ui-2x.webp 2280w"
-                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
-                 width="1140" height="640" alt="Current: the Tinkoff operator workspace in the browser. A chat with Pirog Tatyana Ivanovna on the left, with routing events and her question, and her profile on the right with quick actions and two RUB accounts with their cards." loading="lazy" decoding="async" aria-hidden="true">
-          </span>
-          <!-- Legacy / Current (habibi: segment-group, always Olive Night colours) -->
-          <div class="segment-group toggle-media__segments" data-theme="olive-night" role="group" aria-label="Version">
-            <button class="segment body-c-regular" type="button" data-type="legacy" aria-pressed="true"
-                    data-goatcounter-click="t-bank-legacy-segment" data-goatcounter-title="Legacy segment — t-bank">Legacy</button>
-            <button class="segment body-c-regular" type="button" data-type="current" aria-pressed="false"
-                    data-goatcounter-click="t-bank-current-segment" data-goatcounter-title="Current segment — t-bank">Current</button>
-          </div>
-          <!-- The "AI scene" switch in a frosted pill (always Olive Night colours) -->
-          <div class="toggle-media__control" data-theme="olive-night">
-            <button class="switch-and-text toggle-media__switch" type="button" role="switch" aria-checked="true" dir="rtl"
-                    data-goatcounter-click="t-bank-ai-scene-toggle" data-goatcounter-title="AI scene switch — t-bank">
-              <span class="switch" aria-hidden="true"><span class="switch__knob"></span></span>
-              <span class="body-c-regular">AI scene</span>
-            </button>
-          </div>
-        </div>
-      </figure>
 
       <!-- === SECTION — numbered automatically (01, 02…): title + text === -->
       <section class="paragraph case-section" aria-labelledby="title">
