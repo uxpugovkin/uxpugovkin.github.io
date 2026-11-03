@@ -128,7 +128,7 @@ paddings, and their height follows the width at 1140:568, never below 240px.
 
 To give a card a picture, add `case-card--image` to the link and an `<span class="image-loader case-card__media"><img …></span>`
 before the text. Export the card's picture layer (Hover=False variant) already cropped to the card, at 1x (1140×568) and
-2x (2280×1136), as `assets/img/home/<page>-card-1x.webp` / `-2x.webp`. Over a picture the text turns white with a soft
+2x (2280×1136), as lossless `assets/img/home/<page>-card-1x.webp` / `-2x.webp` (`cwebp -lossless`). Over a picture the text turns white with a soft
 shadow; on hover the picture zooms in slightly (Hover=True). Card clicks are counted in GoatCounter as `home-card-<page>`.
 
 ## Images
