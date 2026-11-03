@@ -17,7 +17,7 @@ Think of it like the Figma file: one page per thing. Every file starts with a co
 what it is, and every block in the HTML pages has a label above it.
 
 ```
-index.html                 Home: case study cards
+index.html                 Home: greeting + case study cards
 sbertech/  ma-direct/      one folder per case study (header: title, role, tags)
 raiffeisen-bank/  t-bank/
 ma-mobile/                 placeholder ("coming soon" empty state) until the case is written
@@ -65,13 +65,14 @@ assets/js/                 WHAT MOVES
   mobile-bar.js            hides the phone top bar on scroll down, shows it on scroll up
   image-loader.js          shows the placeholder until each image has loaded
   toggle-media.js          the Legacy / Current segments and "AI scene" switch
+  prefetch.js              loads the other case studies, the video and the images below ahead
 
 assets/img/                favicon, 404 empty-state image, one folder of images per page
 assets/fonts/              IBM Plex Mono for habibi Code styles (OFL licence)
 ```
 
 Every page loads the same files. CSS: `tokens.css`, then `site.css`, and those two load the rest.
-JavaScript: the six files above, listed in each page's HTML in that order. If you add a new
+JavaScript: the seven files above, listed in each page's HTML in that order. If you add a new
 JavaScript file, add its `<script>` line to every page. If you add a new CSS file, add one
 `@import` line to `site.css`.
 
@@ -115,16 +116,20 @@ the same at every breakpoint. Change it in one place (`assets/css/site/settings.
 
 ## Home page
 
-The home page is a grid of case study cards (Figma: Storefront). Each card is a
+The home page starts with a greeting (Figma: Greetings): "I am Konstantin" in Header/Display B with the
+44px avatar beside it (`assets/img/home/avatar-1x.webp` / `-2x.webp`) and one line in Header/H1. On phones
+it steps down to H1 + H3.
+
+Below it is a column of case study cards (Figma: Card component). Each card is a
 `<li class="storefront__item storefront__item--<page>">` with an `<a class="case-card">` inside:
 title (Header/H1) and the role (Body E, upper case). The cards sit in one column, full width,
-16px apart, like the four 1160×512 frames in Figma. Cards are flexible: they fill the space between the side
-paddings, and their height follows the width at 1160:512 (512px in a 1440px window), never below 240px.
+16px apart, like the four 1140×568 cards in Figma. Cards are flexible: they fill the space between the side
+paddings, and their height follows the width at 1140:568, never below 240px.
 
 To give a card a picture, add `case-card--image` to the link and an `<span class="image-loader case-card__media"><img …></span>`
-before the text. Export the whole 16:9 scene at 1160px and 2320px into `assets/img/home/`. The picture stays centred on its
-focal point; set `object-position` per card in `home-cards.css` to move it (all four cards have a picture). Over a picture
-the text turns white with a soft shadow. Card clicks are counted in GoatCounter as `home-card-<page>`.
+before the text. Export the card's picture layer (Hover=False variant) already cropped to the card, at 1x (1140×568) and
+2x (2280×1136), as `assets/img/home/<page>-card-1x.webp` / `-2x.webp`. Over a picture the text turns white with a soft
+shadow; on hover the picture zooms in slightly (Hover=True). Card clicks are counted in GoatCounter as `home-card-<page>`.
 
 ## Images
 
@@ -202,6 +207,17 @@ already cropped to the slot. Each `<img>` carries `data-type="legacy|current"` a
 The habibi **segment group** (`site/segment.css`, top left) picks Legacy or Current, the switch picks the AI scene;
 `toggle-media.js` shows the matching image, keeps screen readers on it, and GoatCounter counts the clicks.
 The switch sits in a frosted pill (`toggle-media__control`) that carries `data-theme="olive-night"`, the same fixed colour mode it has in Figma; on smaller blocks the pill gets a dark tint so the label stays readable.
+
+## Prefetch
+
+`prefetch.js` makes sure nothing is missed when a case study opens. Once a page has loaded and the browser is idle,
+it fetches every other case study page from the menu in the background, and starts loading this page's images
+further down instead of waiting until they scroll into view. Pointing at or touching a link to a case with a video
+opens the connections to Vimeo right away. Visitors on data saver or a 2G connection get none of this.
+
+A case with a video gets one more field in `config.js`: `video`, the Vimeo player address exactly as in that page's
+`<iframe data-src>` (with `&` instead of `&amp;`), so the player is fetched ahead too. The Sberbank page also opens
+the Vimeo connections in its `<head>`, and its video iframe is not lazy-loaded, so the showreel starts as early as possible.
 
 ## Day & night
 

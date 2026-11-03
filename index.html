@@ -31,36 +31,47 @@
          sidebar.js       builds the sidebar from the two files above
          mobile-bar.js    hides the phone top bar on scroll down
          image-loader.js  grey pulsing placeholder until images load
-         toggle-media.js  the Legacy / Current segments and "AI scene" switch -->
+         toggle-media.js  the Legacy / Current segments and "AI scene" switch
+         prefetch.js      loads the other case studies ahead -->
     <script src="./assets/js/config.js"></script>
     <script src="./assets/js/icons.js"></script>
     <script src="./assets/js/sidebar.js"></script>
     <script src="./assets/js/mobile-bar.js"></script>
     <script src="./assets/js/image-loader.js"></script>
     <script src="./assets/js/toggle-media.js"></script>
+    <script src="./assets/js/prefetch.js"></script>
 
     <!-- === PAGE CONTENT ===
          Blocks stack top to bottom, 20px apart (vert-space), in the same
          order as the Content frame in Figma. -->
     <main class="content" id="main">
-      <!-- Page title for screen readers and Google (not shown on screen) -->
-      <h1 class="visually-hidden">Case studies</h1>
+      <!-- === GREETING (Figma: Greetings) ===
+           Name with the avatar next to it (Header Display B), and one line
+           about me (Header H1, tertiary). -->
+      <section class="greeting">
+        <h1 class="greeting__title header-display-b">
+          I am Konstantin
+          <img class="greeting__avatar" src="./assets/img/home/avatar-1x.webp" srcset="./assets/img/home/avatar-1x.webp 1x, ./assets/img/home/avatar-2x.webp 2x"
+               width="44" height="44" alt="" decoding="async">
+        </h1>
+        <p class="greeting__subtitle header-h1">Product designer using AI and VS Code</p>
+      </section>
 
       <!-- === CASE STUDY CARDS ===
-           One <li> per card: a picture (1160px file for normal screens, 2320px
+           One <li> per card: a picture (1140px file for normal screens, 2280px
            for retina), the title and the role. The whole card is one link. -->
       <ul class="storefront" aria-label="Case studies">
         <!-- Card: sbertech -->
         <li class="storefront__item storefront__item--sbertech">
           <a class="case-card case-card--image" href="./sbertech/" data-goatcounter-click="home-card-sbertech" data-goatcounter-title="Home card — Sberbank Technology">
             <span class="image-loader case-card__media">
-              <img src="./assets/img/home/sbertech-card-1x.webp" srcset="./assets/img/home/sbertech-card-1x.webp 1160w, ./assets/img/home/sbertech-card-2x.webp 2320w"
+              <img src="./assets/img/home/sbertech-card-1x.webp" srcset="./assets/img/home/sbertech-card-1x.webp 1140w, ./assets/img/home/sbertech-card-2x.webp 2280w"
                    sizes="(max-width: 767.98px) calc(100vw - 32px), (max-width: 1023.98px) calc(100vw - 264px), calc(100vw - 280px)"
-                   width="2320" height="1305" alt="" decoding="async">
+                   width="2280" height="1136" alt="" decoding="async">
             </span>
             <span class="case-card__text">
               <h2 class="case-card__title header-h1">Sberbank Technology</h2>
-              <span class="case-card__meta body-e-regular">Sr. Product Designer</span>
+              <span class="case-card__meta body-e-regular">Senior product designer</span>
             </span>
           </a>
         </li>
@@ -68,13 +79,13 @@
         <li class="storefront__item storefront__item--ma-direct">
           <a class="case-card case-card--image" href="./ma-direct/" data-goatcounter-click="home-card-ma-direct" data-goatcounter-title="Home card — MA.direct">
             <span class="image-loader case-card__media">
-              <img src="./assets/img/home/ma-direct-card-1x.webp" srcset="./assets/img/home/ma-direct-card-1x.webp 1160w, ./assets/img/home/ma-direct-card-2x.webp 2320w"
+              <img src="./assets/img/home/ma-direct-card-1x.webp" srcset="./assets/img/home/ma-direct-card-1x.webp 1140w, ./assets/img/home/ma-direct-card-2x.webp 2280w"
                    sizes="(max-width: 767.98px) calc(100vw - 32px), (max-width: 1023.98px) calc(100vw - 264px), calc(100vw - 280px)"
-                   width="2320" height="1305" alt="" decoding="async">
+                   width="2280" height="1136" alt="" decoding="async">
             </span>
             <span class="case-card__text">
               <h2 class="case-card__title header-h1">MA.direct</h2>
-              <span class="case-card__meta body-e-regular">Sr. Product Designer</span>
+              <span class="case-card__meta body-e-regular">Senior product designer</span>
             </span>
           </a>
         </li>
@@ -82,13 +93,13 @@
         <li class="storefront__item storefront__item--raiffeisen-bank">
           <a class="case-card case-card--image" href="./raiffeisen-bank/" data-goatcounter-click="home-card-raiffeisen-bank" data-goatcounter-title="Home card — Raiffeisen Bank">
             <span class="image-loader case-card__media">
-              <img src="./assets/img/home/raiffeisen-bank-card-1x.webp" srcset="./assets/img/home/raiffeisen-bank-card-1x.webp 1160w, ./assets/img/home/raiffeisen-bank-card-2x.webp 2320w"
+              <img src="./assets/img/home/raiffeisen-bank-card-1x.webp" srcset="./assets/img/home/raiffeisen-bank-card-1x.webp 1140w, ./assets/img/home/raiffeisen-bank-card-2x.webp 2280w"
                    sizes="(max-width: 767.98px) calc(100vw - 32px), (max-width: 1023.98px) calc(100vw - 264px), calc(100vw - 280px)"
-                   width="2320" height="1305" alt="" decoding="async">
+                   width="2280" height="1136" alt="" decoding="async">
             </span>
             <span class="case-card__text">
               <h2 class="case-card__title header-h1">Raiffeisen Bank</h2>
-              <span class="case-card__meta body-e-regular">Product Designer</span>
+              <span class="case-card__meta body-e-regular">Product designer</span>
             </span>
           </a>
         </li>
@@ -96,13 +107,13 @@
         <li class="storefront__item storefront__item--t-bank">
           <a class="case-card case-card--image" href="./t-bank/" data-goatcounter-click="home-card-t-bank" data-goatcounter-title="Home card — T-bank">
             <span class="image-loader case-card__media">
-              <img src="./assets/img/home/t-bank-card-1x.webp" srcset="./assets/img/home/t-bank-card-1x.webp 1160w, ./assets/img/home/t-bank-card-2x.webp 2320w"
+              <img src="./assets/img/home/t-bank-card-1x.webp" srcset="./assets/img/home/t-bank-card-1x.webp 1140w, ./assets/img/home/t-bank-card-2x.webp 2280w"
                    sizes="(max-width: 767.98px) calc(100vw - 32px), (max-width: 1023.98px) calc(100vw - 264px), calc(100vw - 280px)"
-                   width="2320" height="1305" alt="" decoding="async">
+                   width="2280" height="1136" alt="" decoding="async">
             </span>
             <span class="case-card__text">
               <h2 class="case-card__title header-h1">T-bank</h2>
-              <span class="case-card__meta body-e-regular">Product Designer</span>
+              <span class="case-card__meta body-e-regular">Product designer</span>
             </span>
           </a>
         </li>

@@ -19,9 +19,13 @@ window.SITE = {
   //   title — the text shown in the menu
   //   href  — the page's folder, from the site's top folder
   //   icon  — an icon name from icons.js: "desktop", "phone", "doc", "folder"
+  //   video — optional: the page's Vimeo player address, exactly as in the
+  //           page's <iframe data-src> (with & instead of &amp;), so
+  //           prefetch.js can load it ahead
   // { divider: true } draws a line between groups of items
   menu: [
-    { id: "sbertech", title: "Sberbank Technology", href: "sbertech/", icon: "desktop" },
+    { id: "sbertech", title: "Sberbank Technology", href: "sbertech/", icon: "desktop",
+      video: "https://player.vimeo.com/video/1231912882?autoplay=1&muted=1&loop=1&autopause=0&playsinline=1&dnt=1&title=0&byline=0&portrait=0&controls=0&background=1" },
     { id: "ma-direct", title: "MA.direct", href: "ma-direct/", icon: "desktop" },
     { id: "raiffeisen-bank", title: "Raiffeisen Bank", href: "raiffeisen-bank/", icon: "desktop" },
     { id: "t-bank", title: "T-bank", href: "t-bank/", icon: "desktop" },
