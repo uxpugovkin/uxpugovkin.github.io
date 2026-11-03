@@ -84,11 +84,14 @@
   color: var(--uncolorful-grey-primary);
 }
 
-/* The avatar sits 10px right of the name, 10px above the line's bottom */
+/* The avatar sits 10px right of the name, 10px above the line's bottom.
+   Round, radius/full (the exported picture is square). */
 .greeting__avatar {
   flex: none;
   width: 44px;
   height: 44px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
   margin-block-end: var(--space-10);
 }
 
