@@ -217,7 +217,7 @@
    each fading out downwards. Together they ease off smoothly into the
    picture.
      ::before  — light blur (4px), fades out over the full 80px
-     ::after   — strong blur (10px), fades out over the top 60% */
+     ::after   — strong blur (10px), fades out over the top 60% 
 .case-card--image::before,
 .case-card--image::after {
   content: "";
@@ -226,8 +226,9 @@
   inset-inline: 0;
   z-index: 1;
   height: 80px;
-  pointer-events: none;   /* clicks pass through to the card */
+  pointer-events: none;
 }
+*/
 
 .case-card--image::before {
   -webkit-backdrop-filter: blur(4px);
