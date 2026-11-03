@@ -34,14 +34,12 @@
     padding: 0;
     gap: 0;
     overflow: visible;
-    transition: transform var(--motion-duration) var(--motion-ease),
-      box-shadow var(--motion-duration) var(--motion-ease);
+    transition: transform var(--motion-duration) var(--motion-ease);
   }
 
   /* Bar hidden while scrolling down: moved up by its own height */
   .sidebar.is-hidden {
     transform: translateY(-100%);
-    box-shadow: none;
   }
 
   .sidebar__brand {

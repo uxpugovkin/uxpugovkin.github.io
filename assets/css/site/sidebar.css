@@ -32,7 +32,6 @@
   padding-block: var(--space-8) var(--space-16);
   overflow-y: auto;   /* scrolls on its own if the menu gets taller than the window */
   background: var(--uncolorful-grey-surface);
-  box-shadow: var(--shadow-default-s);
   z-index: 10;   /* sits above the page content */
 }
 
