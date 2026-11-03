@@ -23,7 +23,8 @@
    Card: uncolorful-grey/surface, radius/l, shadow default-s, 20/16 padding.
    Over a picture the text is white (pure/0) with a 0.5px black shadow
    at 16% (Figma: opacity/16% drop shadow).
-   Hover: the picture zooms in slightly (Figma Hover=True: 1350 → 1464 wide).
+   Hover: the picture zooms in slightly — Figma prototype "While hovering →
+   Change to Hover=True", Smart animate, ease out, 300ms.
    ========================================================================== */
 
 
@@ -154,7 +155,14 @@
   height: 100%;
   object-fit: cover;   /* = Figma image "Fill" */
   object-position: center;
-  transition: transform var(--motion-duration) var(--motion-ease);
+}
+
+/* Keeps the image loader's fade-in and adds the hover zoom
+   (Figma: Smart animate, Ease out, 300ms) */
+.image-loader.case-card__media img {
+  transition:
+    opacity var(--motion-duration) var(--motion-ease),
+    transform 300ms ease-out;
 }
 
 /* Title + role, stacked, above the picture and the blur */
@@ -185,10 +193,18 @@
   z-index: 0;
 }
 
-/* Hover: the picture zooms in (Figma Hover=True: 1350 → 1464, ×1.084) */
+/* Hover: the picture zooms in (Figma Hover=True: 1350 → 1464, ×1.084),
+   growing around the centre of the picture layer */
 .case-card:hover .case-card__media img,
 .case-card:focus-visible .case-card__media img {
   transform: scale(1.084);
+}
+
+/* Sberbank and Raiffeisen: the picture layer sits 72px above the card's
+   centre in Figma, so it grows around a point 212px down a 568px card */
+.storefront__item--sbertech .case-card__media img,
+.storefront__item--raiffeisen-bank .case-card__media img {
+  transform-origin: 50% calc(212 / 568 * 100%);
 }
 
 /* Progressive blur behind the title (Figma: "Rectangle 1", progressive
@@ -237,7 +253,7 @@
 
 /* Visitors who turned on "reduce motion" on their device: no animation */
 @media (prefers-reduced-motion: reduce) {
-  .case-card__media img {
+  .image-loader.case-card__media img {
     transition: none;
   }
 }
