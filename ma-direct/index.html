@@ -147,22 +147,39 @@
 
       <!-- === SECTION — numbered automatically (01, 02…): title + text === -->
       <section class="paragraph case-section" aria-labelledby="title">
-        <h2 class="case-section__title header-h3" id="title">Setting shifts for a slice</h2>
-        <p class="case-section__body body-c-regular">When an enterprise client needs shelf inspections across the whole country, I want tasks to adapt automatically to each geo slice (state, city, district), so I avoid most manual work.</p>
-        <p class="case-section__body body-c-regular">I designed a calendar with easily configurable nested nodes: a task location sits in a district, districts sit in a city, cities sit in areas, and areas sit in countries. A manager can pick a slice, such as a city district, to create a schedule and assign workers in bulk.</p>
+        <h2 class="case-section__title header-h3" id="slice">Set shifts for a slice</h2>
+        <p class="case-section__body body-c-regular">When an enterprise client wants to inspect retail shelves across the whole country, and I must set tasks in a plain table, I want slightly different tasks to appear automatically for each geo slice (state, city, district). This way, I avoid most of the manual work.</p>
+        <p class="case-section__body body-c-regular">As a solution, I designed a calendar with easily configurable nested nodes. A manager can pick a geo slice, such as a city district, to create a specific schedule and assign workers in bulk.</p>
         <p class="case-section__body body-c-regular">The first alternative was a visual map, but it requires effort to map zones and is hard to scale and support. The second was an auto algorithm, but it is overkill for irregular activities and beyond team resources.</p>
-        <p class="case-section__body body-c-regular">Manager task time dropped from 6–7 hours to an estimated 45 minutes. I also removed Excel imports and exports and the manual work with a plain list of shops. The client also wins because he gets his reports faster.</p>
-        </section>
+        <p class="case-section__body body-c-regular">As a result, I removed Excel imports and exports and the manual work with a plain shop list. Task time dropped from 6–7 hours to an estimated 45 minutes.</p>
+      </section>
 
       <!-- === IMAGES ===
            Each image: the 1140px file for normal screens, the 2160px file for
            retina screens and when clicked (opens full size). -->
       <figure class="media">
-        <a class="media__link" href="../assets/img/ma-direct/product-window-2160.webp">
+        <a class="media__link" href="../assets/img/ma-direct/slice-calendar-2160.webp">
           <span class="image-loader image-loader--spinner">
-            <img class="media__image" src="../assets/img/ma-direct/product-window-1140.webp" srcset="../assets/img/ma-direct/product-window-1140.webp 1140w, ../assets/img/ma-direct/product-window-2160.webp 2160w"
+            <img class="media__image" src="../assets/img/ma-direct/slice-calendar-1140.webp" srcset="../assets/img/ma-direct/slice-calendar-1140.webp 1140w, ../assets/img/ma-direct/slice-calendar-2160.webp 2160w"
                  sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
-                 width="2160" height="1349" alt="The MA.direct shift planner in a browser window at app.ma.direct: the 7-Eleven project in Assignment view, with a location tree from Saudi Arabia down to store 1042 on Olaya St. A bulk menu is open on Al Olaya Sub-Municipality with Add slots, Delete slots, Edit variables and Value settings, next to daily counts for Mon, Jan 1 to Fri, Jan 5 and shift cards such as SAR 180 · 5 rates, 09:00 — 13:00." loading="lazy" decoding="async">
+                 width="2160" height="1350" alt="Close-up of the MA.direct shift planner: a location tree from Saudi Arabia through Riyadh Region, Riyadh and Al Olaya Sub-Municipality down to Al Olaya District and store 1042 on Olaya St. A bulk menu is open on Al Olaya Sub-Municipality with Add slots, Delete slots, Edit variables and Value settings, next to daily counts for Mon, Jan 1 to Wed, Jan 3 and shift cards such as SAR 180 · 5 rates, 09:00 — 13:00." loading="lazy" decoding="async">
+          </span>
+          <span class="visually-hidden">(opens full size)</span>
+        </a>
+      </figure>
+
+      <!-- === SECTION — numbered automatically (01, 02…): title + text === -->
+      <section class="paragraph case-section" aria-labelledby="hierarchy">
+        <h2 class="case-section__title header-h3" id="hierarchy">Configurable hierarchy</h2>
+        <p class="case-section__body body-c-regular">Levels let a project match any geography, so a client can use regions, districts and neighborhoods, or skip levels entirely and work with plain locations. Each level is a slice of the business, and the structure is built once per project instead of being hardcoded into the product. A manager sets rules on a slice and they apply to everything nested inside it, so a difficult area can get higher pay or different limits in one action.</p>
+      </section>
+
+      <figure class="media">
+        <a class="media__link" href="../assets/img/ma-direct/levels-2160.webp">
+          <span class="image-loader image-loader--spinner">
+            <img class="media__image" src="../assets/img/ma-direct/levels-1140.webp" srcset="../assets/img/ma-direct/levels-1140.webp 1140w, ../assets/img/ma-direct/levels-2160.webp 2160w"
+                 sizes="(max-width: 767.98px) calc(100vw - 48px), min(1140px, calc(100vw - 280px))"
+                 width="2160" height="1152" alt="Four location trees side by side, each set up with different levels: Saudi Arabia, Riyadh Region, Riyadh, Al Olaya Sub-Municipality and Al Olaya District down to a 7-Eleven store, with a Rate settings tooltip, set individually for this slice; Türkiye, Marmara Region, Istanbul, Kadıköy District and Caferağa Mahallesi down to a Migros store; the Philippines, National Capital Region, Manila, Ermita District and Barangay 659 down to a 7-Eleven; and Russia, Northwestern Federal District, Saint Petersburg and Tsentralny District down to a Pyaterochka store." loading="lazy" decoding="async">
           </span>
           <span class="visually-hidden">(opens full size)</span>
         </a>
