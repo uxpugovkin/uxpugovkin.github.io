@@ -123,7 +123,7 @@ it steps down to H1 + H3.
 Below it is a column of case study cards (Figma: Card component). Each card is a
 `<li class="storefront__item storefront__item--<page>">` with an `<a class="case-card">` inside:
 title (Header/H1) and the role (Body E, upper case). The cards sit in one column, full width,
-16px apart, like the four 1140×568 cards in Figma. Cards are flexible: they fill the space between the side
+16px apart, like the five 1140×568 cards in Figma. Cards are flexible: they fill the space between the side
 paddings, and their height follows the width at 1140:568, never below 240px.
 
 To give a card a picture, add `case-card--image` to the link and an `<span class="image-loader case-card__media"><img …></span>`
