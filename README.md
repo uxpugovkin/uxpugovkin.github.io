@@ -133,7 +133,7 @@ before the text. Export the card's picture layer (Hover=False variant) already c
 
 Each card has three tags in its bottom-left corner (Figma: Tags), after the text:
 `<span class="case-card__tags">` holding `<span class="case-card__tag body-a-regular">` pills joined by
-`<span class="case-card__tag-link" aria-hidden="true">` connector shapes (drawn in CSS). Tag text is Body A on desktop, Body B on tablets (768–1023px) and Body C on phones (under 768px).
+`<span class="case-card__tag-link" aria-hidden="true">` connector shapes (drawn in CSS). Tag text is Body A on desktop, Body B on tablets (768–1023px) and Body D on phones (under 768px), where the card title also drops to Body C and the card padding to 12px.
 The joined row never wraps; on phones the connectors are dropped and the tags wrap as separate pills. Pattern: context · product · "For <users>", first word capitalised.
 On hover the picture zooms in (450ms, strong ease out) and the connectors narrow from 16 to 8px while their waist thickens from 4 to 6px (300ms, ease out); the padding stays 24px. `assets/js/card-hover.js` keeps hover working while the page scrolls under a still cursor (browsers normally wait until scrolling stops).
 
