@@ -261,3 +261,64 @@
     transition: none;
   }
 }
+
+/* Tags in the bottom-left corner (Figma: Tags) — 20px from the left and
+   bottom edges, above the picture. White pills, black text, radius/l,
+   4/12 padding, joined by a 16 × 20 connector shape
+   (assets/img/home/tag-link.svg) so the row reads as one piece.
+   Text size steps down with the screen:
+     desktop (1024px and up)   Body A  20/28
+     tablet  (768–1023px)      Body B  16/24
+     phone   (under 768px)     Body C  14/20
+   If the tags don't fit the card's width they wrap onto a second line. */
+.case-card__tags {
+  position: absolute;
+  inset-inline: var(--space-20);
+  inset-block-end: var(--space-20);
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: var(--space-4);
+}
+
+.case-card__tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4) var(--space-12);
+  border-radius: var(--radius-l);
+  background-color: var(--pure-0);
+  color: var(--pure-100);
+  white-space: nowrap;
+}
+
+.case-card__tag-link {
+  display: block;
+  flex: none;
+  width: 16px;
+  height: 20px;
+}
+
+/* Tablet: Body B */
+@media (max-width: 1023.98px) {
+  .case-card__tag {
+    font-size: var(--body-b-size);
+    line-height: var(--body-b-line-height);
+    letter-spacing: var(--body-b-letter-spacing);
+  }
+}
+
+/* Phone: Body C, 16px from the edges like the card's text */
+@media (max-width: 767.98px) {
+  .case-card__tags {
+    inset-inline: var(--space-16);
+    inset-block-end: var(--space-16);
+  }
+
+  .case-card__tag {
+    font-size: var(--body-c-size);
+    line-height: var(--body-c-line-height);
+    letter-spacing: var(--body-c-letter-spacing);
+  }
+}

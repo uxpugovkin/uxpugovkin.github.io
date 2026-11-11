@@ -131,6 +131,11 @@ before the text. Export the card's picture layer (Hover=False variant) already c
 2x (2280×1136), as lossless `assets/img/home/<page>-card-1x.webp` / `-2x.webp` (`cwebp -lossless`). Over a picture the text turns white with a soft
 shadow; on hover the picture zooms in slightly (Hover=True). Card clicks are counted in GoatCounter as `home-card-<page>`.
 
+Each card has three tags in its bottom-left corner (Figma: Tags), after the text:
+`<span class="case-card__tags">` holding `<span class="case-card__tag body-a-regular">` pills joined by
+`<img class="case-card__tag-link" src="./assets/img/home/tag-link.svg">` connector shapes. Tag text is Body A on desktop, Body B on tablets (768–1023px) and Body C on phones;
+the row wraps if it doesn't fit. Pattern: context · product · "For <users>", first word capitalised.
+
 ## Images
 
 Wide images go in a `<figure class="media">` block. It fills the content area up to **1140px**
