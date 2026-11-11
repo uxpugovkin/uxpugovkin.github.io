@@ -32,7 +32,7 @@
 @import url("site/media.css");             /* image blocks, video, images side by side */
 @import url("site/toggle-media.css");      /* Legacy vs Current: four images, segments + a switch */
 @import url("site/arrow.css");             /* the down arrow between before / after */
-@import url("site/reflection-cards.css");  /* Business goal, Hard work, Smart work… */
+@import url("site/reflection-cards.css");  /* Problem, Hard work, Smart work… */
 
 /* Components */
 @import url("site/button.css");            /* habibi button, all variants */

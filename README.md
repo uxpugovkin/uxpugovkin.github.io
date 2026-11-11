@@ -49,7 +49,7 @@ assets/css/                HOW THINGS LOOK
     media.css              image blocks, video, images side by side
     toggle-media.css       Legacy vs Current: four images, segments + a switch
     arrow.css              the down arrow between before / after
-    reflection-cards.css   Business goal, Hard work, Smart work, Shipped impact, Fails
+    reflection-cards.css   Problem, Hard work, Smart work, Shipped impact, Fails
     button.css             habibi button, all variants
     switch.css             habibi switch
     segment.css            habibi segment-group
@@ -153,17 +153,22 @@ Each half is up to 564px; export them at 1032px with a 564px copy. When the bloc
 
 Every case study has the reflection block (Figma: `image-frame`) right after Outcomes,
 as a `<section class="cards">` with two equal columns. Sberbank Technology and MA.direct use all five cards;
-Raiffeisen Bank and T-bank have no Fails card, and there Business goal drops `card--grow` so it hugs its text
-while Hard work takes the rest of the column, as in Figma. Business goal is a plain `<p class="body-c-regular">`,
+Raiffeisen Bank and T-bank have no Fails card, and there Problem drops `card--grow` so it hugs its text
+while Hard work takes the rest of the column, as in Figma. Problem is a plain `<p class="body-c-regular">`,
 the other cards are bullet lists:
 
 | Column | Card | Classes |
 |---|---|---|
-| left | Business goal | `card card--orange card--grow` |
+| left | Problem | `card card--grow` |
 | left | Hard work | `card card--grow` |
-| right | Smart work | `card card--blue card--grow` |
-| right | Shipped impact | `card card--green card--grow` |
-| right | Fails | `card card--red` |
+| right | Smart work | `card card--grow` |
+| right | Shipped impact | `card card--grow` |
+| right | Fails | `card` |
+
+All cards look the same: `uncolorful-grey/surface` fill, `uncolorful-grey/secondary` text, 3px corners,
+16px top / 20px sides / 24px bottom padding, 4px between title and text. The title is Body A / Regular
+(`card__title body-a-regular`), the text Body C / Regular. List bullets sit right at the card's text edge,
+with no indent. Cards and columns are 4px apart.
 
 Side by side the block is at least 512px tall, like the fixed-height Figma frame; both columns match the
 taller one and `card--grow` cards share the spare room equally. The block is up to
