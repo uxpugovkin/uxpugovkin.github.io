@@ -122,19 +122,18 @@ it steps down to H1 + H3.
 
 Below it is a column of case study cards (Figma: Card component). Each card is a
 `<li class="storefront__item storefront__item--<page>">` with an `<a class="case-card">` inside:
-title (Header/H1) and the role (Body E, upper case). The cards sit in one column, full width,
+the title (Header/H1) in a white pill (`case-card__text`: pure/0, radius/full, padding 13/20/11, black at 88%); the card has 20px padding. The cards sit in one column, full width,
 16px apart, like the five 1140×568 cards in Figma. Cards are flexible: they fill the space between the side
 paddings, and their height follows the width at 1140:568, never below 240px.
 
 To give a card a picture, add `case-card--image` to the link and an `<span class="image-loader case-card__media"><img …></span>`
 before the text. Export the card's picture layer (Hover=False variant) already cropped to the card, at 1x (1140×568) and
-2x (2280×1136), as lossless `assets/img/home/<page>-card-1x.webp` / `-2x.webp` (`cwebp -lossless`). Over a picture the text turns white with a soft
-shadow; on hover the picture zooms in slightly (Hover=True). Card clicks are counted in GoatCounter as `home-card-<page>`.
+2x (2280×1136), as lossless `assets/img/home/<page>-card-1x.webp` / `-2x.webp` (`cwebp -lossless`). On hover the picture zooms in slightly (Hover=True). Card clicks are counted in GoatCounter as `home-card-<page>`.
 
 Each card has three tags in its bottom-left corner (Figma: Tags), after the text:
 `<span class="case-card__tags">` holding `<span class="case-card__tag body-a-regular">` pills joined by
-`<img class="case-card__tag-link" src="./assets/img/home/tag-link.svg">` connector shapes. Tag text is Body A on desktop, Body B on tablets (768–1023px) and Body C on phones;
-the row wraps if it doesn't fit. Pattern: context · product · "For <users>", first word capitalised.
+`<img class="case-card__tag-link" src="./assets/img/home/tag-link.svg">` connector shapes. Tag text is Body A on desktop, Body B on tablets (768–1023px) and Body C on phones (under 768px).
+The joined row never wraps; on phones the connectors are dropped and the tags wrap as separate pills. Pattern: context · product · "For <users>", first word capitalised.
 
 ## Images
 

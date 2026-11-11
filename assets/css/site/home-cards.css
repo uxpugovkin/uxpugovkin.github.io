@@ -5,10 +5,11 @@
    1140 × 568 Card instances in a vertical auto-layout in Figma.
 
    ┌─────────────────────────────────────────────┐
-   │ Sberbank Technology   ← title, Header H1    │ ← blurred strip behind
-   │ SR. PRODUCT DESIGNER  ← role, Body E, CAPS  │   the text, 80px tall
-   │                                             │
+   │ ┌─────────────────────┐                     │
+   │ │ Sberbank Technology │ ← title island      │
+   │ └─────────────────────┘                     │
    │          (picture fills the card)           │
+   │ [tag]─[tag]─[tag]      ← tags               │
    └─────────────────────────────────────────────┘
 
    Size: the card is as wide as the space between the side paddings, up
@@ -20,9 +21,9 @@
    (1140 × 568 and 2280 × 1136), filling it ("cover"), centred. Tall phone
    cards trim the sides.
 
-   Card: uncolorful-grey/surface, radius/l, shadow default-s, 20/16 padding.
-   Over a picture the text is white (pure/0) with a 0.5px black shadow
-   at 16% (Figma: opacity/16% drop shadow).
+   Card: uncolorful-grey/surface, radius/l, shadow default-s, 20px padding.
+   Title island (Figma: Text): white (pure/0) pill, radius/full, padding
+   13 top / 11 bottom / 20 sides, Header H1 in black (pure/100) at 88%.
    Hover: the picture zooms in slightly — Figma prototype "While hovering →
    Change to Hover=True", Smart animate, ease out, 300ms.
    ========================================================================== */
@@ -134,7 +135,7 @@
   flex: 1 1 auto;
   display: flex;
   align-items: flex-start;   /* text sits at the top */
-  padding: var(--space-20) var(--space-16); /* Figma: 20 top/bottom, 16 sides */
+  padding: var(--space-20); /* Figma: 20 all round */
   overflow: hidden;   /* clips the picture to the rounded corners */
   border-radius: var(--radius-l); /* Figma: radius/l, like every image */
   background-color: var(--uncolorful-grey-surface);
@@ -168,28 +169,28 @@
     transform 300ms ease-out;
 }
 
-/* Title + role, stacked, above the picture and the blur */
+/* Title island (Figma: Text) — a white pill hugging the title, above
+   the picture */
 .case-card__text {
   position: relative;
   z-index: 2;
   display: flex;
   flex-direction: column;
   min-width: 0;
+  padding: 13px var(--space-20) 11px; /* Figma: 13 top, 11 bottom, 20 sides */
+  border-radius: var(--radius-full);
+  background-color: var(--pure-0);
+  color: var(--pure-100);
 }
 
 .case-card__title {
   margin: 0;
+  opacity: 0.88; /* Figma: the title layer at 88% */
 }
 
-.case-card__meta {
-  color: var(--uncolorful-grey-secondary);
-  text-transform: uppercase;
-}
-
-/* A card with a picture (all four have one): white text */
+/* A card with a picture (all five have one) */
 .case-card--image {
   isolation: isolate;
-  color: var(--pure-0);
 }
 
 .case-card__media {
@@ -244,17 +245,6 @@
   mask-image: linear-gradient(to bottom, #000 0%, transparent 60%);
 }
 
-.case-card--image .case-card__meta {
-  color: var(--pure-0);
-  opacity: 0.72; /* Figma: the role layer at 72% */
-}
-
-/* The soft drop shadow under the white text: x 0.5, y 0.5, no blur,
-   black at 16% */
-.case-card--image .case-card__text {
-  text-shadow: 0.5px 0.5px 0 color-mix(in srgb, var(--pure-100) 16%, transparent);
-}
-
 /* Visitors who turned on "reduce motion" on their device: no animation */
 @media (prefers-reduced-motion: reduce) {
   .image-loader.case-card__media img {
@@ -270,16 +260,15 @@
      desktop (1024px and up)   Body A  20/28
      tablet  (768–1023px)      Body B  16/24
      phone   (under 768px)     Body C  14/20
-   If the tags don't fit the card's width they wrap onto a second line. */
+   The joined row never wraps. On phones, where it may not fit, the
+   connectors are dropped and the tags wrap as separate pills, 4px apart. */
 .case-card__tags {
   position: absolute;
-  inset-inline: var(--space-20);
+  inset-inline-start: var(--space-20);
   inset-block-end: var(--space-20);
   z-index: 2;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  row-gap: var(--space-4);
 }
 
 .case-card__tag {
@@ -309,16 +298,22 @@
   }
 }
 
-/* Phone: Body C, 16px from the edges like the card's text */
+/* Phone: Body C. Separate pills that wrap when they don't fit on one
+   line (right edge 20px in, like the left). */
 @media (max-width: 767.98px) {
   .case-card__tags {
-    inset-inline: var(--space-16);
-    inset-block-end: var(--space-16);
+    inset-inline-end: var(--space-20);
+    flex-wrap: wrap;
+    gap: var(--space-4);
   }
 
   .case-card__tag {
     font-size: var(--body-c-size);
     line-height: var(--body-c-line-height);
     letter-spacing: var(--body-c-letter-spacing);
+  }
+
+  .case-card__tag-link {
+    display: none;
   }
 }
