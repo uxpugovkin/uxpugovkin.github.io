@@ -21,15 +21,16 @@
    (1140 × 568 and 2280 × 1136), filling it ("cover"), centred. Tall phone
    cards trim the sides.
 
-   Card: uncolorful-grey/surface, 48px corners, shadow default-s, 28px
-   padding. Title at the top, tags at the bottom (Figma: vertical
+   Card: uncolorful-grey/surface, 48px corners, shadow default-s, 24px
+   padding (the same on hover). Title at the top, tags at the bottom (Figma: vertical
    auto-layout, space between).
    Title island (Figma: Text): white (pure/0) pill, radius/full, padding
    13 top / 11 bottom / 20 sides, Header H1 in black (pure/100) at 88%.
-   Hover (Figma Hover=True, Smart animate, ease out, 200ms):
-     – the picture zooms in slightly
-     – padding 28 → 24, so the title and tags slide 4px out to the corners
-     – connectors between tags 16 → 8px wide, so the tags pull together
+   Hover (Figma Hover=True):
+     – the picture zooms in slightly — 450ms, strong ease out
+       (fast start, long soft landing)
+     – connectors between tags 16 → 8px wide, so the tags pull
+       together — 300ms, ease out
    ".is-hovered" (added by assets/js/card-hover.js) counts as hover too:
    it keeps the effect working while the page scrolls under the cursor.
    ========================================================================== */
@@ -143,12 +144,11 @@
   flex-direction: column;
   justify-content: space-between; /* title on top, tags at the bottom */
   align-items: flex-start;
-  padding: var(--space-28); /* Figma: 28 all round */
+  padding: var(--space-24); /* 24 all round, also on hover */
   overflow: hidden;   /* clips the picture to the rounded corners */
   border-radius: 48px; /* Figma: 48 (no radius token this big) */
   corner-shape: squircle; /* Figma corner smoothing; browsers that don't
                              know it keep plain round corners */
-  transition: padding 200ms ease-out;
   background-color: var(--uncolorful-grey-surface);
   box-shadow: var(--shadow-default-s);
   color: var(--uncolorful-grey-primary);
@@ -172,12 +172,12 @@
   object-position: center;
 }
 
-/* Keeps the image loader's fade-in and adds the hover zoom
-   (Figma: Smart animate, Ease out, 200ms) */
+/* Keeps the image loader's fade-in and adds the hover zoom: 450ms with
+   a strong ease out (easeOutQuint), slower and softer than the tags */
 .image-loader.case-card__media img {
   transition:
     opacity var(--motion-duration) var(--motion-ease),
-    transform 200ms ease-out;
+    transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Title island (Figma: Text) — a white pill hugging the title, above
@@ -214,13 +214,6 @@
 .case-card.is-hovered .case-card__media img,
 .case-card:focus-visible .case-card__media img {
   transform: scale(1.084);
-}
-
-/* Hover: padding 28 → 24, title and tags move out to the corners */
-.case-card:hover,
-.case-card.is-hovered,
-.case-card:focus-visible {
-  padding: var(--space-24);
 }
 
 /* Sberbank and Raiffeisen: the picture layer sits 72px above the card's
@@ -345,9 +338,9 @@
     radial-gradient(var(--reach) var(--bite) at 50% 0, transparent 96%, #000 100%) top / 100% 50% no-repeat,
     radial-gradient(var(--reach) var(--bite) at 50% 100%, transparent 96%, #000 100%) bottom / 100% 50% no-repeat;
   transition:
-    width 200ms ease-out,
-    --bite 200ms ease-out,
-    --reach 200ms ease-out;
+    width 300ms ease-out,
+    --bite 300ms ease-out,
+    --reach 300ms ease-out;
 }
 
 .case-card:hover .case-card__tag-link,
