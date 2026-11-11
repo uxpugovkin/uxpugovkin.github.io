@@ -21,11 +21,17 @@
    (1140 × 568 and 2280 × 1136), filling it ("cover"), centred. Tall phone
    cards trim the sides.
 
-   Card: uncolorful-grey/surface, radius/l, shadow default-s, 20px padding.
+   Card: uncolorful-grey/surface, 48px corners, shadow default-s, 28px
+   padding. Title at the top, tags at the bottom (Figma: vertical
+   auto-layout, space between).
    Title island (Figma: Text): white (pure/0) pill, radius/full, padding
    13 top / 11 bottom / 20 sides, Header H1 in black (pure/100) at 88%.
-   Hover: the picture zooms in slightly — Figma prototype "While hovering →
-   Change to Hover=True", Smart animate, ease out, 300ms.
+   Hover (Figma Hover=True, Smart animate, ease out, 200ms):
+     – the picture zooms in slightly
+     – padding 28 → 24, so the title and tags slide 4px out to the corners
+     – connectors between tags 16 → 8px wide, so the tags pull together
+   ".is-hovered" (added by assets/js/card-hover.js) counts as hover too:
+   it keeps the effect working while the page scrolls under the cursor.
    ========================================================================== */
 
 
@@ -134,10 +140,15 @@
   position: relative;
   flex: 1 1 auto;
   display: flex;
-  align-items: flex-start;   /* text sits at the top */
-  padding: var(--space-20); /* Figma: 20 all round */
+  flex-direction: column;
+  justify-content: space-between; /* title on top, tags at the bottom */
+  align-items: flex-start;
+  padding: var(--space-28); /* Figma: 28 all round */
   overflow: hidden;   /* clips the picture to the rounded corners */
-  border-radius: var(--radius-l); /* Figma: radius/l, like every image */
+  border-radius: 48px; /* Figma: 48 (no radius token this big) */
+  corner-shape: squircle; /* Figma corner smoothing; browsers that don't
+                             know it keep plain round corners */
+  transition: padding 200ms ease-out;
   background-color: var(--uncolorful-grey-surface);
   box-shadow: var(--shadow-default-s);
   color: var(--uncolorful-grey-primary);
@@ -162,11 +173,11 @@
 }
 
 /* Keeps the image loader's fade-in and adds the hover zoom
-   (Figma: Smart animate, Ease out, 300ms) */
+   (Figma: Smart animate, Ease out, 200ms) */
 .image-loader.case-card__media img {
   transition:
     opacity var(--motion-duration) var(--motion-ease),
-    transform 300ms ease-out;
+    transform 200ms ease-out;
 }
 
 /* Title island (Figma: Text) — a white pill hugging the title, above
@@ -200,8 +211,16 @@
 /* Hover: the picture zooms in (Figma Hover=True: 1350 → 1464, ×1.084),
    growing around the centre of the picture layer */
 .case-card:hover .case-card__media img,
+.case-card.is-hovered .case-card__media img,
 .case-card:focus-visible .case-card__media img {
   transform: scale(1.084);
+}
+
+/* Hover: padding 28 → 24, title and tags move out to the corners */
+.case-card:hover,
+.case-card.is-hovered,
+.case-card:focus-visible {
+  padding: var(--space-24);
 }
 
 /* Sberbank and Raiffeisen: the picture layer sits 72px above the card's
@@ -252,10 +271,10 @@
   }
 }
 
-/* Tags in the bottom-left corner (Figma: Tags) — 20px from the left and
-   bottom edges, above the picture. White pills, black text, radius/l,
-   4/12 padding, joined by a 16 × 20 connector shape
-   (assets/img/home/tag-link.svg) so the row reads as one piece.
+/* Tags at the bottom of the card (Figma: Tags), above the picture.
+   White pills, black text, radius/l (the first one 24px on its outer,
+   left side), 4/12 padding, joined by a connector shape so the row
+   reads as one piece.
    Text size steps down with the screen:
      desktop (1024px and up)   Body A  20/28
      tablet  (768–1023px)      Body B  16/24
@@ -263,9 +282,7 @@
    The joined row never wraps. On phones, where it may not fit, the
    connectors are dropped and the tags wrap as separate pills, 4px apart. */
 .case-card__tags {
-  position: absolute;
-  inset-inline-start: var(--space-20);
-  inset-block-end: var(--space-20);
+  position: relative;
   z-index: 2;
   display: flex;
   align-items: center;
@@ -282,11 +299,63 @@
   white-space: nowrap;
 }
 
+.case-card__tag:first-child {
+  border-start-start-radius: 24px;
+  border-end-start-radius: 24px;
+}
+
+/* The connector (Figma: shape): a white 20px-tall block with a
+   half-ellipse bitten out of the top and the bottom, leaving a waist
+   in the middle.
+     default   16px wide, bites 8px deep → 4px waist
+     hover      8px wide, bites 7px deep → 6px waist
+   The bites are always as wide as the visible shape (--reach is half
+   of it), so on hover the connector gets narrower and thicker at once,
+   like Figma's two shapes. --bite and --reach are registered below so
+   the browser can animate them.
+   The block is 2px wider than the visible shape and tucks 1px under the
+   tag on each side (negative margins), so no hairline gap shows between
+   tag and connector while the width animates through half-pixels. */
+@property --bite {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 8px;
+}
+
+/* Half the visible width: how far each bite reaches sideways */
+@property --reach {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 8px;
+}
+
 .case-card__tag-link {
+  --bite: 8px;
+  --reach: 8px;
   display: block;
   flex: none;
-  width: 16px;
+  width: 18px; /* 16 visible + 1px overlap each side */
   height: 20px;
+  margin-inline: -1px;
+  background-color: var(--pure-0);
+  -webkit-mask:
+    radial-gradient(var(--reach) var(--bite) at 50% 0, transparent 96%, #000 100%) top / 100% 50% no-repeat,
+    radial-gradient(var(--reach) var(--bite) at 50% 100%, transparent 96%, #000 100%) bottom / 100% 50% no-repeat;
+  mask:
+    radial-gradient(var(--reach) var(--bite) at 50% 0, transparent 96%, #000 100%) top / 100% 50% no-repeat,
+    radial-gradient(var(--reach) var(--bite) at 50% 100%, transparent 96%, #000 100%) bottom / 100% 50% no-repeat;
+  transition:
+    width 200ms ease-out,
+    --bite 200ms ease-out,
+    --reach 200ms ease-out;
+}
+
+.case-card:hover .case-card__tag-link,
+.case-card.is-hovered .case-card__tag-link,
+.case-card:focus-visible .case-card__tag-link {
+  --bite: 7px;
+  --reach: 4px;
+  width: 10px; /* 8 visible + 1px overlap each side */
 }
 
 /* Tablet: Body B */
@@ -299,10 +368,9 @@
 }
 
 /* Phone: Body C. Separate pills that wrap when they don't fit on one
-   line (right edge 20px in, like the left). */
+   line. */
 @media (max-width: 767.98px) {
   .case-card__tags {
-    inset-inline-end: var(--space-20);
     flex-wrap: wrap;
     gap: var(--space-4);
   }
@@ -315,5 +383,14 @@
 
   .case-card__tag-link {
     display: none;
+  }
+}
+
+/* Visitors who turned on "reduce motion": the card changes without
+   sliding */
+@media (prefers-reduced-motion: reduce) {
+  .case-card,
+  .case-card__tag-link {
+    transition: none;
   }
 }

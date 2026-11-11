@@ -66,13 +66,14 @@ assets/js/                 WHAT MOVES
   image-loader.js          shows the placeholder until each image has loaded
   toggle-media.js          the Legacy / Current segments and "AI scene" switch
   prefetch.js              loads the other case studies, the video and the images below ahead
+  card-hover.js            home page only: card hover keeps working while the page scrolls
 
 assets/img/                favicon, 404 empty-state image, one folder of images per page
 assets/fonts/              IBM Plex Mono for habibi Code styles (OFL licence)
 ```
 
 Every page loads the same files. CSS: `tokens.css`, then `site.css`, and those two load the rest.
-JavaScript: the seven files above, listed in each page's HTML in that order. If you add a new
+JavaScript: the first seven files above, listed in each page's HTML in that order (the home page also loads `card-hover.js`). If you add a new
 JavaScript file, add its `<script>` line to every page. If you add a new CSS file, add one
 `@import` line to `site.css`.
 
@@ -122,7 +123,7 @@ it steps down to H1 + H3.
 
 Below it is a column of case study cards (Figma: Card component). Each card is a
 `<li class="storefront__item storefront__item--<page>">` with an `<a class="case-card">` inside:
-the title (Header/H1) in a white pill (`case-card__text`: pure/0, radius/full, padding 13/20/11, black at 88%); the card has 20px padding. The cards sit in one column, full width,
+the title (Header/H1) in a white pill (`case-card__text`: pure/0, radius/full, padding 13/20/11, black at 88%); the card has 48px squircle corners (`corner-shape: squircle`) and 28px padding, title on top and tags at the bottom. The cards sit in one column, full width,
 16px apart, like the five 1140×568 cards in Figma. Cards are flexible: they fill the space between the side
 paddings, and their height follows the width at 1140:568, never below 240px.
 
@@ -132,8 +133,9 @@ before the text. Export the card's picture layer (Hover=False variant) already c
 
 Each card has three tags in its bottom-left corner (Figma: Tags), after the text:
 `<span class="case-card__tags">` holding `<span class="case-card__tag body-a-regular">` pills joined by
-`<img class="case-card__tag-link" src="./assets/img/home/tag-link.svg">` connector shapes. Tag text is Body A on desktop, Body B on tablets (768–1023px) and Body C on phones (under 768px).
+`<span class="case-card__tag-link" aria-hidden="true">` connector shapes (drawn in CSS). Tag text is Body A on desktop, Body B on tablets (768–1023px) and Body C on phones (under 768px).
 The joined row never wraps; on phones the connectors are dropped and the tags wrap as separate pills. Pattern: context · product · "For <users>", first word capitalised.
+On hover (200ms, ease out) the picture zooms in, the padding shrinks to 24px and the connectors narrow from 16 to 8px while their waist thickens from 4 to 6px. `assets/js/card-hover.js` keeps hover working while the page scrolls under a still cursor (browsers normally wait until scrolling stops).
 
 ## Images
 
