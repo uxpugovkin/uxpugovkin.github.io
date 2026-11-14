@@ -34,7 +34,7 @@ window.SITE = {
     { divider: true },
     { id: "ma-mobile", title: "MA.mobile", href: "ma-mobile/", icon: "phone" },
     { divider: true },
-    { id: "design-system", title: "My own Design System", href: "https://uxpugovkin.github.io/habibi-ui/ds/tables",
-      icon: "worker", external: true }
+    { id: "design-system", title: "Habibi UI", href: "https://uxpugovkin.github.io/habibi-ui/ds/tables",
+      icon: "desktop", external: true }
   ]
 };
