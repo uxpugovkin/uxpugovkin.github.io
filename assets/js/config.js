@@ -34,6 +34,6 @@ window.SITE = {
     { id: "ma-mobile", title: "MA.mobile", href: "ma-mobile/", icon: "phone" },
     { divider: true },
     { id: "design-system", title: "Habibi UI", href: "https://uxpugovkin.github.io/habibi-ui/ds/tables",
-      icon: "desktop", external: true }
+      icon: "folder", external: true }
   ]
 };
