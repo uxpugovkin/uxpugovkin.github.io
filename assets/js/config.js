@@ -31,7 +31,6 @@ window.SITE = {
     { id: "ma-direct", title: "MA.direct", href: "ma-direct/", icon: "desktop" },
     { id: "raiffeisen-bank", title: "Raiffeisen Bank", href: "raiffeisen-bank/", icon: "desktop" },
     { id: "t-bank", title: "T-bank", href: "t-bank/", icon: "desktop" },
-    { divider: true },
     { id: "ma-mobile", title: "MA.mobile", href: "ma-mobile/", icon: "phone" },
     { divider: true },
     { id: "design-system", title: "Habibi UI", href: "https://uxpugovkin.github.io/habibi-ui/ds/tables",
