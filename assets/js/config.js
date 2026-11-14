@@ -18,7 +18,9 @@ window.SITE = {
   //   id    — must match <body data-page="..."> on that page
   //   title — the text shown in the menu
   //   href  — the page's folder, from the site's top folder
-  //   icon  — an icon name from icons.js: "desktop", "phone", "doc", "folder"
+  //   icon  — an icon name from icons.js: "desktop", "phone", "worker", "doc", "folder"
+  //   external — true for a link to another site: href is then the full
+  //           address, and it opens in a new browser tab
   //   video — optional: the page's Vimeo player address, exactly as in the
   //           page's <iframe data-src> (with & instead of &amp;), so
   //           prefetch.js can load it ahead
@@ -30,6 +32,9 @@ window.SITE = {
     { id: "raiffeisen-bank", title: "Raiffeisen Bank", href: "raiffeisen-bank/", icon: "desktop" },
     { id: "t-bank", title: "T-bank", href: "t-bank/", icon: "desktop" },
     { divider: true },
-    { id: "ma-mobile", title: "MA.mobile", href: "ma-mobile/", icon: "phone" }
+    { id: "ma-mobile", title: "MA.mobile", href: "ma-mobile/", icon: "phone" },
+    { divider: true },
+    { id: "design-system", title: "My own Design System", href: "https://uxpugovkin.github.io/habibi-ui/ds/tables",
+      icon: "worker", external: true }
   ]
 };

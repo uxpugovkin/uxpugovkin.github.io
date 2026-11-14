@@ -63,7 +63,8 @@ function prefetchCasePages() {
 
   for (var i = 0; i < menu.length; i++) {
     var item = menu[i];
-    if (!item.href || item.id === thisPageId) {
+    // Skip dividers, this page and links to other sites
+    if (!item.href || item.id === thisPageId || item.external) {
       continue;
     }
     addLink("prefetch", siteRootForPrefetch + item.href);

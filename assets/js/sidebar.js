@@ -72,9 +72,18 @@ function buildMenuRow(item) {
     activeMark = ' aria-current="page"';
   }
 
+  // A link to another site: the full address, opened in a new tab
+  // (rel="noopener" stops the new tab from controlling this one)
+  var href = makeLink(item.href);
+  var newTab = "";
+  if (item.external) {
+    href = item.href;
+    newTab = ' target="_blank" rel="noopener"';
+  }
+
   return (
     "<li>" +
-      '<a class="menu-item body-c-regular" href="' + makeLink(item.href) + '"' + activeMark + ">" +
+      '<a class="menu-item body-c-regular" href="' + safeText(href) + '"' + activeMark + newTab + ">" +
         '<span class="menu-item__icon">' + icon + "</span>" +
         "<span>" + safeText(item.title) + "</span>" +
       "</a>" +

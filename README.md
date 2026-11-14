@@ -103,8 +103,13 @@ Legacy vs Current block and the section images are exported from.
    `{ id: "new-project", title: "New Project", href: "new-project/", icon: "desktop" }`
 
 The menu on every page updates automatically. Icons (Figma `icons/…`, stored in `icons.js`):
-`desktop` for web and desktop products, `phone` for mobile apps. `{ divider: true }` draws the 2px
-divider between groups, as in the Figma `github-sidebar`: the four desktop cases, a divider, then MA.mobile.
+`desktop` for web and desktop products, `phone` for mobile apps, `worker` for tools and systems. `{ divider: true }` draws the 2px
+divider between groups, as in the Figma `github-sidebar`: the four desktop cases, a divider, MA.mobile, a divider,
+then "My own Design System".
+
+A menu item can also link to another site: give it the full address and `external: true`, and it opens in a new
+browser tab (prefetch.js skips it). Example:
+`{ id: "design-system", title: "My own Design System", href: "https://uxpugovkin.github.io/habibi-ui/ds/tables", icon: "worker", external: true }`
 
 ## Case study sections
 
