@@ -50,6 +50,13 @@ a {
   text-decoration: none;
 }
 
+/* A link inside running text (class="text-link"): accent colour, underlined */
+.text-link {
+  color: var(--uncreative-green-50);
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
 /* Keyboard focus ring: shows when someone moves through the page with Tab */
 :focus-visible {
   outline: 2px solid var(--boring-blue-50);

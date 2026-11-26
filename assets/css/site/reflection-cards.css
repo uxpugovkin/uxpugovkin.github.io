@@ -14,6 +14,9 @@
    │                  │ Fails            │
    └──────────────────┴──────────────────┘
 
+   Titles vary by case: Sbertech uses Situation · Actions on the left
+   and Problem · Result · Fails on the right, in the same slots.
+
    Height: at least 512px (the fixed height of the Figma frame); taller
    only if the text needs it. Both columns match the taller one, and
    cards marked card--grow share the spare room equally

@@ -55,6 +55,24 @@
   font-weight: 700;
 }
 
+/* JTBD block (Figma: jtbd) — the job story under a section title.
+   Purple text between two thin lines, 8px above and below:
+     JTBD №1                  ← Body C / Bold
+     When…, I want…, so…      ← Body C / Regular */
+.case-jtbd {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin: 0;
+  padding-block: var(--space-8);
+  border-block: 1px solid var(--uncreative-green-90);
+  color: var(--uncreative-green-40);
+}
+
+.case-jtbd > * {
+  margin: 0;
+}
+
 /* The "Number" layer: Code/S, uncolorful-grey/disabled, hanging 12px left
    of the section, centred on the 28px title line */
 .case-section::before {
