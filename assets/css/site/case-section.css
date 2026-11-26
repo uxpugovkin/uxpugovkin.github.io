@@ -56,7 +56,7 @@
 }
 
 /* JTBD block (Figma: jtbd) — the job story under a section title.
-   Purple text between two thin lines, 8px above and below:
+   Accent text (boring-blue/50) between two boring-blue/90 lines, 8px above and below:
      JTBD №1                  ← Body C / Bold
      When…, I want…, so…      ← Body C / Regular */
 .case-jtbd {
@@ -65,8 +65,8 @@
   gap: var(--space-4);
   margin: 0;
   padding-block: var(--space-8);
-  border-block: 1px solid var(--uncreative-green-90);
-  color: var(--uncreative-green-40);
+  border-block: 1px solid var(--boring-blue-90);
+  color: var(--boring-blue-50);
 }
 
 .case-jtbd > * {
