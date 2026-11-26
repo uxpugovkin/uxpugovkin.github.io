@@ -44,6 +44,11 @@
   margin: 0;
 }
 
+/* Secondary text (Figma: uncolorful-grey/secondary), e.g. the closing Result */
+.case-section__body--secondary {
+  color: var(--uncolorful-grey-secondary);
+}
+
 /* Bulleted list — bullet 8px in, text 21px in, no spacing between items */
 .case-section__body ul {
   padding-inline-start: 21px;

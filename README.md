@@ -260,8 +260,7 @@ Every page has this line just before `</head>`; new case studies copied from an 
 Stats live at https://uxpugovkin.goatcounter.com.
 
 Clicks on important links are counted as GoatCounter events: add `data-goatcounter-click="event-name"`
-(and optionally `data-goatcounter-title`) to the link. The Sberbank "Explore my Figma" button is counted as
-`explore-figma-sbertech`.
+(and optionally `data-goatcounter-title`) to the link.
 
 ## Updating tokens
 
