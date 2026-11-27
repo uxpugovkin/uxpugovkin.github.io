@@ -117,7 +117,7 @@ Each section is a `<section class="case-section">` with an `h2` title and a text
 The numbers (01, 02, …) are added automatically in order and are hidden on mobile, so you can add,
 remove or reorder sections without renumbering anything.
 
-Blocks in the content column sit `--vert-space` apart — the habibi `vert-space` variable, 20px,
+Blocks in the content column sit `--vert-space` apart — the habibi `vert-space` variable, 28px,
 the same at every breakpoint. Change it in one place (`assets/css/site/settings.css`) and every page follows.
 
 ## Home page

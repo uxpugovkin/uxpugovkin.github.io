@@ -4,7 +4,7 @@
    ┌─────────┬──────────────────────────────┐
    │ sidebar │          content             │
    │  232px  │  blocks stacked top to bottom │
-   │         │  `vert-space` (20px) apart    │
+   │         │  `vert-space` (28px) apart    │
    └─────────┴──────────────────────────────┘
 
    .app      — the whole window: sidebar + content side by side

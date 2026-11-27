@@ -28,7 +28,7 @@
 
   /* habibi variable `vert-space`: the gap between blocks on a page
      (text, images, cards…). The same on every screen size, as in Figma. */
-  --vert-space: 20px;
+  --vert-space: 28px;
 
   /* Animation: how long hovers and slides take, and their easing curve */
   --motion-duration: 200ms;
