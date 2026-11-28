@@ -5,17 +5,17 @@
    up to 1140px wide, 4px gaps:
 
    ┌──────────────────┬──────────────────┐
-   │ Problem          │ Smart work       │
-   │ (grows)          │ (grows)          │
-   ├──────────────────┼──────────────────┤
-   │ Hard work        │ Shipped impact   │
+   │ Situation        │ Problem          │
    │ (grows)          │ (grows)          │
    │                  ├──────────────────┤
+   ├──────────────────┤ Result           │
+   │ Actions          │ (grows)          │
+   │ (grows)          ├──────────────────┤
    │                  │ Fails            │
    └──────────────────┴──────────────────┘
 
-   Titles vary by case: Sbertech uses Situation · Actions on the left
-   and Problem · Result · Fails on the right, in the same slots.
+   T-bank still uses the older set (Problem · Hard work / Smart work ·
+   Shipped impact, no Fails) in the same slots.
 
    Height: at least 512px (the fixed height of the Figma frame); taller
    only if the text needs it. Both columns match the taller one, and

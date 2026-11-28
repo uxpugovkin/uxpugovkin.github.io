@@ -44,16 +44,15 @@ assets/css/                HOW THINGS LOOK
     menu.css               one menu row: default / hover / active, divider
     empty-state.css        "coming soon" and "page not found"
     case-header.css        case study title, role, tags + the paragraph block
-    case-section.css       numbered text sections (01, 02…), tablet layout
+    case-section.css       numbered text sections (01, 02…), JTBD block, tablet layout
     home-cards.css         the big cards on the home page
     media.css              image blocks, video, images side by side
     toggle-media.css       Legacy vs Current: four images, segments + a switch
     arrow.css              the down arrow between before / after
-    reflection-cards.css   Problem, Hard work, Smart work, Shipped impact, Fails
+    reflection-cards.css   Situation, Actions, Problem, Result, Fails
     button.css             habibi button, all variants
     switch.css             habibi switch
     segment.css            habibi segment-group
-    cta-banner.css         picture strip with a button ("Explore my Figma")
     image-loader.css       grey pulsing placeholder while images load
     tag.css                habibi tag
     mobile.css             phone layout (below 768px) — always last
@@ -97,8 +96,8 @@ Legacy vs Current block and the section images are exported from.
 
 ## Add a case study
 
-1. Copy the `t-bank/` folder and rename the copy, e.g. `new-project/`.
-2. In `new-project/index.html`, change `data-page="t-bank"` to `new-project` and update the `<title>`.
+1. Copy the `ma-direct/` folder (it has the current card set and JTBD blocks) and rename the copy, e.g. `new-project/`.
+2. In `new-project/index.html`, change `data-page="ma-direct"` to `new-project` and update the `<title>`.
 3. Add one line to `assets/js/config.js`:
    `{ id: "new-project", title: "New Project", href: "new-project/", icon: "desktop" }`
 
@@ -116,6 +115,23 @@ browser tab (prefetch.js skips it). Example:
 Each section is a `<section class="case-section">` with an `h2` title and a text paragraph.
 The numbers (01, 02, …) are added automatically in order and are hidden on mobile, so you can add,
 remove or reorder sections without renumbering anything.
+
+Inside a section, after the title, you can use:
+
+- **JTBD block** (Figma: `jtbd`) — the job story, `boring-blue/50` text between two `boring-blue/90` lines:
+  ```html
+  <div class="case-jtbd body-c-regular">
+    <p class="body-c-bold">JTBD №1</p>
+    <p>When …, I want …, so …</p>
+  </div>
+  ```
+- **Paragraphs** — `<p class="case-section__body body-c-regular">`, 8px apart. Add
+  `case-section__body--secondary` for the grey secondary text (e.g. a closing Result).
+- **Bullet list** — `<div class="case-section__body body-c-regular"><ul><li>…</li></ul></div>`.
+- **Inline link** — `<a class="text-link" href="…" target="_blank" rel="noopener">…</a>`, accent colour and
+  underlined. Add `<span class="visually-hidden"> (opens in a new tab)</span>` inside it for new-tab links.
+
+A paragraph between images without a title or number is `<div class="paragraph">` with the same `<p>` inside.
 
 Blocks in the content column sit `--vert-space` apart — the habibi `vert-space` variable, 28px,
 the same at every breakpoint. Change it in one place (`assets/css/site/settings.css`) and every page follows.
@@ -152,7 +168,7 @@ others the small one, and clicking an image opens it full size.
 
 Wrap every image in `<span class="image-loader">` (add `image-loader--spinner` for large ones).
 Every image slot is rounded with habibi `radius/l` (10px) and clips its image, as in Figma, so images,
-the video, the Legacy vs Current switchers, the home cards and the Figma button block all share one corner.
+the video, the Legacy vs Current switchers and the home cards all share one corner.
 While it loads, it shows the habibi skeleton pulse (and loader), sized to the image so nothing jumps.
 Always write an `alt` that says what the image shows.
 
@@ -163,17 +179,17 @@ Each half is up to 564px; export them at 1032px with a 564px copy. When the bloc
 ## Cards
 
 Every case study has the reflection block (Figma: `image-frame`) right after Outcomes,
-as a `<section class="cards">` with two equal columns. Sberbank Technology and MA.direct use all five cards;
-Raiffeisen Bank and T-bank have no Fails card, and there Problem drops `card--grow` so it hugs its text
-while Hard work takes the rest of the column, as in Figma. Problem is a plain `<p class="body-c-regular">`,
-the other cards are bullet lists:
+as a `<section class="cards">` with two equal columns. Sberbank Technology, MA.direct and Raiffeisen Bank
+use the current set below; T-bank still has the older Problem · Hard work / Smart work · Shipped impact set
+in the same slots. Situation is a plain `<p class="body-c-regular">`; the others are usually
+`<ul class="card__list">` bullet lists, or a `<p>` when the card is one paragraph or a "..." placeholder:
 
 | Column | Card | Classes |
 |---|---|---|
-| left | Problem | `card card--grow` |
-| left | Hard work | `card card--grow` |
-| right | Smart work | `card card--grow` |
-| right | Shipped impact | `card card--grow` |
+| left | Situation | `card card--grow` |
+| left | Actions | `card card--grow` |
+| right | Problem | `card card--grow` |
+| right | Result | `card card--grow` |
 | right | Fails | `card` |
 
 All cards look the same: `uncolorful-grey/surface` fill, `uncolorful-grey/secondary` text, 3px corners,
@@ -184,11 +200,11 @@ with no indent. Cards and columns are 4px apart.
 Side by side the block is at least 512px tall, like the fixed-height Figma frame; both columns match the
 taller one and `card--grow` cards share the spare room equally. The block is up to
 1140px wide and stacks into one column when it is narrower than 700px. Colours come from habibi tokens,
-so they follow the page's theme and day/night. Replace each `<li>...</li>` with real items.
+so they follow the page's theme and day/night.
 
 ## Buttons
 
-`.button` is the habibi **button** with every variant. Set the same properties as in Figma:
+`.button` is the habibi **button** with every variant. It is not used on any page right now (the "Explore my Figma" banner was removed) and is kept for later. Set the same properties as in Figma:
 
 | Attribute | Values | Default |
 |---|---|---|
